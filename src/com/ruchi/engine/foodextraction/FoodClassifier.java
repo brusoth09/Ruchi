@@ -3,6 +3,7 @@ package com.ruchi.engine.foodextraction;
 import com.ruchi.engine.preprocessing.Stemming;
 import com.ruchi.engine.preprocessing.WordDistance;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,24 +40,49 @@ public class FoodClassifier {
                 down.add(entry.getKey());
             }
         }
-        System.out.println("counts"+map.get("pancake"));
+        //System.out.println("counts"+map.get("pancake"));
 
         for(String d:down){
-            //System.out.println(d+"---->"+findBestMatch(top,d));
-            System.out.println(d);
+            System.out.println(d+"---->"+findBestMatch(top,d));
+            //System.out.println(d);
         }
     }
 
     public String findBestMatch(ArrayList<String> top,String input){
         String most_matched="";
         float highest=0;
+        int high_length=0;
+        float value;
+        boolean passed=false;
         for(String s:top){
-            float value=wd.getMongeElkanSimilarity(s.toLowerCase(),input.toLowerCase());
-            float value1=wd.getCosineSimilarity(s.toLowerCase(),input.toLowerCase());
-            if(value>0.5 && value1>0.4 && value>highest){
+            if(s.length()<6 && input.length()<6){
+                value=wd.getLevenshteinSimilarity(s.toLowerCase(),input.toLowerCase());
+                if(value>0.8){
+                    passed=true;
+                }
+            }
+            else if(s.length()>=6 && input.length()>=6){
+                value=wd.getMongeElkanSimilarity(s.toLowerCase(),input.toLowerCase());
+                if(value>0.8){
+                    passed=true;
+                }
+            }
+            else{
+                value=wd.getCosineSimilarity(s.toLowerCase(), input.toLowerCase());
+                if(value>0.8){
+                    passed=true;
+                }
+            }
+            if(passed && value>highest){
                 highest=value;
+                high_length=s.length();
                 most_matched=s;
             }
+            else if(passed && value==highest && s.length()>high_length){
+                high_length=s.length();
+                most_matched=s;
+            }
+            passed=false;
         }
 
         return most_matched;
@@ -75,6 +101,12 @@ public class FoodClassifier {
         fc.addFood("Apple cake");
         fc.addFood("cake");
         fc.classify();
+        ArrayList<String> list=new ArrayList<String>();
+        list.add("pancake");
+        list.add("Apple cake");
+        list.add("protein pancakes");
+        list.add("sue");
+        System.out.println(fc.findBestMatch(list,"protein pancakes sue"));
 
     }
 }

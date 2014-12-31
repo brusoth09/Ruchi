@@ -35,9 +35,9 @@ public class WordDistance {
     public static void main(String args[]){
         WordDistance wd=new WordDistance();
         wd.load();
-        System.out.println(wd.getMongeElkanSimilarity("pancakes", "pancake"));
-        System.out.println(wd.getLevenshteinSimilarity("taco salad", "taco"));
-        System.out.println(wd.getCosineSimilarity("taco salad", "ca"));
-        System.out.println(wd.getEuclideanSimilarity("taco salad", "ca"));
+        System.out.println(wd.getMongeElkanSimilarity( "protein pancake","protien pancakes"));
+        System.out.println(wd.getLevenshteinSimilarity( "pancake","protein pancakes sue"));
+        System.out.println(wd.getCosineSimilarity( "pancake","protein pancakes sue"));
+        System.out.println(wd.getEuclideanSimilarity("protein pancakes sue", "pancake"));
     }
 }

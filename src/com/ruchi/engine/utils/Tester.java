@@ -109,7 +109,7 @@ public class Tester {
                 if(fea.contains(iter.next())){
                     output=output.concat(fea).concat(",");
                     line.addFood(fea);
-                    wc.addFood(fea);
+                    wc.addFood(fea.toLowerCase());
                     iter.remove();
                     break;
                 }
@@ -131,7 +131,7 @@ public class Tester {
         output=output.concat("###").concat(original);
         writeTextFile(output);
 
-
+        wc.classify();
     }
 
     

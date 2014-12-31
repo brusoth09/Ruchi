@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * Created by brusoth on 12/12/2014.
  */
 public class Sentence {
+    String id;
     String line;
     ArrayList<String> food=new ArrayList<String>();
 
@@ -23,5 +24,7 @@ public class Sentence {
         if(!food.contains(Stemming.pluralToSingular(item))){
             food.add(item);
         }
+
+
     }
 }

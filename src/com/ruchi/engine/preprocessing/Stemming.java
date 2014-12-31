@@ -28,6 +28,9 @@ public class Stemming {
         else if(word.endsWith("s")){
             return word.substring(0,word.length()-1);
         }
+        else if(word.endsWith("ies")){
+            //return
+        }
         return word;
     }
 

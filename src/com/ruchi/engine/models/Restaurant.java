@@ -9,22 +9,24 @@ import java.util.HashMap;
  * Created by brusoth on 12/12/2014.
  */
 public class Restaurant {
-    String name;
-    ArrayList<Review> list=new ArrayList<Review>();
-    private HashMap<String,Integer> map=new HashMap<String,Integer>();
+    private String id;
+    private String name;
+
+    private ArrayList<Review> review_list=new ArrayList<Review>();
+    private HashMap<String,Integer> food_map=new HashMap<String,Integer>();
 
     public void addReview(Review object){
-        list.add(object);
+        review_list.add(object);
     }
 
     public void addFood(String food){
-        String stemmed_food= Stemming.removeStopWordsAndStem(food).toLowerCase();
-        if(map.containsKey(stemmed_food)){
-            map.put(stemmed_food,map.get(stemmed_food)+1);
+        String stemmed_food= Stemming.pluralToSingular(food).toLowerCase();
+
+        if(food_map.containsKey(stemmed_food)){
+            food_map.put(stemmed_food,food_map.get(stemmed_food)+1);
         }
         else{
-            map.put(stemmed_food,1);
+            food_map.put(stemmed_food,1);
         }
-        //System.out.println(map.get("pancake"));
     }
 }

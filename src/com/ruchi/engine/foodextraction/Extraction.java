@@ -2,7 +2,6 @@ package com.ruchi.engine.foodextraction;
 
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.preprocessing.Stemming;
-import com.ruchi.engine.utils.SerializeObject;
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.NameSampleDataStream;
 import opennlp.tools.namefind.TokenNameFinderModel;

@@ -31,7 +31,7 @@ public class ModelTester {
 //        TextEditors.writeFoodNamesToTextFile(food_list);
 
         //new Tester().getSentencesFromReviews();
-        new Tester().TestReview();
+        new ModelTester().testModel();
     }
 
     public void testModel(){
@@ -47,12 +47,14 @@ public class ModelTester {
 
             String sCurrentLine;
 
-            br = new BufferedReader(new FileReader("res/modeli.txt"));
+            br = new BufferedReader(new FileReader("res/modelinput.txt"));
 
             while ((sCurrentLine = br.readLine()) != null) {
                 original=sCurrentLine.trim();
-                if(original.length()>0) {
-                    //predictfoods(sCurrentLine.trim());
+                if(original.length()>3) {
+                    original=(sCurrentLine.trim().split("###"))[1];
+                    String[] input=sCurrentLine.trim().split("###");
+                   predictfoods(input[1],input[0].split(","));
                 }
                 else{
                     writeTextFile("###");
@@ -90,7 +92,13 @@ public class ModelTester {
         for (String fea : features) {
 
             while (iter.hasNext()) {
-                if (fea.contains(iter.next())) {
+                String a=iter.next().trim();
+                if(a.length()==0){
+                    iter.remove();
+                    continue;
+                }
+
+                if (fea.contains(a)) {
                     output = output.concat(fea).concat(",");
                     line.addFood(fea);
                     wc.addFood(fea);
@@ -100,6 +108,21 @@ public class ModelTester {
 
             }
         }
+        iter=predictions.iterator();
+        while(iter.hasNext())
+        {
+            String next=iter.next();
+            output=output.concat(next).concat(",");
+            line.addFood(next);
+            wc.addFood(next);
+        }
+        list.add(line);
+        if(output.length()>0)
+            output=output.substring(0,(output.trim().length()-1));
+        output=output.concat("###").concat(original);
+        writeTextFile(output);
+
+
     }
 
     public static void writeTextFile(String sentence)
