@@ -1,11 +1,15 @@
-package com.ruchi.engine.foodextraction; /**
+package com.ruchi.engine.foodextraction;
+/**
  * Created by brusoth on 11/15/2014.
  */
-import ca.pfv.spmf.algorithms.associationrules.TopKRules_and_TNR.Database;
-import com.google.common.base.Joiner;
-import com.ruchi.engine.database.DatabaseConnector;
-import com.ruchi.engine.preprocessing.SentenceProcessing;
-import com.ruchi.engine.utils.TextEditors;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
 import opennlp.tools.cmdline.PerformanceMonitor;
@@ -13,7 +17,6 @@ import opennlp.tools.cmdline.postag.POSModelLoader;
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.postag.POSModel;
-import opennlp.tools.postag.POSSample;
 import opennlp.tools.postag.POSTaggerME;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
@@ -25,52 +28,34 @@ import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.Span;
 
-import java.awt.*;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.google.common.base.Joiner;
+import com.ruchi.engine.utils.TextEditors;
 
 /**
  * Created by brusoth on 11/15/2014.
  */
 public class OpenNLP {
 
-    InputStream sent_model,token_model,person_model,is;
-    POSModel model;
-    PerformanceMonitor perfMon;
-    POSTaggerME tagger;
-    SentenceModel sentence_model;
-    ChunkerModel cModel;
-    ChunkerME chunkerME;
-    SentenceDetectorME detect;
-    FoodSearch fs;
-    Tokenizer tokenizer;
-    NameFinderME nameFinder;
-
-    public ArrayList<String> getSentence(String review)
-    {
-        ArrayList<String> list=new ArrayList<String>();
-        try {
-            String sentences[] = detect.sentDetect(review);
-
-            for(String s:sentences)
-            {
-                list.add(s);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return list;
-    }
+    private InputStream sent_model,token_model,person_model,is;
+    private POSModel model;
+    private PerformanceMonitor perfMon;
+    private POSTaggerME tagger;
+    private SentenceModel sentence_model;
+    private ChunkerModel cModel;
+    private ChunkerME chunkerME;
+    private SentenceDetectorME detect;
+    private FoodSearch fs;
+    private Tokenizer tokenizer;
+    private NameFinderME nameFinder;
 
     public void loadModel()
     {
         try {
-            sent_model = new FileInputStream("en-sent.zip");
-            token_model = new FileInputStream("en-token.zip");
-            person_model= new FileInputStream("res/en-food.train");
-            model = new POSModelLoader().load(new File("en-pos-maxent.zip"));
-            is = new FileInputStream("en-chunker.zip");
+            sent_model = new FileInputStream("en-sent.zip");			//load trained file for sentence detection
+            token_model = new FileInputStream("en-token.zip");			//load trained model for token stream
+            person_model= new FileInputStream("res/en-food.train");		//load trained food stream	
+            model = new POSModelLoader().load(new File("en-pos-maxent.zip"));//load POS tagger stream
+            is = new FileInputStream("en-chunker.zip");					//load chunker stream
 
             TokenNameFinderModel modelers = new TokenNameFinderModel(person_model);
             nameFinder = new NameFinderME(modelers);
@@ -96,14 +81,33 @@ public class OpenNLP {
             System.out.println(e);
         }
     }
+    
+    
     public void unloadModel(){
         try {
             sent_model.close();
             token_model.close();
+            person_model.close();
             is.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public ArrayList<String> getSentence(String review)
+    {
+        ArrayList<String> list=new ArrayList<String>();
+        try {
+            String sentences[] = detect.sentDetect(review);
+
+            for(String s:sentences)
+            {
+                list.add(s);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
     }
 
     public String[] getTokens(String sentence)
@@ -119,7 +123,7 @@ public class OpenNLP {
 
     }
 
-    public void POSTag(String sentence) throws IOException {
+    public void tagSentence(String sentence) throws IOException {
 
         ObjectStream<String> lineStream = new PlainTextByLineStream(new StringReader(sentence));
         String line;
@@ -130,16 +134,11 @@ public class OpenNLP {
             whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
                     .tokenize(line);
             tags = tagger.tag(whitespaceTokenizerLine);
-
-            POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
-
+            //POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
         }
 
-
-
         //chunker implementation
-        String result[] = chunkerME.chunk(whitespaceTokenizerLine, tags);
-
+        //String result[] = chunkerME.chunk(whitespaceTokenizerLine, tags);
         Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
         String[] array=Span.spansToStrings(span, whitespaceTokenizerLine);
         String sent="";
@@ -151,24 +150,6 @@ public class OpenNLP {
         if(sent.contains("<START:food>"))
             TextEditors.writeTextFile(sent);
 
-    }
-
-    public void tag(String sentence) throws IOException {
-        ObjectStream<String> lineStream = new PlainTextByLineStream(new StringReader(sentence));
-        String line;
-        String whitespaceTokenizerLine[] = null;
-
-        String[] tags = null;
-        while ((line = lineStream.read()) != null) {
-            whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
-                    .tokenize(line);
-            tags = tagger.tag(whitespaceTokenizerLine);
-
-            POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
-            System.out.println(Arrays.toString(tags));
-            //System.out.println(sample.toString());
-            //perfMon.incrementCounter();
-        }
     }
 
     public String[] getWordTokens(String line){
@@ -194,7 +175,7 @@ public class OpenNLP {
             else{
                 if(list.size()>0)
                 {
-                    String[] words=Joiner.on(" ").join(list).split(",");
+                    String[] words=Joiner.on(" ").join(list).split(",");   //identify comma separated items as single items
                     for(String word:words)
                     {
                         feature_list.add(word.replaceAll("[^\\w\\s\\']","").trim());
@@ -204,6 +185,7 @@ public class OpenNLP {
                 list=new ArrayList<String>();
             }
         }
+        //this is for last iteration of the loop
         if(list.size()>1)
         {
             String[] words=Joiner.on(" ").join(list).split(",");
@@ -212,19 +194,14 @@ public class OpenNLP {
                 feature_list.add(word.replaceAll("[^\\w\\s\\']","").trim());
             }
         }
-
-//        for(String l:feature_list) {
-//            System.out.println(l);
-//        }
+        
         return feature_list;
     }
 
     public static void main(String args[]) throws IOException {
-        ArrayList<String> food_list=new ArrayList<String>();
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        //sent.POSTag("");
-        String[] toks=sent.getWordTokens(SentenceProcessing.remove_symbols("My boyfriend ordered the protein pancake\n"));
+        String[] toks=sent.getWordTokens(("My boyfriend ordered the protein pancake\n"));
         String[] tags=sent.getWordTags(toks);
         System.out.println(Arrays.toString(tags));
         ArrayList<String> features = sent.findFeatures(tags, toks);
@@ -233,15 +210,6 @@ public class OpenNLP {
         }
         System.out.println(Arrays.toString(sent.getNames(toks)));
         Arrays.toString(tags);
-//        DatabaseConnector db=new DatabaseConnector();
-//        db.connect();
-//        db.getFoodNames(food_list);
-//        for(String food:food_list){
-//            System.out.println(food+"   "+Joiner.on("_").join(sent.getWordTags(sent.getWordTokens(food))));
-//        }
-        //sent.tag("chicken tato soup");
-        //tags[i].trim().equalsIgnoreCase("VBN") ||
-
     }
 }
 
