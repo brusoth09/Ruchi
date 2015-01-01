@@ -1,47 +1,33 @@
 package com.ruchi.engine.foodextraction;
 
-import com.ruchi.engine.database.DatabaseConnector;
-import com.ruchi.engine.preprocessing.Stemming;
-import com.ruchi.engine.utils.TextEditors;
-import com.ruchi.engine.utils.WordAdder;
-import opennlp.tools.stemmer.Stemmer;
-
-import javax.xml.soap.Text;
 import java.util.ArrayList;
+
+import com.ruchi.engine.database.DatabaseConnector;
+import com.ruchi.engine.preprocessing.Stemmer;
+import com.ruchi.engine.utils.WordAdder;
 
 /**
  * Created by brusoth on 11/18/2014.
  */
 public class FoodSearch {
-    ArrayList<String> dictionary = new ArrayList<String>();
-    DatabaseConnector db;
-    WordAdder wa;
+    private ArrayList<String> dictionary = new ArrayList<String>();
+    private DatabaseConnector db;
 
-    public static void main(String args[])
-    {
-        FoodSearch fs=new FoodSearch();
-        fs.loadFood();
-        fs.search("cinnamon  rolls  as big as your head absolutely scrumptious ".replace("  "," "));
-    }
     public void loadFood()
     {
         db=new DatabaseConnector();
         db.connect();
         db.getFoodNames(dictionary);
-        //TextEditors.writeFoodNamesToTextFile(dictionary);
-       // db.disconect();
     }
 
     public String search(String chunk)
     {
         String output="";
-        wa=new WordAdder();
-        String[] tokens=chunk.toLowerCase().replace("  "," ").trim().split(" ");
+        String[] tokens=chunk.toLowerCase().split("//s+");
         if(tokens.length==1)
         {
-            if(dictionary.contains(Stemming.pluralToSingular(tokens[0].trim())))
+            if(dictionary.contains(Stemmer.pluralToSingular(tokens[0].trim())))
             {
-                //wa.divide(tokens[0],db);
                 return " <START:food> "+tokens[0]+" <END> ";
             }
             return tokens[0];
@@ -56,18 +42,23 @@ public class FoodSearch {
                 {
                     s=s.concat(" "+tokens[k].trim());
                 }
-                if(dictionary.contains(Stemming.pluralToSingular(s.trim())))
+                if(dictionary.contains(Stemmer.pluralToSingular(s.trim())))
                 {
-                    chunk=chunk.replace(s.trim(),"").replace("  "," ");
-                    //wa.divide(s,db);
+                    chunk=chunk.replace(s.trim(),"").replaceAll("\\s+"," ");
                     output=output.replace(s.trim(), " <START:food> "+s+" <END> ");
                     return output;
                 }
-                //System.out.println(s);
             }
 
         }
-        //System.out.println(output);
         return output;
+    }
+    
+    public static void main(String args[])
+    {
+        FoodSearch fs=new FoodSearch();
+        fs.loadFood();
+        System.out.println(fs.search("cinnamon  rolls  as big as your head absolutely scrumptious ".replace("  "," ")));
+        System.out.println("the   day".replaceAll("\\s+", " "));
     }
 }
