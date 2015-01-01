@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class DatabaseConnector {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/synergy_training_sample";
+    static String DB_URL = "jdbc:mysql://localhost/synergy_training_sample";
 
     static final String USER = "root";
     static final String PASS = "";
@@ -16,6 +16,16 @@ public class DatabaseConnector {
     Connection conn = null;
     Statement stmt = null;
     PreparedStatement pstmt = null;
+    
+    public DatabaseConnector(){
+    	
+    }
+    
+    public DatabaseConnector(boolean isTest){
+    	if(isTest==true){
+    		DB_URL = "jdbc:mysql://localhost/synergy_test_data";
+    	}
+    }
 
     public void connect()
     {
@@ -33,7 +43,6 @@ public class DatabaseConnector {
     {
         try {
             conn.close();
-//            pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,7 +60,6 @@ public class DatabaseConnector {
             ResultSet res = pstmt.executeQuery();
             while(res.next()){
                 String review = res.getString("review");
-                //System.out.println(review);
                 list.add(review);
             }
 
