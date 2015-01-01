@@ -101,8 +101,9 @@ public class Extraction {
 
     public static void main(String args[]){
         Extraction exe=new Extraction();
-        exe.train();
-        String[] output=exe.predict("###My boyfriend ordered the hawk eye egg omelet, it was light and fluffy, and the eggs themselves tasted like an array of wonderfull cheese.");
-        System.out.println(Arrays.toString(output));
+        OpenNLP nlp=new OpenNLP();
+        nlp.loadModel();
+        exe.load(nlp);
+        String[] output=exe.predict("i had a pizza");
     }
 }
