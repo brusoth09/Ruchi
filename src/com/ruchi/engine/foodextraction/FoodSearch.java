@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.preprocessing.Stemmer;
-import com.ruchi.engine.utils.WordAdder;
 
 /**
  * Created by brusoth on 11/18/2014.
