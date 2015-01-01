@@ -15,8 +15,15 @@ public class Restaurant {
     private ArrayList<Review> review_list=new ArrayList<Review>();
     private HashMap<String,Integer> food_map=new HashMap<String,Integer>();
 
+    public Restaurant(String name){
+    	this.name=name;
+    }
     public void addReview(Review object){
         review_list.add(object);
+    }
+    
+    public ArrayList<Review> getReview(){
+    	return review_list;
     }
 
     public void addFood(String food){

@@ -13,7 +13,9 @@ import java.util.Map;
  */
 public class FoodClassifier {
     private HashMap<String,Integer> map=new HashMap<String,Integer>();
+    private HashMap<String,String> result=new HashMap<String,String>();
     WordDistance wd;
+    
     public void addFood(String food){
         String stemmed_food= Stemming.pluralToSingular(food).toLowerCase();
         if(map.containsKey(stemmed_food)){
@@ -35,16 +37,19 @@ public class FoodClassifier {
             System.out.println(entry.getKey()+"---->"+entry.getValue());
             if(entry.getValue()>1){
                 top.add(entry.getKey());
+                result.put(entry.getKey(), entry.getKey());
             }
             else{
                 down.add(entry.getKey());
             }
         }
-        //System.out.println("counts"+map.get("pancake"));
 
         for(String d:down){
-            System.out.println(d+"---->"+findBestMatch(top,d));
-            //System.out.println(d);
+            String matched_value=findBestMatch(top,d);
+            
+            if(matched_value.trim().length()>0){
+            	result.put(d, matched_value);
+            }
         }
     }
 
@@ -86,6 +91,15 @@ public class FoodClassifier {
         }
 
         return most_matched;
+    }
+    
+    public String getResult(String food_name){
+    	String f=result.get(Stemming.pluralToSingular(food_name));
+    	if(f!=null){
+    		return  f;
+    	}
+    	
+    	return "notfound";
     }
 
     public static void main(String[] args){

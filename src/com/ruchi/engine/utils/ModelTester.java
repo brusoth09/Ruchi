@@ -100,7 +100,7 @@ public class ModelTester {
 
                 if (fea.contains(a)) {
                     output = output.concat(fea).concat(",");
-                    line.addFood(fea);
+                    line.addFood(fea,0);
                     wc.addFood(fea);
                     iter.remove();
                     break;
@@ -113,7 +113,7 @@ public class ModelTester {
         {
             String next=iter.next();
             output=output.concat(next).concat(",");
-            line.addFood(next);
+            line.addFood(next,0);
             wc.addFood(next);
         }
         list.add(line);

@@ -12,4 +12,8 @@ public class Review {
     public void addReview(Sentence object){
         list.add(object);
     }
+    
+    public ArrayList<Sentence> getSentences(){
+    	return list;
+    }
 }
