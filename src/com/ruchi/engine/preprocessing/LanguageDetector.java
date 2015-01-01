@@ -47,4 +47,15 @@ public class LanguageDetector {
         return false;
     }
 
+    public static String remove_symbols(String review)
+    {
+    	/*RULES
+    	 * Remove contents inside braces
+    	 * Remove everything other than number,character,apostrophe,comma,hyphen
+    	 * Reduce multiple spaces into single space
+    	 * Replace hyphen into space
+    	 */
+        review=review.replaceAll("\\(.*\\)", "").replaceAll("[^a-zA-Z0-9', -]", "").replaceAll("\\s+"," ").replaceAll("-"," ");
+        return review;
+    }
 }
