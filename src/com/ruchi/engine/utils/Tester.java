@@ -108,7 +108,7 @@ public class Tester {
             {
                 if(fea.contains(iter.next())){
                     output=output.concat(fea).concat(",");
-                    line.addFood(fea,0);
+                    line.addFood(fea,new Integer[]{0,0});
                     wc.addFood(fea.toLowerCase());
                     iter.remove();
                     break;
@@ -122,7 +122,7 @@ public class Tester {
         {
             String next=iter.next();
             output=output.concat(next).concat(",");
-            line.addFood(next,0);
+            line.addFood(next,new Integer[]{0,0});
             wc.addFood(next);
         }
         list.add(line);
