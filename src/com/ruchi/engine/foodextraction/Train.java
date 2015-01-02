@@ -31,13 +31,6 @@ public class Train {
         ObjectStream sampleStream = new NameSampleDataStream(fileStream);
         model = NameFinderME.train("pt-br", "train", sampleStream, Collections.<String, Object>emptyMap());
         NameFinderME nfm = new NameFinderME(model);
-
-//        String sent="chicken patty was super. don't forgot to drink bubble soup";
-//        OpenNLP s1=new OpenNLP();
-//        s1.loadModel();
-//        Span nameSpans[] = nfm.find(s1.getTokens(sent));
-//        for(Span s: nameSpans)
-//            System.out.println(s.toString());
         saveFile();
 
     }
