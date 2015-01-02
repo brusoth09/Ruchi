@@ -89,7 +89,7 @@ public class TypedDependencyEngine {
 							&& myWord.getIndex() <= location[0] + location[1]) {
 						String generatedSentence = generateSentence(myWords);
 						String polarity = sentimentAnalysis(generatedSentence).get(0);
-						System.out.println(generatedSentence);
+//						System.out.println(generatedSentence);
 						if(polarity.equalsIgnoreCase("Positive")){
 							scores.add(RankingAlgorithm.positiveScore(generatedSentence));
 						}
