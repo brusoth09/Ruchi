@@ -12,12 +12,21 @@ public class Sentence {
     private String line;
     private String[] tokens;
     private HashMap<String,Integer[]> food=new HashMap<String,Integer[]>();
-
+    private HashMap<String, Double> foodSentiment;
+    
     public Sentence(String line){
         this.line=line;
     }
     
-    public String getId() {
+    public HashMap<String, Double> getFoodSentiment() {
+		return foodSentiment;
+	}
+
+	public void setFoodSentiment(HashMap<String, Double> foodSentiment) {
+		this.foodSentiment = foodSentiment;
+	}
+
+	public String getId() {
 		return id;
 	}
 

@@ -1,6 +1,7 @@
 package com.ruchi.engine.ranking;
 
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.stanford.nlp.ling.HasWord;
@@ -111,4 +112,15 @@ public class RankingAlgorithm {
 		return tSentence;
 	}
 
+	public static double avgScore(ArrayList<Integer> integers) {
+		double total = 0.0;
+		double score;
+		int size = integers.size();
+		for (int i : integers) {
+			total += i;
+		}
+		score = total / size;
+		return score;
+
+	}
 }
