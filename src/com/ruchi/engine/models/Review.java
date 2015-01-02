@@ -14,6 +14,15 @@ public class Review {
 	private ArrayList<Sentence> list = new ArrayList<Sentence>();
 	private HashMap<String, Double> foodSentiment;
 	private boolean isContainFood = false;
+	private double rating;
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
 
 	public String getId() {
 		return id;
@@ -58,7 +67,8 @@ public class Review {
 			foodSentiment = new HashMap<String, Double>();
 			Set<String> keySet = foodScoreMap.keySet();
 			for (String key : keySet) {
-				double score = RankingAlgorithm.avgScoreDouble(foodScoreMap.get(key));
+				double score = RankingAlgorithm.avgScoreDouble(foodScoreMap
+						.get(key));
 				foodSentiment.put(key, score);
 			}
 		}
@@ -66,9 +76,9 @@ public class Review {
 
 	public HashMap<String, Double> getFoodSentiment() {
 		return foodSentiment;
-	}	
-	
-	public boolean isContainFood(){
+	}
+
+	public boolean isContainFood() {
 		return isContainFood;
 	}
 }
