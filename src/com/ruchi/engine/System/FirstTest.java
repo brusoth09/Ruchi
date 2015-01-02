@@ -102,7 +102,7 @@ public class FirstTest {
             {
                 if(fea.contains(iter.next())){
                     
-                    sentence.addFood(fea,0);
+                    sentence.addFood(fea,new Integer[]{0,0});
                     wc.addFood(fea.toLowerCase());
                     iter.remove();
                     break;
@@ -115,7 +115,7 @@ public class FirstTest {
         while(iter.hasNext())
         {
             String next=iter.next();
-            sentence.addFood(next,0);
+            sentence.addFood(next,new Integer[]{0,0});
             wc.addFood(next);
         }
         
@@ -129,17 +129,24 @@ public class FirstTest {
     			while (it.hasNext()) {
     		        Map.Entry pairs = (Map.Entry)it.next();
     		        String food=(String) pairs.getKey();
+    		        int len=food.split("\\s+").length;
     		        String modified=wc.getResult(food);
-    		        int location=s.findLocation(food, modified);
+    		        int location=s.findLocation(food);
     		        if(modified.equalsIgnoreCase("notfound")){
     		        	s.removeFood(food);
     		        }
     		        else if(food.equals(modified)){
-    		        	s.addFood(modified, location);
+    		        	Integer[] set=new Integer[2];
+    		        	set[0]=location;
+    		        	set[1]=len;
+    		        	s.addFood(modified,set);
     		        }
     		        else{
     		        	s.removeFood(food);
-    		        	s.addFood(modified, location);
+    		        	Integer[] set=new Integer[2];
+    		        	set[0]=location;
+    		        	set[1]=len;
+    		        	s.addFood(modified, set);
     		        }
     		    }
     			//call type dependency for Sentence Object here
