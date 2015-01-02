@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
 import com.ruchi.engine.ranking.RankingAlgorithm;
 import com.ruchi.engine.sentiment.Parser.Parse;
@@ -59,7 +60,9 @@ public class TypedDependencyEngine {
 		// writer.flush();
 		// writer.close();
 		String inText = "I had pizza it was awesome and chinese pasta was awful";
+		Review review = new Review();
 		Sentence sentence = new Sentence(inText);
+		Sentence sentence2 = new Sentence(inText);
 		Integer[] location = new Integer[2];
 		location[0] = 2;
 		location[1] = 1;
@@ -68,9 +71,15 @@ public class TypedDependencyEngine {
 		location2[1] = 2;
 		sentence.addFood("pizza", location);
 		sentence.addFood("pasta", location2);
-		HashMap<String, Double> foodSentiment = foodSentiment(sentence);
-		sentence.setFoodSentiment(foodSentiment);
-		System.out.println(foodSentiment);
+		sentence2.addFood("pizza", location);
+		sentence2.addFood("pasta", location2);
+		review.addReview(sentence);
+		review.addReview(sentence2);
+		for (Sentence sent : review.getSentences()) {
+			foodSentiment(sent);
+		}
+		review.generateFoodSentiment();
+		System.out.println(review.getFoodSentiment());
 	}
 
 	public static HashMap<String, Double> foodSentiment(Sentence sentence) {
@@ -115,6 +124,7 @@ public class TypedDependencyEngine {
 			}
 			foodSentiment.put(food, score);
 		}
+		sentence.setFoodSentiment(foodSentiment);
 		return foodSentiment;
 	}
 
