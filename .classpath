@@ -20,5 +20,12 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="lib/commons-dbcp-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/ejml-0.23.jar"/>
+	<classpathentry kind="lib" path="lib/javax.json.jar"/>
+	<classpathentry kind="lib" path="lib/joda-time.jar"/>
+	<classpathentry kind="lib" path="lib/jollyday.jar"/>
+	<classpathentry kind="lib" path="lib/stanford-corenlp-3.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/xom.jar"/>
+	<classpathentry kind="lib" path="lib/stanford-corenlp-3.5.0-models.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
