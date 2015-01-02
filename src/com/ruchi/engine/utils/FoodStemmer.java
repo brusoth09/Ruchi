@@ -1,7 +1,7 @@
 package com.ruchi.engine.utils;
 
 import com.ruchi.engine.database.DatabaseConnector;
-import com.ruchi.engine.preprocessing.Stemming;
+import com.ruchi.engine.preprocessing.Stemmer;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class FoodStemmer {
 
         for(String s:foods)
         {
-            String stemmed= Stemming.pluralToSingular(s);
+            String stemmed= Stemmer.pluralToSingular(s);
             if(!stem_food.contains(stemmed.trim())){
                 db.insertFoodItem(stemmed.trim());
                 stem_food.add(stemmed.trim());

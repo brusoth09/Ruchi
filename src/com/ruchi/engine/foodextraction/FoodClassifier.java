@@ -1,12 +1,11 @@
 package com.ruchi.engine.foodextraction;
 
-import com.ruchi.engine.preprocessing.Stemming;
-import com.ruchi.engine.preprocessing.WordDistance;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.ruchi.engine.preprocessing.Stemmer;
+import com.ruchi.engine.preprocessing.WordDistance;
 
 /**
  * Created by brusoth on 12/17/2014.
@@ -14,10 +13,10 @@ import java.util.Map;
 public class FoodClassifier {
     private HashMap<String,Integer> map=new HashMap<String,Integer>();
     private HashMap<String,String> result=new HashMap<String,String>();
-    WordDistance wd;
+    private WordDistance wd;
     
     public void addFood(String food){
-        String stemmed_food= Stemming.pluralToSingular(food).toLowerCase();
+        String stemmed_food= Stemmer.pluralToSingular(food).toLowerCase();
         if(map.containsKey(stemmed_food)){
             map.put(stemmed_food,map.get(stemmed_food)+1);
         }
@@ -34,7 +33,6 @@ public class FoodClassifier {
         ArrayList<String> down=new ArrayList<String>();
 
         for(Map.Entry<String,Integer> entry:map.entrySet()){
-            System.out.println(entry.getKey()+"---->"+entry.getValue());
             if(entry.getValue()>1){
                 top.add(entry.getKey());
                 result.put(entry.getKey(), entry.getKey());
@@ -94,7 +92,7 @@ public class FoodClassifier {
     }
     
     public String getResult(String food_name){
-    	String f=result.get(Stemming.pluralToSingular(food_name));
+    	String f=result.get(Stemmer.pluralToSingular(food_name));
     	if(f!=null){
     		return  f;
     	}

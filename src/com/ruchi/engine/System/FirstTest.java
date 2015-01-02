@@ -13,7 +13,7 @@ import com.ruchi.engine.foodextraction.OpenNLP;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.SentenceProcessing;
+import com.ruchi.engine.preprocessing.LanguageDetector;
 
 
 public class FirstTest {
@@ -35,7 +35,7 @@ public class FirstTest {
         list=new ArrayList<Sentence>();
         wc=new FoodClassifier();
 		DatabaseConnector db=new DatabaseConnector(true);
-        SentenceProcessing ld=new SentenceProcessing();
+        LanguageDetector ld=new LanguageDetector();
         
         ld.load_profile();
         db.connect();
@@ -56,7 +56,7 @@ public class FirstTest {
                     ArrayList<String> sentences=sent.getSentence(s1);
                     for(String s2:sentences)
                     {
-                        String sen=SentenceProcessing.remove_symbols(s2);
+                        String sen=LanguageDetector.remove_symbols(s2);
                         Sentence sentence=new Sentence(sen);
                         try {
                             if(sen.length()>1)
@@ -131,7 +131,10 @@ public class FirstTest {
     		        String food=(String) pairs.getKey();
     		        String modified=wc.getResult(food);
     		        int location=s.findLocation(food, modified);
-    		        if(food.equals(modified)){
+    		        if(modified.equalsIgnoreCase("notfound")){
+    		        	s.removeFood(food);
+    		        }
+    		        else if(food.equals(modified)){
     		        	s.addFood(modified, location);
     		        }
     		        else{

@@ -2,7 +2,7 @@ package com.ruchi.engine.System;
 
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.OpenNLP;
-import com.ruchi.engine.preprocessing.SentenceProcessing;
+import com.ruchi.engine.preprocessing.LanguageDetector;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,8 +15,7 @@ public class main {
     public static void main(String[] args)
     {
         DatabaseConnector db=new DatabaseConnector();
-        SentenceProcessing ld=new SentenceProcessing();
-        //WordAdder wd=new WordAdder();
+        LanguageDetector ld=new LanguageDetector();
 
         db.connect();
         ld.load_profile();
@@ -48,10 +47,10 @@ public class main {
                     ArrayList<String> sentences=sent.getSentence(s1);
                     for(String s2:sentences)
                     {
-                        String sen=SentenceProcessing.remove_symbols(s2);
+                        String sen=LanguageDetector.remove_symbols(s2);
                         try {
                             if(sen.length()>1)
-                            sent.POSTag(sen);
+                            sent.tagSentence(sen);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
