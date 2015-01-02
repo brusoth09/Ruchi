@@ -1,6 +1,7 @@
 package com.ruchi.engine.foodextraction;
 
 import opennlp.tools.namefind.NameFinderME;
+import opennlp.tools.namefind.NameSample;
 import opennlp.tools.namefind.NameSampleDataStream;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.util.ObjectStream;
@@ -27,12 +28,10 @@ public class Train {
     }
     public void train() throws IOException {
         FileReader fileReader = new FileReader("res/review_train");
-        ObjectStream fileStream = new PlainTextByLineStream(fileReader);
-        ObjectStream sampleStream = new NameSampleDataStream(fileStream);
+        ObjectStream<String> fileStream = new PlainTextByLineStream(fileReader);
+        ObjectStream<NameSample> sampleStream = new NameSampleDataStream(fileStream);
         model = NameFinderME.train("pt-br", "train", sampleStream, Collections.<String, Object>emptyMap());
-        NameFinderME nfm = new NameFinderME(model);
         saveFile();
-
     }
 
     public void saveFile(){
