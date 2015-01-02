@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.OpenNLP;
+import com.ruchi.engine.foodextraction.Train;
 import com.ruchi.engine.preprocessing.LanguageDetector;
 
 public class TrainingSystem {
@@ -66,7 +67,15 @@ public class TrainingSystem {
             }
         }
         db.disconect();
-
+	}
+	
+	public void trainModel(){
+		try {
+			new Train().train();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
