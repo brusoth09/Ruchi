@@ -1,15 +1,20 @@
 package com.ruchi.engine.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+
+import com.ruchi.engine.ranking.RankingAlgorithm;
 
 /**
  * Created by brusoth on 12/12/2014.
  */
 public class Review {
-    private String id;
-    private ArrayList<Sentence> list=new ArrayList<Sentence>();
+	private String id;
+	private ArrayList<Sentence> list = new ArrayList<Sentence>();
+	private HashMap<String, Double> foodSentiment;
 
-    public String getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -17,11 +22,41 @@ public class Review {
 		this.id = id;
 	}
 
-	public void addReview(Sentence object){
-        list.add(object);
-    }
-    
-    public ArrayList<Sentence> getSentences(){
-    	return list;
-    }
+	public void addReview(Sentence object) {
+		list.add(object);
+	}
+
+	public ArrayList<Sentence> getSentences() {
+		return list;
+	}
+
+	public void generateFoodSentiment() {
+		HashMap<String, ArrayList<Double>> foodScoreMap = null;
+		for (Sentence sentence : list) {
+			if (sentence.isContainFood()) {
+				if (foodScoreMap == null) {
+					foodScoreMap = new HashMap<String, ArrayList<Double>>();
+				}
+				HashMap<String, Double> sentenceFoodSentiment = sentence
+						.getFoodSentiment();
+				Set<String> sentenceKeySet = sentenceFoodSentiment.keySet();
+				for (String key : sentenceKeySet) {
+					Double score = sentenceFoodSentiment.get(key);
+					if (foodScoreMap.containsKey(key)) {
+						foodScoreMap.get(key).add(score);
+					} else {
+						ArrayList<Double> scoreList = new ArrayList<Double>();
+						scoreList.add(score);
+						foodScoreMap.put(key, scoreList);
+					}
+				}
+			}
+		}
+		if (foodScoreMap != null) {
+			Set<String> keySet = foodScoreMap.keySet();
+			for (String key : keySet) {
+				foodSentiment.put(key, RankingAlgorithm.avgScoreDouble(foodScoreMap.get(key)));
+			}
+		}
+	}
 }

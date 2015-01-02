@@ -112,11 +112,23 @@ public class RankingAlgorithm {
 		return tSentence;
 	}
 
-	public static double avgScore(ArrayList<Integer> integers) {
+	public static double avgScore(ArrayList<Integer> scores) {
 		double total = 0.0;
 		double score;
-		int size = integers.size();
-		for (int i : integers) {
+		int size = scores.size();
+		for (int i : scores) {
+			total += i;
+		}
+		score = total / size;
+		return score;
+
+	}
+	
+	public static double avgScoreDouble(ArrayList<Double> scores) {
+		double total = 0.0;
+		double score;
+		int size = scores.size();
+		for (double i : scores) {
 			total += i;
 		}
 		score = total / size;
