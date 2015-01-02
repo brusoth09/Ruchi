@@ -1,6 +1,7 @@
 package com.ruchi.engine.System;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.OpenNLP;
@@ -40,7 +41,32 @@ public class TrainingSystem {
 	}
 	
 	public void trainFromDatabase(){
+		ArrayList<String> res_list=db.getRestaurants();
 		
+		for(String s:res_list)
+        {
+            ArrayList<String> reviews=db.getRestaurantReviews(s);
+            for(String s1:reviews)
+            {
+                if(ld.check_Language(s1))
+                {
+
+                    ArrayList<String> sentences=sent.getSentence(s1);
+                    for(String s2:sentences)
+                    {
+                        String sen=LanguageDetector.remove_symbols(s2);
+                        try {
+                            if(sen.length()>1)
+                            sent.tagSentence(sen);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+        db.disconect();
+
 	}
 
 }
