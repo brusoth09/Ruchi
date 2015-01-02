@@ -5,7 +5,7 @@ import com.ruchi.engine.foodextraction.Extraction;
 import com.ruchi.engine.foodextraction.FoodClassifier;
 import com.ruchi.engine.foodextraction.OpenNLP;
 import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.SentenceProcessing;
+import com.ruchi.engine.preprocessing.LanguageDetector;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -78,7 +78,7 @@ public class ModelTester {
         Sentence line = new Sentence(sentence);
         String output = "";
         sentence = sentence.replaceAll("\\.-", " ").replace("\\.", "");
-        sentence = SentenceProcessing.remove_symbols(sentence);
+        sentence = LanguageDetector.remove_symbols(sentence);
         String[] tokens = predictedvalues;
         List<String> predictions = new ArrayList<String>(Arrays.asList(tokens));
         String[] toks = sent.getWordTokens(sentence);
