@@ -13,6 +13,7 @@ public class Review {
 	private String id;
 	private ArrayList<Sentence> list = new ArrayList<Sentence>();
 	private HashMap<String, Double> foodSentiment;
+	private boolean isContainFood = false;
 
 	public String getId() {
 		return id;
@@ -35,6 +36,7 @@ public class Review {
 		for (Sentence sentence : list) {
 			if (sentence.isContainFood()) {
 				if (foodScoreMap == null) {
+					isContainFood = true;
 					foodScoreMap = new HashMap<String, ArrayList<Double>>();
 				}
 				HashMap<String, Double> sentenceFoodSentiment = sentence
@@ -66,4 +68,7 @@ public class Review {
 		return foodSentiment;
 	}	
 	
+	public boolean isContainFood(){
+		return isContainFood;
+	}
 }
