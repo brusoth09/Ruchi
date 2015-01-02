@@ -53,10 +53,17 @@ public class Review {
 			}
 		}
 		if (foodScoreMap != null) {
+			foodSentiment = new HashMap<String, Double>();
 			Set<String> keySet = foodScoreMap.keySet();
 			for (String key : keySet) {
-				foodSentiment.put(key, RankingAlgorithm.avgScoreDouble(foodScoreMap.get(key)));
+				double score = RankingAlgorithm.avgScoreDouble(foodScoreMap.get(key));
+				foodSentiment.put(key, score);
 			}
 		}
 	}
+
+	public HashMap<String, Double> getFoodSentiment() {
+		return foodSentiment;
+	}	
+	
 }
