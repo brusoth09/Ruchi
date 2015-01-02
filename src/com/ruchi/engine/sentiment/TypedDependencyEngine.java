@@ -115,6 +115,7 @@ public class TypedDependencyEngine {
 			}
 			foodSentiment.put(food, score);
 		}
+		sentence.setFoodSentiment(foodSentiment);
 		return foodSentiment;
 	}
 
