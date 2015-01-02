@@ -11,7 +11,7 @@ public class Sentence {
     private String id;
     private String line;
     private String[] tokens;
-    private HashMap<String,Integer> food=new HashMap<String,Integer>();
+    private HashMap<String,Integer[]> food=new HashMap<String,Integer[]>();
 
     public Sentence(String line){
         this.line=line;
@@ -45,7 +45,7 @@ public class Sentence {
         return !(food.isEmpty());
     }
 
-    public void addFood(String item,int location){
+    public void addFood(String item,Integer[] location){
         food.put(item,location);
     }
     
@@ -53,11 +53,11 @@ public class Sentence {
     	food.remove(item);
     }
     
-    public HashMap<String,Integer> getFoodMap(){
+    public HashMap<String,Integer[]> getFoodMap(){
     	return food;
     }
 	
-	public int findLocation(String word1,String word2){
+	public int findLocation(String word1){
 		//check modified food's first token exist else consider old food name
 		String[] wordtokens = null;
 		if(word1.length()>0){
@@ -72,17 +72,6 @@ public class Sentence {
 			}
 		}
 		
-		if(word2.length()>0){
-			wordtokens=word2.split("//s+");
-		}
-		else{
-			return -1;
-		}
-		for(int i=0;i<tokens.length;i++){
-			if(wordtokens[0].equalsIgnoreCase(tokens[i]) ||wordtokens[0].equalsIgnoreCase(Stemmer.pluralToSingular(tokens[i]))){
-				return i;
-			}
-		}
 		return 0;
 	}
 }
