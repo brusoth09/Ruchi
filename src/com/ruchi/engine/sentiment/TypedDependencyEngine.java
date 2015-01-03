@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
 import com.ruchi.engine.ranking.RankingAlgorithm;
@@ -60,9 +61,12 @@ public class TypedDependencyEngine {
 		// writer.flush();
 		// writer.close();
 		String inText = "I had pizza it was awesome and chinese pasta was awful";
+		Restaurant restaurant = new Restaurant("US EGG");
 		Review review = new Review();
+		Review review2 = new Review();
 		Sentence sentence = new Sentence(inText);
 		Sentence sentence2 = new Sentence(inText);
+		Sentence sentence3 = new Sentence("Belgium waffles was tasteless");
 		Integer[] location = new Integer[2];
 		location[0] = 2;
 		location[1] = 1;
@@ -75,11 +79,22 @@ public class TypedDependencyEngine {
 		sentence2.addFood("pasta", location2);
 		review.addReview(sentence);
 		review.addReview(sentence2);
-		for (Sentence sent : review.getSentences()) {
-			foodSentiment(sent);
+		Integer[] location3 = new Integer[2];
+		location3[0] = 0;
+		location3[1] = 2;
+		sentence3.addFood("waffles", location3);
+		review2.addReview(sentence3);
+		restaurant.addReview(review);
+		restaurant.addReview(review2);
+		for (Review rev : restaurant.getReview()) {
+			for (Sentence sent : rev.getSentences()) {
+				foodSentiment(sent);
+			}
+			rev.generateFoodSentiment();
 		}
-		review.generateFoodSentiment();
-		System.out.println(review.getFoodSentiment());
+		restaurant.generateFoodRating();
+		
+		System.out.println(restaurant.getFoodRating());
 	}
 
 	public static HashMap<String, Double> foodSentiment(Sentence sentence) {
