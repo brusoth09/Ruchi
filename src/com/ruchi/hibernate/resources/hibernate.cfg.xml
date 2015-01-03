@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection properties - Driver, URL, user, password -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/ruchidb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <!-- Connection Pool Size -->
+        <property name="hibernate.connection.pool_size">1</property>
+
+        <!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Outputs the SQL queries, should be disabled in Production -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Dialect is required to let Hibernate know the Database Type, MySQL, Oracle etc
+            Hibernate 4 automatically figure out Dialect from Database Connection Metadata -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- mapping file, we can use Bean annotations too -->
+        <mapping resource="com/ruchi/hibernate/resources/restaurant.hbm.xml" />
+        <mapping resource="com/ruchi/hibernate/resources/city.hbm.xml"/>
+        <mapping resource="com/ruchi/hibernate/resources/food.hbm.xml"/>
+        <mapping resource="com/ruchi/hibernate/resources/review.hbm.xml"/>
+        <mapping resource="com/ruchi/hibernate/resources/review_food.hbm.xml"/>
+        <mapping resource="com/ruchi/hibernate/resources/rest_food.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

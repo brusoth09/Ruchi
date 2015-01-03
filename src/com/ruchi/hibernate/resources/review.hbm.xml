@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ruchi.hibernate.model.DAO.ReviewDao" table="reviews">
+        <id name="review_id" type="java.lang.String">
+            <column name="review_id" />
+            <!--<generator class="increment" />-->
+        </id>
+        <property name="rest_id" type="java.lang.String">
+            <column name="rest_id" />
+        </property>
+        <property name="review" type="java.lang.String">
+            <column name="review" />
+        </property>
+        
+        <property name="rating" type="float">
+            <column name="rating" />
+        </property>
+    </class>
+</hibernate-mapping>

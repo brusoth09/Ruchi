@@ -1,3 +1,4 @@
 /bin/
 /lib/stanford-corenlp-3.5.0-models.jar
 /src/com/ruchi/engine/database/DBConnection.java
+/target

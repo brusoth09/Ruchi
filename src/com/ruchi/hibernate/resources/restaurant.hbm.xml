@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.ruchi.hibernate.model.DAO.RestaurantDao" table="restaurants">
+		<id name="rest_id" type="java.lang.String">
+			<column name="rest_id" />
+			<!--<generator class="increment" /> -->
+		</id>
+		<property name="city_id" type="java.lang.String">
+			<column name="city_id" />
+		</property>
+		<property name="full_address" type="java.lang.String">
+			<column name="full_address" />
+		</property>
+		<property name="rest_name" type="java.lang.String">
+			<column name="rest_name" />
+		</property>
+		<property name="rest_rating" type="float">
+			<column name="rest_rating" />
+		</property>
+	</class>
+</hibernate-mapping>

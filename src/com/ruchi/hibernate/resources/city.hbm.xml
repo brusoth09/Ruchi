@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ruchi.hibernate.model.DAO.CityDao" table="city">
+        <id name="city_id" type="java.lang.String">
+            <column name="city_id"/>
+            <!--<generator class="increment" />-->
+        </id>
+        <property name="city" type="java.lang.String">
+            <column name="city"/>
+        </property>
+    </class>
+</hibernate-mapping>
