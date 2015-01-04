@@ -59,6 +59,10 @@ public class Sentence {
         food.put(item,location);
     }
     
+    public void addFood(HashMap<String,Integer[]> map){
+        food.putAll(map);
+    }
+    
     public void removeFood(String item){
     	food.remove(item);
     }

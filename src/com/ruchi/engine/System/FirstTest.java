@@ -42,7 +42,7 @@ public class FirstTest {
         
         ArrayList<String> res_list=db.getRestaurants();
         //OpenNLP sent=new OpenNLP();
-        sent.loadModel();
+        //sent.loadModel();
         
         for(String s:res_list)
         {
