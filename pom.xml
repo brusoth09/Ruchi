@@ -12,6 +12,11 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.5.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>2.4.3</version>
+		</dependency>
 		<!-- Hibernate 4 uses Jboss logging, but older versions slf4j for logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
