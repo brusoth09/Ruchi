@@ -41,7 +41,7 @@ public class FirstTest {
         db.connect();
         
         ArrayList<String> res_list=db.getRestaurants();
-        OpenNLP sent=new OpenNLP();
+        //OpenNLP sent=new OpenNLP();
         sent.loadModel();
         
         for(String s:res_list)
