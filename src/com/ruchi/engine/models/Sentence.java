@@ -1,6 +1,7 @@
 package com.ruchi.engine.models;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.ruchi.engine.preprocessing.Stemmer;
 
