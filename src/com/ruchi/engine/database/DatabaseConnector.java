@@ -18,7 +18,7 @@ public class DatabaseConnector {
     PreparedStatement pstmt = null;
     
     public DatabaseConnector(){
-    	//comment added
+    	
     }
     
     public DatabaseConnector(boolean isTest){
@@ -86,6 +86,45 @@ public class DatabaseConnector {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return list;
+    }
+    
+    public ArrayList<String> getRestID(){
+    	ArrayList<String> list=new ArrayList<String>();
+        String query="SELECT rest_id FROM restaurants";
+        try {
+            pstmt=conn.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery();
+            while(res.next()){
+                String rest = res.getString("rest_id");
+                System.out.println(rest);
+                list.add(rest);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public ArrayList<String> getRestaurantReviewsFromID(String id)
+    {
+        String query="SELECT * FROM "+"reviews"+" NATURAL JOIN "+"restaurants"+" WHERE rest_id =?";
+
+        ArrayList<String> list=new ArrayList<String>();
+
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1,id);
+            ResultSet res = pstmt.executeQuery();
+            while(res.next()){
+                String review = res.getString("review");
+                list.add(review);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return list;
     }
 
