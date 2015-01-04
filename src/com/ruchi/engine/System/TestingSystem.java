@@ -17,6 +17,7 @@ import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
 import com.ruchi.engine.preprocessing.LanguageDetector;
 import com.ruchi.engine.sentiment.TypedDependencyEngine;
+import com.ruchi.engine.utils.TextEditors;
 
 public class TestingSystem {
 	
@@ -166,8 +167,10 @@ public class TestingSystem {
     		        }
     		    }
     			s.addFood(temp);
-    			if(s.isContainFood())
+    			if(s.isContainFood()){
     				TypedDependencyEngine.foodSentiment(s);
+    				TextEditors.writeTestSentence(s);
+    			}
     		}
     		//call type dependency for Review object here
     	}
