@@ -21,7 +21,7 @@ public class RestaurantFoodDao {
     private String food_id;
 
     @Column(name = "rating", nullable = true, unique = false, length = 50)
-    private String rating;
+    private Float rating;
 
     public String getRest_id() {
         return rest_id;
@@ -39,13 +39,15 @@ public class RestaurantFoodDao {
         this.food_id = food_id;
     }
 
-	public String getRating() {
+	public Float getRating() {
 		return rating;
 	}
 
-	public void setRating(String rating) {
+	public void setRating(Float rating) {
 		this.rating = rating;
 	}
+
+	
   
     
 }

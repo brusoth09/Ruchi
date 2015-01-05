@@ -10,15 +10,16 @@ import org.hibernate.Session;
 import com.ruchi.hibernate.model.DAO.CityDao;
 import com.ruchi.hibernate.model.DAO.FoodDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
+import com.ruchi.hibernate.model.DAO.RestaurantFoodDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
+import com.ruchi.hibernate.model.DAO.ReviewFoodDao;
 import com.ruchi.hibernate.util.HibernateUtil;
 
 public class DataStore {
 	public static void main(String[] args) {
-
 		DataStore dataStore = new DataStore();
-//		dataStore.insertReviewRating("1408182490042", 4f);
-//		dataStore.insertRestRating("111", 2f);
+		// dataStore.insertReviewRating("1408182490042", 4f);
+		// dataStore.insertRestRating("111", 2f);
 		dataStore.insertFood("sample food");
 	}
 
@@ -49,7 +50,8 @@ public class DataStore {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			RestaurantDao restaurantDao = (RestaurantDao) session.get(RestaurantDao.class,rest_Id);
+			RestaurantDao restaurantDao = (RestaurantDao) session.get(
+					RestaurantDao.class, rest_Id);
 			System.out.println(rating);
 			restaurantDao.setRest_rating(rating);
 			session.update(restaurantDao);
@@ -68,10 +70,10 @@ public class DataStore {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			FoodDao foodDao = (FoodDao) session.get(FoodDao.class,food_name);
+			FoodDao foodDao = (FoodDao) session.get(FoodDao.class, food_name);
 			System.out.println(foodDao.getFood_id());
-//			FoodDao.setRest_rating(rating);
-//			session.update(restaurantDao);
+			// FoodDao.setRest_rating(rating);
+			// session.update(restaurantDao);
 			session.getTransaction().commit();
 			return new Date();
 
@@ -85,11 +87,42 @@ public class DataStore {
 	public boolean insertReviewFood(String review_id, String food_id,
 			float rating) {
 
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			ReviewFoodDao reviewFoodDao = new ReviewFoodDao();
+			reviewFoodDao.setReview_id(review_id);
+			reviewFoodDao.setFood_id(food_id);
+			reviewFoodDao.setRating(rating);
+			session.save(reviewFoodDao);
+			session.getTransaction().commit();
+			return true;
+
+		} catch (HibernateException e) {
+			session.close();
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	public boolean insertRestFood(String rest_id, String food_id, float rating) {
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			RestaurantFoodDao restaurantFoodDao=new RestaurantFoodDao();
+			restaurantFoodDao.setRest_id(rest_id); 
+			restaurantFoodDao.setFood_id(food_id);
+			restaurantFoodDao.setRating(rating);
+			session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+			return true;
 
+		} catch (HibernateException e) {
+			session.close();
+			e.printStackTrace();
+		}
 		return false;
 	}
 
