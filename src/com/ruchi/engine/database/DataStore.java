@@ -1,6 +1,8 @@
 package com.ruchi.engine.database;
 
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.lucene.queries.function.valuesource.ReciprocalFloatFunction;
 import org.hibernate.HibernateException;
@@ -70,18 +72,27 @@ public class DataStore {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			FoodDao foodDao = (FoodDao) session.get(FoodDao.class, food_name);
-			System.out.println(foodDao.getFood_id());
-			// FoodDao.setRest_rating(rating);
-			// session.update(restaurantDao);
+			FoodDao foodDao;// = (FoodDao) session.get(FoodDao.class,
+							// food_name);
 			session.getTransaction().commit();
-			return new Date();
+
+			Timestamp food_id = getFood_id(food_name);
+			if (!(food_id == null)) {
+				return food_id;
+			} else if (food_id == null) {
+				foodDao = new FoodDao();
+				foodDao.setFood_name(food_name);
+				session.save(foodDao);
+				session.getTransaction().commit();
+				Timestamp food_id_new = getFood_id(food_name);
+				return food_id_new;
+			}
 
 		} catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
 		}
-		return new Date();
+		return null;
 	}
 
 	public boolean insertReviewFood(String review_id, String food_id,
@@ -111,8 +122,8 @@ public class DataStore {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			RestaurantFoodDao restaurantFoodDao=new RestaurantFoodDao();
-			restaurantFoodDao.setRest_id(rest_id); 
+			RestaurantFoodDao restaurantFoodDao = new RestaurantFoodDao();
+			restaurantFoodDao.setRest_id(rest_id);
 			restaurantFoodDao.setFood_id(food_id);
 			restaurantFoodDao.setRating(rating);
 			session.save(restaurantFoodDao);
@@ -126,4 +137,23 @@ public class DataStore {
 		return false;
 	}
 
+	private Timestamp getFood_id(String food_name) {
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			FoodDao foodDao;
+			String hql = "FROM FoodDao F WHERE F.food_name = '" + food_name+"'";
+			Query query = session.createQuery(hql);
+			List<FoodDao> results = query.list();
+			if (!results.isEmpty()) {
+				return results.get(0).getFood_id();
+			}
+			//
+		} catch (HibernateException e) {
+			session.close();
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
