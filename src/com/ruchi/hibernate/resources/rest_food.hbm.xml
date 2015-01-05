@@ -11,7 +11,7 @@
         <property name="food_id" type="java.lang.String">
             <column name="food_id" />
         </property>
-        <property name="rating" type="float">
+        <property name="rating" type="java.lang.Float">
             <column name="rating" />
         </property>
     </class>

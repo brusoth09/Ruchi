@@ -26,7 +26,7 @@ public class RestaurantDao {
     private String rest_name;
     
     @Column(name="rest_rating", nullable=true, unique=false, length=200)
-    private float rest_rating;
+    private Float rest_rating;
 	
     public String getRest_id() {
         return rest_id;
@@ -61,10 +61,10 @@ public class RestaurantDao {
     }
 
 	public float getRest_rating() {
-		return rest_rating;
+		return rest_rating.floatValue();
 	}
 
-	public void setRest_rating(float rest_rating) {
+	public void setRest_rating(Float rest_rating) {
 		this.rest_rating = rest_rating;
 	}
     

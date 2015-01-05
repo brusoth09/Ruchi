@@ -1,5 +1,7 @@
 package com.ruchi.hibernate.model.DAO;
 
+import java.sql.Timestamp;
+
 import javax.persistence.*;
 
 /**
@@ -14,7 +16,7 @@ public class FoodDao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "food_id", nullable = false, unique = true, length = 50)
-    private String food_id;
+    private Timestamp food_id;
 
     @Column(name = "food_name", nullable = false, unique = false, length = 50)
     private String food_name;
@@ -22,11 +24,11 @@ public class FoodDao {
     @Column(name = "food_type", nullable = true, unique = false, length = 20)
     private String food_type;
 
-    public String getFood_id() {
+    public Timestamp getFood_id() {
         return food_id;
     }
 
-    public void setFood_id(String food_id) {
+    public void setFood_id(Timestamp food_id) {
         this.food_id = food_id;
     }
 
