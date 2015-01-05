@@ -11,7 +11,6 @@ import com.ruchi.hibernate.model.DAO.CityDao;
 import com.ruchi.hibernate.model.DAO.FoodDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
-import com.ruchi.hibernate.model.sql.QueryTemplate;
 import com.ruchi.hibernate.util.HibernateUtil;
 
 public class DataStore {
