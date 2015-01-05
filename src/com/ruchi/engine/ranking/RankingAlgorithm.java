@@ -10,7 +10,8 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 public class RankingAlgorithm {
 
-	static MaxentTagger tagger = new MaxentTagger("english-left3words-distsim.tagger");
+	static MaxentTagger tagger = new MaxentTagger(
+			"english-left3words-distsim.tagger");
 
 	private RankingAlgorithm() {
 	}
@@ -64,7 +65,7 @@ public class RankingAlgorithm {
 	public static int negativeScore(String review) {
 		List<TaggedWord> taggedWords = annotedText(review);
 		int tooPosition = -2;
-		int score = 2;
+		int score = 3;
 		for (int i = 0; i < taggedWords.size(); i++) {
 
 			TaggedWord word = taggedWords.get(i);
@@ -85,6 +86,9 @@ public class RankingAlgorithm {
 					|| SentimentStrings.int1.indexOf(value) > -1
 					|| SentimentStrings.int2.indexOf(value) > -1
 					|| SentimentStrings.int3.indexOf(value) > -1) {
+				if (score == 3) {
+					score = 2;
+				}
 				if (tag.equalsIgnoreCase("RBS") || tag.equalsIgnoreCase("JJS")) {
 					score = 1;
 				}
@@ -123,7 +127,7 @@ public class RankingAlgorithm {
 		return score;
 
 	}
-	
+
 	public static double avgScoreDouble(ArrayList<Double> scores) {
 		double total = 0.0;
 		double score;
