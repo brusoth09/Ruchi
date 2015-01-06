@@ -33,7 +33,7 @@ public class HibernateMain {
 			cityDao.setCity("colombo");
 
 			FoodDao foodDao = new FoodDao();
-			foodDao.setFood_id("1212212121");
+//			
 
 			ReviewDao reviewDao = new ReviewDao();
 			reviewDao.setRest_id("112121212");

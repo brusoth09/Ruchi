@@ -24,7 +24,7 @@ public class ReviewDao {
     private String review;
 
     @Column(name = "rating", nullable = true, unique = false, length = 50)
-    private float rating;
+    private Float rating;
 
     public String getReview_id() {
         return review_id;
@@ -51,10 +51,10 @@ public class ReviewDao {
     }
 
 	public float getRating() {
-		return rating;
+		return rating.floatValue();
 	}
 
-	public void setRating(float rating) {
+	public void setRating(Float rating) {
 		this.rating = rating;
 	}
 
