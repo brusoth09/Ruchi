@@ -89,16 +89,19 @@ public class DatabaseConnector {
         return list;
     }
     
-    public ArrayList<String> getRestID(){
-    	ArrayList<String> list=new ArrayList<String>();
-        String query="SELECT rest_id FROM restaurants";
+    public ArrayList<String[]> getRestID(){
+    	ArrayList<String[]> list=new ArrayList<String[]>();
+        String query="SELECT rest_id,rest_name FROM restaurants";
         try {
             pstmt=conn.prepareStatement(query);
             ResultSet res = pstmt.executeQuery();
             while(res.next()){
+            	String[] array=new String[2];
                 String rest = res.getString("rest_id");
-                System.out.println(rest);
-                list.add(rest);
+                String name=res.getString("rest_name");
+                array[0]=rest;
+                array[1]=name;
+                list.add(array);
             }
         } catch (SQLException e) {
             e.printStackTrace();

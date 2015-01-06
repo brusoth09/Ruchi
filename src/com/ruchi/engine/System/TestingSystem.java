@@ -59,12 +59,13 @@ public class TestingSystem {
 	}
 	
 	public void readReviews(){
-		ArrayList<String> res_list=db.getRestID();
+		ArrayList<String[]> res_list=db.getRestID();
 		
-		for(String s:res_list)
+		for(String[] s:res_list)
         {
-        	Restaurant rest=new Restaurant(s);
-            ArrayList<String> reviews=db.getRestaurantReviewsFromID(s);
+        	Restaurant rest=new Restaurant(s[0]);
+        	rest.setName(s[1]);
+            ArrayList<String> reviews=db.getRestaurantReviewsFromID(s[0]);
             for(String s1:reviews)
             {
                 if(ld.check_Language(s1))
@@ -169,7 +170,7 @@ public class TestingSystem {
     			s.addFood(temp);
     			if(s.isContainFood()){
     				TypedDependencyEngine.foodSentiment(s);
-    				TextEditors.writeTestSentence(s);
+    				TextEditors.writeTestSentence(s,rest.getName());
     			}
     		}
     		//call type dependency for Review object here

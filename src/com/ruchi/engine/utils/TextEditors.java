@@ -59,9 +59,9 @@ public class TextEditors {
         }
     }
     
-    public static void writeTestSentence(Sentence sentence)
+    public static void writeTestSentence(Sentence sentence,String name)
     {
-        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("res/test_sentences.txt", true)))) {
+        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("res/FoodDependency/"+name+"test_sentences.txt", true)))) {
             out.println(sentence.getSentence());
             Iterator it = sentence.getFoodSentiment().entrySet().iterator();
             while (it.hasNext()) {
