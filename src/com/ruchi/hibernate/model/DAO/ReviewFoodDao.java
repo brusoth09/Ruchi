@@ -1,5 +1,7 @@
 package com.ruchi.hibernate.model.DAO;
 
+import java.sql.Timestamp;
+
 import javax.persistence.*;
 
 /**
@@ -18,7 +20,7 @@ public class ReviewFoodDao {
     private String review_id;
 
     @Column(name = "food_id", nullable = false, unique = false, length = 50)
-    private String food_id;
+    private Timestamp food_id;
 
     @Column(name = "rating", nullable = false, unique = false, length = 50)
     private float rating;
@@ -30,14 +32,14 @@ public class ReviewFoodDao {
     public void setReview_id(String review_id) {
         this.review_id = review_id;
     }
+   
+	public Timestamp getFood_id() {
+		return food_id;
+	}
 
-    public String getFood_id() {
-        return food_id;
-    }
-
-    public void setFood_id(String food_id) {
-        this.food_id = food_id;
-    }
+	public void setFood_id(Timestamp food_id) {
+		this.food_id = food_id;
+	}
 
 	public float getRating() {
 		return rating;
