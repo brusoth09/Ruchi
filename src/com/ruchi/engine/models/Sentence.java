@@ -1,6 +1,7 @@
 package com.ruchi.engine.models;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.ruchi.engine.preprocessing.Stemmer;
 
@@ -56,6 +57,10 @@ public class Sentence {
 
     public void addFood(String item,Integer[] location){
         food.put(item,location);
+    }
+    
+    public void addFood(HashMap<String,Integer[]> map){
+        food.putAll(map);
     }
     
     public void removeFood(String item){

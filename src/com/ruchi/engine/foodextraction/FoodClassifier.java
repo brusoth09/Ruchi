@@ -15,6 +15,10 @@ public class FoodClassifier {
     private HashMap<String,String> result=new HashMap<String,String>();
     private WordDistance wd;
     
+    public FoodClassifier(){
+    	wd=new WordDistance();
+        wd.load();
+    }
     public void addFood(String food){
         String stemmed_food= Stemmer.pluralToSingular(food).toLowerCase();
         if(map.containsKey(stemmed_food)){
@@ -27,8 +31,6 @@ public class FoodClassifier {
 
     public void classify(){
 
-        wd=new WordDistance();
-        wd.load();
         ArrayList<String> top=new ArrayList<String>();
         ArrayList<String> down=new ArrayList<String>();
 
@@ -92,7 +94,7 @@ public class FoodClassifier {
     }
     
     public String getResult(String food_name){
-    	String f=result.get(Stemmer.pluralToSingular(food_name));
+    	String f=result.get(Stemmer.pluralToSingular(food_name.toLowerCase()));
     	if(f!=null){
     		return  f;
     	}

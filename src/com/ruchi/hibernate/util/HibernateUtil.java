@@ -112,5 +112,6 @@ public class HibernateUtil {
         if(sessionJavaConfigFactory == null) sessionJavaConfigFactory = buildSessionJavaConfigFactory();
         return sessionJavaConfigFactory;
     }
+    
 
 }

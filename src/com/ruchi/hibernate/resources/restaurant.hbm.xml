@@ -17,7 +17,7 @@
 		<property name="rest_name" type="java.lang.String">
 			<column name="rest_name" />
 		</property>
-		<property name="rest_rating" type="float">
+		<property name="rest_rating" type="java.lang.Float">
 			<column name="rest_rating" />
 		</property>
 	</class>

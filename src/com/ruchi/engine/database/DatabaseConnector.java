@@ -88,6 +88,48 @@ public class DatabaseConnector {
         }
         return list;
     }
+    
+    public ArrayList<String[]> getRestID(){
+    	ArrayList<String[]> list=new ArrayList<String[]>();
+        String query="SELECT rest_id,rest_name FROM restaurants";
+        try {
+            pstmt=conn.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery();
+            while(res.next()){
+            	String[] array=new String[2];
+                String rest = res.getString("rest_id");
+                String name=res.getString("rest_name");
+                array[0]=rest;
+                array[1]=name;
+                list.add(array);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public ArrayList<String> getRestaurantReviewsFromID(String id)
+    {
+        String query="SELECT * FROM "+"reviews"+" NATURAL JOIN "+"restaurants"+" WHERE rest_id =?";
+
+        ArrayList<String> list=new ArrayList<String>();
+
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1,id);
+            ResultSet res = pstmt.executeQuery();
+            while(res.next()){
+                String review = res.getString("review");
+                list.add(review);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
 
     public void removeFoodItem(String food)
     {

@@ -15,7 +15,7 @@
             <column name="review" />
         </property>
         
-        <property name="rating" type="float">
+        <property name="rating" type="java.lang.Float">
             <column name="rating" />
         </property>
     </class>

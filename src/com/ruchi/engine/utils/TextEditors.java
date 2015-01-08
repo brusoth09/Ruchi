@@ -2,6 +2,10 @@ package com.ruchi.engine.utils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
+import com.ruchi.engine.models.Sentence;
 
 /**
  * Created by brusoth on 11/11/2014.
@@ -50,6 +54,23 @@ public class TextEditors {
     {
         try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("res/test_sentences.txt", true)))) {
             out.println(sentence);
+        }catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void writeTestSentence(Sentence sentence,String name)
+    {
+        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("res/FoodDependency/"+name+"test_sentences.txt", true)))) {
+            out.println(sentence.getSentence());
+            Iterator it = sentence.getFoodSentiment().entrySet().iterator();
+            while (it.hasNext()) {
+                Entry pairs = (Entry)it.next();
+                out.print(pairs.getKey()+"---->");
+                out.println(pairs.getValue());
+            }
+            out.println("---------------------------------------------------------------");
+            
         }catch (IOException e) {
             System.out.println(e);
         }

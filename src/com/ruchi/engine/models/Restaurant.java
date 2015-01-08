@@ -90,6 +90,14 @@ public class Restaurant {
 		}
 	}
 
+	public HashMap<String, Double> getFoodRating() {
+		return foodRating;
+	}
+
+	public void setFoodRating(HashMap<String, Double> foodRating) {
+		this.foodRating = foodRating;
+	}
+
 	public void restaurantRating() {
 		ArrayList<Double> scoreList = new ArrayList<Double>();
 		for (Review review : review_list) {

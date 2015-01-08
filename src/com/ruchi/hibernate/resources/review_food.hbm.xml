@@ -8,10 +8,10 @@
 			<column name="review_id" />
 			<!--<generator class="increment" /> -->
 		</id>
-		<property name="food_id" type="java.lang.String">
+		<property name="food_id" type="java.sql.Timestamp">
 			<column name="food_id" />
 		</property>
-		<property name="rating" type="float">
+		<property name="rating" type="java.lang.Float">
 			<column name="rating" />
 		</property>
 	</class>
