@@ -136,6 +136,11 @@
 			<version>4.10.3</version>
 		</dependency>
 		<dependency>
+			<groupId>uk.ac.shef.wit</groupId>
+			<artifactId>simmetrics</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-analyzers-common</artifactId>
 			<version>4.10.3</version>
@@ -149,11 +154,6 @@
 			<groupId>edu.stanford.nlp</groupId>
 			<artifactId>stanford-parser</artifactId>
 			<version>3.5.0</version>
-		</dependency>
-		<dependency>
-			<groupId>uk.ac.shef.wit</groupId>
-			<artifactId>simmetrics</artifactId>
-			<version>1.6.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -170,7 +170,11 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.8</version>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
