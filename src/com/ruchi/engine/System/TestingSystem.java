@@ -16,6 +16,7 @@ import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
 import com.ruchi.engine.preprocessing.LanguageDetector;
+import com.ruchi.engine.preprocessing.Stemming;
 import com.ruchi.engine.sentiment.TypedDependencyEngine;
 import com.ruchi.engine.utils.TextEditors;
 
@@ -79,7 +80,7 @@ public class TestingSystem {
                         try {
                             if(sen.length()>1)
                             {
-                            	predictfoods(sentence);
+                            	predictfoods(sentence,rest.getName());
                             }
                             else if(sen.length()==0){
                             	
@@ -137,6 +138,46 @@ public class TestingSystem {
         }
         
         
+    }
+	
+	public void predictfoods(Sentence sentence,String rest_name){
+        sentence.setSentence((sentence.getSentence()).replaceAll("\\.-"," ").replace("\\.",""));
+        String[] tokens=exe.predict(sentence.getSentence().trim());
+        List<String> predictions= new ArrayList<String>(Arrays.asList(tokens));
+        String[] toks=sent.getWordTokens(sentence.getSentence());
+        String[] toks1=sent.getWordTokens(sentence.getSentence().replace(","," "));
+        sentence.setTokens(toks1);
+        String[] tags=sent.getWordTags(toks1);
+        ArrayList<String> features=sent.findFeatures(tags,toks);
+
+        Iterator<String> iter;
+        //System.out.print(sentence);
+        iter=predictions.iterator();
+        for(String fea:features)
+        {
+
+            while(iter.hasNext())
+            {
+                if(fea.contains(iter.next())){
+                    
+                    sentence.addFood(fea,new Integer[]{0,0});
+                    wc.addFood(fea.toLowerCase());
+                    iter.remove();
+                    break;
+                }
+
+            }
+
+        }
+        iter=predictions.iterator();
+        while(iter.hasNext())
+        {
+            String next=iter.next();
+            sentence.addFood(next,new Integer[]{0,0});
+            wc.addFood(next);
+        }
+        if(sentence.getFoodMap().containsKey(Stemming.pluralToSingular(rest_name)))
+        	sentence.removeFood(Stemming.pluralToSingular(rest_name));
     }
 	
 	public void dependencyGeneration(Restaurant rest){
