@@ -3,6 +3,7 @@ package com.ruchi.engine.database;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -31,8 +32,13 @@ public class DataStore {
 
 //		System.out.println(dataStore.insertFood("sample food6"));
 //		System.out.println(dataStore.insertReviewFood("1408182490041", "2015-01-06 10:16:28", 4f));
-		System.out.println(dataStore.insertRestFood("1408181771009", "2015-01-06 10:16:28", 1f));
+//		System.out.println(dataStore.insertRestFood("1408181771009", "2015-01-06 10:16:28", 1f));
+		
+//		System.out.print(dataStore.getReviews("fff").size()+"    "+dataStore.getReviews("fff").get(0).getRest_id());
+		
+		System.out.println(dataStore.getRestaurantIds().size()+"   "+dataStore.getRestaurantIds().get(0));
 		System.out.println("done");
+		
 	}
 
 	public boolean insertReviewRating(String review_id, float rating) {
@@ -199,5 +205,69 @@ public class DataStore {
 		return null;
 	}
 
-	 
+	public List<FoodDao> getFoodNames(){
+		Session session = null;
+		List<FoodDao> results=new ArrayList<FoodDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql="FROM FoodDao F";
+			
+			Query query = session.createQuery(hql);
+//			System.out.println(query);
+//			@SuppressWarnings("unchecked")
+			results = query.list();
+//			session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+			
+		} catch (HibernateException e) {
+//			session.close();
+			e.printStackTrace();
+		} 
+		return results;
+	}
+	
+	public List<ReviewDao> getReviews(String restaurant_name) {
+		Session session = null;
+		List<ReviewDao> results=new ArrayList<ReviewDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql="FROM ReviewDao R";
+			
+			Query query = session.createQuery(hql);
+//			System.out.println(query);
+//			@SuppressWarnings("unchecked")
+			results = query.list();
+//			session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+			
+		} catch (HibernateException e) {
+//			session.close();
+			e.printStackTrace();
+		} 
+		return results;		
+	}
+	
+	public List<String> getRestaurantIds(){
+		Session session = null;
+		List<String> results=new ArrayList<String>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql="R.rest_id FROM ResaurantDao R";
+			
+			Query query = session.createQuery(hql);
+//			System.out.println(query);
+//			@SuppressWarnings("unchecked")
+			results = query.list();
+//			session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+			
+		} catch (HibernateException e) {
+//			session.close();
+			e.printStackTrace();
+		} 
+		return results;	
+	}
 }
