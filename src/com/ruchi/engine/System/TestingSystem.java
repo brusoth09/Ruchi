@@ -90,12 +90,14 @@ public class TestingSystem {
                         }
                         review.addReview(sentence);
                     }
+                    
                     rest.addReview(review);
                     
                 }
             }
             wc.classify();
             dependencyGeneration(rest);
+            
         }
 		db.disconect();
 	}
@@ -214,9 +216,9 @@ public class TestingSystem {
     				TextEditors.writeTestSentence(s,rest.getName());
     			}
     		}
-    		//call type dependency for Review object here
+    		r.generateFoodSentiment();
     	}
-    	
+    	rest.generateFoodRating();
     }
 
 }
