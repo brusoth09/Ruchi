@@ -9,8 +9,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "foods_init", uniqueConstraints = {@UniqueConstraint(columnNames = {"food_id"})})
-public class FoodDao {
+@Table(name = "foods", uniqueConstraints = {@UniqueConstraint(columnNames = {"food_id"})})
+public class FoodInitDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
