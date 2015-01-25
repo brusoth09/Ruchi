@@ -199,6 +199,7 @@ public class DatabaseConnector {
         }
     }
 
+    //not mapped yet
     public void insertWord(String word)
     {
         String query="INSERT INTO word_names VALUES (?)";

@@ -39,13 +39,14 @@ public class DataStore {
 		// System.out.println(dataStore.insertRestFood("1408181771009",
 		// "2015-01-06 10:16:28", 1f));
 
-		// System.out.print(dataStore.getReviewsByRestName("Ruchi").size()
-		// + "    "
-		// + dataStore.getReviewsByRestName("Ruchi").get(0).getRest_id());
+		System.out.print(dataStore.getReviewsByRestName("Ruchi").size()
+				+ "    "
+				+ dataStore.getReviewsByRestName("Ruchi").get(0).getRest_id());
 
 		// System.out.println(dataStore.getRestaurantIds().size()+"   "+dataStore.getRestaurantIds().get(0).getRest_id());
 
-		System.out.println(dataStore.removeFoodName("pizza1"));
+		// System.out.println(dataStore.insertFood("pizza1"));
+		// System.out.println(dataStore.getRestaurantIds().get(0).getRest_id());
 		System.out.println("done");
 
 	}
@@ -332,6 +333,36 @@ public class DataStore {
 		return results;
 	}
 
+	public List<RestaurantDao> getRestaurantNames() {
+		Session session = null;
+		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql = "R.rest_name FROM ResaurantDao R";
+			Criteria cr = session
+					.createCriteria(RestaurantDao.class)
+					.setProjection(
+							Projections.projectionList().add(
+									Projections.property("rest_name"),
+									"rest_name"))
+					.setResultTransformer(
+							Transformers.aliasToBean(RestaurantDao.class));
+
+			// Query query = session.createQuery(hql);
+			// System.out.println(query);
+			// @SuppressWarnings("unchecked")
+			results = cr.list();
+			// session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		return results;
+	}
+
 	public boolean removeFoodName(String foodName) {
 		Session session = null;
 		int b = 0;
@@ -352,7 +383,7 @@ public class DataStore {
 			// session.close();
 			e.printStackTrace();
 		}
-		if (b>0) {
+		if (b > 0) {
 			return true;
 		} else
 			return false;
