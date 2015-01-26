@@ -73,6 +73,8 @@ public class HibernateUtil {
             //Create Properties, can be read from property files too
             Properties props = new Properties();
             props.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+            //uncomment and comment if your system is using default port 80
+//            props.put("hibernate.connection.url", "jdbc:mysql://localhost/ruchidb");
             props.put("hibernate.connection.url", "jdbc:mysql://localhost:8080/ruchidb");
             props.put("hibernate.connection.username", "root");
             props.put("hibernate.connection.password", "root");

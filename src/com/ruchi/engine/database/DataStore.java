@@ -19,6 +19,7 @@ import org.hibernate.transform.Transformers;
 
 import com.ruchi.hibernate.model.DAO.CityDao;
 import com.ruchi.hibernate.model.DAO.FoodDao;
+import com.ruchi.hibernate.model.DAO.FoodInitDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
 import com.ruchi.hibernate.model.DAO.RestaurantFoodDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
@@ -112,6 +113,26 @@ public class DataStore {
 		}
 		return null;
 	}
+	
+	public Date insertFoodInit(String food_name) {
+
+		try {
+			Timestamp food_id = getFoodInit_id(food_name);
+
+			// Transacstion transaction;
+			if (!(food_id == null)) {
+				return food_id;
+			} else {
+				insertNewFoodInit(food_name);
+				return getFoodInit_id(food_name);
+			}
+
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public boolean insertReviewFood(String review_id, String food_id,
 			float rating) {
@@ -189,6 +210,31 @@ public class DataStore {
 		session.close();
 		return null;
 	}
+	
+	private Timestamp getFoodInit_id(String food_name) {
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			FoodInitDao foodDao;
+			String hql = "FROM FoodInitDao F WHERE F.food_name = '" + food_name
+					+ "'";
+			Query query = session.createQuery(hql);
+			@SuppressWarnings("unchecked")
+			List<FoodInitDao> results = query.list();
+			if (!results.isEmpty()) {
+				session.close();
+				// System.out.println("inserted"+results.get(0).getFood_id());
+				return results.get(0).getFood_id();
+			}
+			//
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		session.close();
+		return null;
+	}
 
 	private Timestamp insertNewFood(String food_name) {
 		Session session = null;
@@ -216,6 +262,33 @@ public class DataStore {
 		session.close();
 		return null;
 	}
+	
+	private Timestamp insertNewFoodInit(String food_name) {
+		Session session = null;
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+
+			session.beginTransaction();
+			FoodInitDao foodDao;// = (FoodDao) session.get(FoodDao.class,
+							// food_name);
+			foodDao = new FoodInitDao();
+			foodDao.setFood_name(food_name);
+			Timestamp timestamp = new Timestamp(Calendar.getInstance()
+					.getTimeInMillis());
+			foodDao.setFood_id(timestamp);
+			session.save(foodDao);
+			session.getTransaction().commit();
+			// Timestamp food_id_new = getFood_id(food_name);
+			// System.out.println("inserted"+food_id_new);
+			// session.close();
+			return timestamp;
+		} catch (HibernateException exception) {
+
+			exception.printStackTrace();
+		}
+		session.close();
+		return null;
+	}
 
 	public List<FoodDao> getFoodNames() {
 		Session session = null;
@@ -224,6 +297,28 @@ public class DataStore {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			String hql = "FROM FoodDao F";
+
+			Query query = session.createQuery(hql);
+			// System.out.println(query);
+			// @SuppressWarnings("unchecked")
+			results = query.list();
+			// session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		return results;
+	}
+	
+	public List<FoodInitDao> getFoodInitNames() {
+		Session session = null;
+		List<FoodInitDao> results = new ArrayList<FoodInitDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql = "FROM FoodInitDao F";
 
 			Query query = session.createQuery(hql);
 			// System.out.println(query);
