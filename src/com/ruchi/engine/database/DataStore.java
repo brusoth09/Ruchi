@@ -29,6 +29,7 @@ import com.ruchi.hibernate.util.HibernateUtil;
 import edu.stanford.nlp.time.SUTime.Time;
 
 public class DataStore {
+	
 	public static void main(String[] args) {
 		DataStore dataStore = new DataStore();
 		// dataStore.insertReviewRating("1408182490042", 4f);

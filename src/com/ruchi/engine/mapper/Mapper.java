@@ -9,10 +9,10 @@ import com.ruchi.hibernate.model.DAO.RestaurantDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
 
 public class Mapper {
-	DataStore dataStore = new DataStore();
+	DataStore dataStore;
 
 	private Mapper() {
-
+		dataStore = new DataStore();
 	}
 
 	public ArrayList<String> getRestaurantReviews(String res_name) {
