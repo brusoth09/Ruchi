@@ -484,5 +484,30 @@ public class DataStore {
 		} else
 			return false;
 	}
+	public boolean removeFoodInitName(String foodName) {
+		Session session = null;
+		int b = 0;
+		// List<RestaurantDao> results = new ArrayList<RestaurantDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql = "delete FROM FoodInitDao F where F.food_name=?";
+
+			Query query = session.createQuery(hql).setString(0, foodName);
+			// System.out.println(query);
+			// @SuppressWarnings("unchecked")
+			b = query.executeUpdate();
+			// session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		if (b > 0) {
+			return true;
+		} else
+			return false;
+	}
 
 }
