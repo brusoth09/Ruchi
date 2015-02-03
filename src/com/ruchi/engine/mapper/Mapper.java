@@ -26,6 +26,17 @@ public class Mapper {
 		return rest_reviews;
 	}
 	
+	public static ArrayList<String> getRestaurantReviewsTrain(String res_name) {
+		ArrayList<String> rest_reviews = new ArrayList<String>();
+		List<ReviewDao> daos = dataStore.getReviewsTrainByRestName(res_name);
+		for (ReviewDao r : daos) {
+			rest_reviews.add(r.getReview());
+		}
+
+		return rest_reviews;
+	}
+
+	
 	public static ArrayList<String> getRestaurantNames(){
 		ArrayList<String> rest_names = new ArrayList<String>();
 		List<RestaurantDao> daos = dataStore.getRestaurantNames();
@@ -47,6 +58,15 @@ public class Mapper {
 	public static ArrayList<String> getRestaurantReview(String rest_id) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
 		List<ReviewDao> daos = dataStore.getReviewsByRestId(rest_id);
+		for(ReviewDao r:daos){
+			rest_reviews.add(r.getReview());
+		}
+		return rest_reviews;		
+	}
+	
+	public static ArrayList<String> getRestaurantReviewTrain(String rest_id) {
+		ArrayList<String> rest_reviews = new ArrayList<String>();
+		List<ReviewDao> daos = dataStore.getReviewsTrainByRestId(rest_id);
 		for(ReviewDao r:daos){
 			rest_reviews.add(r.getReview());
 		}
