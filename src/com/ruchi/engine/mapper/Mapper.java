@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ruchi.engine.database.DataStore;
 import com.ruchi.hibernate.model.DAO.FoodDao;
+import com.ruchi.hibernate.model.DAO.FoodInitDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
 
@@ -66,6 +67,22 @@ public class Mapper {
 	public void insertFood(String food_name){
 		dataStore.insertFood(food_name);
 	}
+		
+	public void insertFoodInit(String food_name){
+		dataStore.insertFoodInit(food_name);
+	}
+	
+	public void removeFoodInit(String food_name) {
+		dataStore.removeFoodInitName(food_name);
+	}
+	
+	public void getFoodInitNames(ArrayList<String> dictionary){
+		List<FoodInitDao> daos = dataStore.getFoodInitNames();
+		for(FoodInitDao r:daos){
+			dictionary.add(r.getFood_name());
+		}
+	}
+	
 	
 	
 
