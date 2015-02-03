@@ -8,7 +8,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.lucene.queries.function.valuesource.ReciprocalFloatFunction;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -17,7 +16,6 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.transform.Transformers;
 
-import com.ruchi.hibernate.model.DAO.CityDao;
 import com.ruchi.hibernate.model.DAO.FoodDao;
 import com.ruchi.hibernate.model.DAO.FoodInitDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
@@ -25,8 +23,6 @@ import com.ruchi.hibernate.model.DAO.RestaurantFoodDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
 import com.ruchi.hibernate.model.DAO.ReviewFoodDao;
 import com.ruchi.hibernate.util.HibernateUtil;
-
-import edu.stanford.nlp.time.SUTime.Time;
 
 public class DataStore {
 	

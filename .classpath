@@ -20,7 +20,7 @@
 	<classpathentry kind="lib" path="lib/langdetect.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-core-4.10.1.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-queryparser-4.10.1.jar"/>
-	<classpathentry kind="lib" path="lib/simmetrics_jar_v1_6_2_d07_02_07.jar"/>
+	<classpathentry kind="lib" path="lib/simmetrics_jar_v1_6_2_d07_02_07.jar" sourcepath="C:/Users/brusoth/Downloads/simmetrics-1.6.2-sources.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="lib/commons-dbcp-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-pool-1.6.jar"/>

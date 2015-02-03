@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ruchi.engine.preprocessing.Stemmer;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.preprocessing.WordDistance;
 
 /**
@@ -20,7 +20,7 @@ public class FoodClassifier {
         wd.load();
     }
     public void addFood(String food){
-        String stemmed_food= Stemmer.pluralToSingular(food).toLowerCase();
+        String stemmed_food= TextUtilizer.pluralToSingular(food).toLowerCase();
         if(map.containsKey(stemmed_food)){
             map.put(stemmed_food,map.get(stemmed_food)+1);
         }
@@ -94,7 +94,7 @@ public class FoodClassifier {
     }
     
     public String getResult(String food_name){
-    	String f=result.get(Stemmer.pluralToSingular(food_name.toLowerCase()));
+    	String f=result.get(TextUtilizer.pluralToSingular(food_name.toLowerCase()));
     	if(f!=null){
     		return  f;
     	}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import com.ruchi.engine.preprocessing.Stemmer;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.ranking.RankingAlgorithm;
 
 /**
@@ -48,7 +48,7 @@ public class Restaurant {
 	}
 
 	public void addFood(String food) {
-		String stemmed_food = Stemmer.pluralToSingular(food).toLowerCase();
+		String stemmed_food = TextUtilizer.pluralToSingular(food).toLowerCase();
 
 		if (food_map.containsKey(stemmed_food)) {
 			food_map.put(stemmed_food, food_map.get(stemmed_food) + 1);

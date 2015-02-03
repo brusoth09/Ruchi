@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import com.ruchi.engine.database.DatabaseConnector;
@@ -15,8 +14,10 @@ import com.ruchi.engine.foodextraction.OpenNLP;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.LanguageDetector;
+import com.ruchi.engine.preprocessing.GoogleLanguageDetectionTool;
+import com.ruchi.engine.preprocessing.LanguageDectectionTool;
 import com.ruchi.engine.preprocessing.Stemming;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.sentiment.TypedDependencyEngine;
 import com.ruchi.engine.utils.TextEditors;
 
@@ -30,7 +31,7 @@ public class TestingSystem {
 	private FoodClassifier wc;
 	
 	DatabaseConnector db;
-	LanguageDetector ld;
+	LanguageDectectionTool ld;
 	
 	private TestingSystem(){
 		sent=new OpenNLP();
@@ -40,10 +41,10 @@ public class TestingSystem {
         list=new ArrayList<Sentence>();
         wc=new FoodClassifier();
         db=new DatabaseConnector(true);
-        ld=new LanguageDetector();
+        ld=new GoogleLanguageDetectionTool();
         new TypedDependencyEngine();
         
-        ld.load_profile();
+        ld.loadModule();
         db.connect();
 	}
 	
@@ -69,13 +70,13 @@ public class TestingSystem {
             ArrayList<String> reviews=db.getRestaurantReviewsFromID(s[0]);
             for(String s1:reviews)
             {
-                if(ld.check_Language(s1))
+                if(ld.findLanguage(s1))
                 {
                 	Review review=new Review();
                     ArrayList<String> sentences=sent.getSentence(s1);
                     for(String s2:sentences)
                     {
-                        String sen=LanguageDetector.remove_symbols(s2);
+                        String sen=TextUtilizer.utilizeText(s2);
                         Sentence sentence=new Sentence(sen);
                         try {
                             if(sen.length()>1)
@@ -178,7 +179,7 @@ public class TestingSystem {
             sentence.addFood(next,new Integer[]{0,0});
             wc.addFood(next);
         }
-        if(sentence.getFoodMap().containsKey(Stemming.pluralToSingular(rest_name)))
+        if(sentence.getFoodMap().containsKey(TextUtilizer.pluralToSingular((rest_name))))
         	sentence.removeFood(Stemming.pluralToSingular(rest_name));
     }
 	

@@ -1,9 +1,7 @@
 package com.ruchi.engine.foodextraction;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.util.Span;
 
 import com.ruchi.engine.database.DatabaseConnector;

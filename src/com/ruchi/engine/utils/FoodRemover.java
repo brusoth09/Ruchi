@@ -1,9 +1,15 @@
 package com.ruchi.engine.utils;
 
-import com.ruchi.engine.database.DatabaseConnector;
-import com.ruchi.engine.preprocessing.Stemmer;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-import java.io.*;
+import com.ruchi.engine.database.DatabaseConnector;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
  * Created by brusoth on 11/17/2014.
@@ -26,7 +32,7 @@ public class FoodRemover {
             //Read File Line By Line
             db.connect();
             while ((strLine = br.readLine()) != null)   {
-                db.removeFoodItem(Stemmer.pluralToSingular(strLine.trim()));
+                db.removeFoodItem(TextUtilizer.pluralToSingular(strLine.trim()));
             }
             db.disconect();
 

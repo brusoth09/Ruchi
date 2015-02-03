@@ -13,7 +13,9 @@ import com.ruchi.engine.foodextraction.OpenNLP;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.LanguageDetector;
+import com.ruchi.engine.preprocessing.GoogleLanguageDetectionTool;
+import com.ruchi.engine.preprocessing.LanguageDectectionTool;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 
 public class FirstTest {
@@ -35,9 +37,9 @@ public class FirstTest {
         list=new ArrayList<Sentence>();
         wc=new FoodClassifier();
 		DatabaseConnector db=new DatabaseConnector(true);
-        LanguageDetector ld=new LanguageDetector();
+        LanguageDectectionTool ld=new GoogleLanguageDetectionTool();
         
-        ld.load_profile();
+        ld.loadModule();
         db.connect();
         
         ArrayList<String> res_list=db.getRestaurants();
@@ -50,13 +52,13 @@ public class FirstTest {
             ArrayList<String> reviews=db.getRestaurantReviews(s);
             for(String s1:reviews)
             {
-                if(ld.check_Language(s1))
+                if(ld.findLanguage(s1))
                 {
                 	Review review=new Review();
                     ArrayList<String> sentences=sent.getSentence(s1);
                     for(String s2:sentences)
                     {
-                        String sen=LanguageDetector.remove_symbols(s2);
+                        String sen=TextUtilizer.utilizeText(s2);
                         Sentence sentence=new Sentence(sen);
                         try {
                             if(sen.length()>1)
