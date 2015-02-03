@@ -17,7 +17,9 @@
 		<mapping class="com.ruchi.hibernate.model.DAO.RestaurantDao" />
 		<mapping class="com.ruchi.hibernate.model.DAO.CityDao" />
 		<mapping class="com.ruchi.hibernate.model.DAO.FoodDao" />
+		<mapping class="com.ruchi.hibernate.model.DAO.FoodInitDao" />
 		<mapping class="com.ruchi.hibernate.model.DAO.ReviewDao" />
+		<mapping class="com.ruchi.hibernate.model.DAO.ReviewTrainDao" />
 		<mapping class="com.ruchi.hibernate.model.DAO.ReviewFoodDao" />
 		<mapping class="com.ruchi.hibernate.model.DAO.RestaurantFoodDao" />
 

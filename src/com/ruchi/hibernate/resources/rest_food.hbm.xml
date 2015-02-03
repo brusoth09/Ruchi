@@ -8,7 +8,7 @@
             <column name="rest_id" />
             <!--<generator class="increment" />-->
         </id>
-        <property name="food_id" type="java.sql.Timestamp">
+        <property name="food_id" type="java.lang.String">
             <column name="food_id" />
         </property>
         <property name="rating" type="java.lang.Float">

@@ -70,6 +70,29 @@ public class DataStore {
 		}
 		return false;
 	}
+	
+	public boolean insertReviewTrainRating(String review_id, float rating) {
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			ReviewDao reviewTrainDao = (ReviewDao) session.get(ReviewDao.class,
+					review_id);
+			System.out.println(reviewTrainDao.getRating() + " "
+					+ reviewTrainDao.getRest_id() + " " + reviewTrainDao.getReview()
+					+ " " + reviewTrainDao.getReview_id());
+			reviewTrainDao.setRating(rating);
+			session.update(reviewTrainDao);
+			session.getTransaction().commit();
+			return true;
+
+		} catch (HibernateException e) {
+			session.close();
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 
 	public boolean insertRestRating(String rest_Id, float rating) {
 		Session session = null;
@@ -91,10 +114,10 @@ public class DataStore {
 		return false;
 	}
 
-	public Date insertFood(String food_name) {
+	public String insertFood(String food_name) {
 
 		try {
-			Timestamp food_id = getFood_id(food_name);
+			String food_id = getFood_id(food_name);
 
 			// Transacstion transaction;
 			if (!(food_id == null)) {
@@ -111,10 +134,10 @@ public class DataStore {
 		return null;
 	}
 	
-	public Date insertFoodInit(String food_name) {
+	public String insertFoodInit(String food_name) {
 
 		try {
-			Timestamp food_id = getFoodInit_id(food_name);
+			String food_id = getFoodInit_id(food_name);
 
 			// Transacstion transaction;
 			if (!(food_id == null)) {
@@ -143,15 +166,15 @@ public class DataStore {
 			reviewFoodDao.setReview_id(review_id);
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
 					"yyyy-MM-dd hh:mm:ss");
-			Date parsedDate = dateFormat.parse(food_id);
-			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-			reviewFoodDao.setFood_id(timestamp);
+//			Date parsedDate = dateFormat.parse(food_id);
+//			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+			reviewFoodDao.setFood_id(food_id);
 			reviewFoodDao.setRating(rating);
 			session.save(reviewFoodDao);
 			session.getTransaction().commit();
 			return true;
 
-		} catch (HibernateException | ParseException e) {
+		} catch (HibernateException e) {
 			transaction.rollback();
 
 			e.printStackTrace();
@@ -168,22 +191,22 @@ public class DataStore {
 			restaurantFoodDao.setRest_id(rest_id);
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
 					"yyyy-MM-dd hh:mm:ss");
-			Date parsedDate = dateFormat.parse(food_id);
-			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-			restaurantFoodDao.setFood_id(timestamp);
+//			Date parsedDate = dateFormat.parse(food_id);
+//			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+			restaurantFoodDao.setFood_id(food_id);
 			restaurantFoodDao.setRating(rating);
 			session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 			return true;
 
-		} catch (HibernateException | ParseException e) {
+		} catch (HibernateException  e) {
 			// session.close();
 			e.printStackTrace();
 		}
 		return false;
 	}
 
-	private Timestamp getFood_id(String food_name) {
+	private String getFood_id(String food_name) {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -208,7 +231,7 @@ public class DataStore {
 		return null;
 	}
 	
-	private Timestamp getFoodInit_id(String food_name) {
+	private String getFoodInit_id(String food_name) {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -233,7 +256,7 @@ public class DataStore {
 		return null;
 	}
 
-	private Timestamp insertNewFood(String food_name) {
+	private String insertNewFood(String food_name) {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -243,8 +266,8 @@ public class DataStore {
 							// food_name);
 			foodDao = new FoodDao();
 			foodDao.setFood_name(food_name);
-			Timestamp timestamp = new Timestamp(Calendar.getInstance()
-					.getTimeInMillis());
+			String timestamp = new Timestamp(Calendar.getInstance()
+					.getTimeInMillis()).toString();
 			foodDao.setFood_id(timestamp);
 			session.save(foodDao);
 			session.getTransaction().commit();
@@ -260,7 +283,7 @@ public class DataStore {
 		return null;
 	}
 	
-	private Timestamp insertNewFoodInit(String food_name) {
+	private String insertNewFoodInit(String food_name) {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -270,8 +293,8 @@ public class DataStore {
 							// food_name);
 			foodDao = new FoodInitDao();
 			foodDao.setFood_name(food_name);
-			Timestamp timestamp = new Timestamp(Calendar.getInstance()
-					.getTimeInMillis());
+			String timestamp = new Timestamp(Calendar.getInstance()
+					.getTimeInMillis()).toString();
 			foodDao.setFood_id(timestamp);
 			session.save(foodDao);
 			session.getTransaction().commit();
@@ -377,6 +400,29 @@ public class DataStore {
 		return results;
 	}
 
+	public List<ReviewDao> getReviewsTrainByRestName(String restaurant_name) {
+		Session session = null;
+		List<ReviewDao> results = new ArrayList<ReviewDao>();
+		String rest_id = getRestId(restaurant_name);
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql = "FROM ReviewTrainDao R where R.rest_id= ?";
+
+			Query query = session.createQuery(hql).setString(0, rest_id);
+			// System.out.println(query);
+			// @SuppressWarnings("unchecked")
+			results = query.list();
+			// session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		return results;
+	}
+	
 	public List<ReviewDao> getReviewsByRestId(String restaurant_id) {
 		Session session = null;
 		List<ReviewDao> results = new ArrayList<ReviewDao>();
@@ -385,6 +431,25 @@ public class DataStore {
 			session.beginTransaction();
 
 			String hql = "FROM ReviewDao R where R.rest_id= ?";
+
+			Query query = session.createQuery(hql).setString(0, restaurant_id);
+			results = query.list();
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return results;
+	}
+	
+	public List<ReviewDao> getReviewsTrainByRestId(String restaurant_id) {
+		Session session = null;
+		List<ReviewDao> results = new ArrayList<ReviewDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+
+			String hql = "FROM ReviewTrainDao R where R.rest_id= ?";
 
 			Query query = session.createQuery(hql).setString(0, restaurant_id);
 			results = query.list();

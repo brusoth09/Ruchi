@@ -26,7 +26,7 @@ public class ReviewFoodDao {
     private String review_id;
 
     @Column(name = "food_id", nullable = false, unique = false, length = 50)
-    private Timestamp food_id;
+    private String food_id;
 
     @Column(name = "rating", nullable = false, unique = false, length = 50)
     private float rating;
@@ -39,11 +39,11 @@ public class ReviewFoodDao {
         this.review_id = review_id;
     }
    
-	public Timestamp getFood_id() {
+	public String getFood_id() {
 		return food_id;
 	}
 
-	public void setFood_id(Timestamp food_id) {
+	public void setFood_id(String food_id) {
 		this.food_id = food_id;
 	}
 

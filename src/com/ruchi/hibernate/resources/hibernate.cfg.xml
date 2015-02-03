@@ -31,7 +31,9 @@
 		<mapping resource="com/ruchi/hibernate/resources/restaurant.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/city.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/food.hbm.xml" />
+		<mapping resource="com/ruchi/hibernate/resources/foodinit.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/review.hbm.xml" />
+		<mapping resource="com/ruchi/hibernate/resources/review_train.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/review_food.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/rest_food.hbm.xml" />
 
