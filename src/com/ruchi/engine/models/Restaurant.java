@@ -20,7 +20,7 @@ public class Restaurant {
 	private double rating;
 
 	public Restaurant(String name) {
-		this.setName(name);
+		this.setId(name);
 	}
 
 	public String getId() {

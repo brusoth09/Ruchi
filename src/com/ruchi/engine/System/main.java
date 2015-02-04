@@ -9,6 +9,6 @@ public class main {
     public static void main(String[] args)
     {
     	TrainingSystem.getInstance().trainFromDatabase();
-       //TestingSystem.getInstance().readReviews();
+    	TestingSystem.getInstance().readReviews();
     }
 }
