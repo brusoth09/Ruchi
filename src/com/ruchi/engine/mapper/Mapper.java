@@ -17,7 +17,8 @@ public class Mapper {
 		dataStore = new DataStore();
 	}
 
-	public static ArrayList<String> getRestaurantReviewsByRestName(String res_name) {
+	public static ArrayList<String> getRestaurantReviewsByRestName(
+			String res_name) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
 		List<ReviewDao> daos = dataStore.getReviewsByRestName(res_name);
 		for (ReviewDao r : daos) {
@@ -26,20 +27,22 @@ public class Mapper {
 
 		return rest_reviews;
 	}
-	
-	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestName(String res_name) {
+
+	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestName(
+			String res_name) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
 		List<ReviewDao> daos = dataStore.getReviewsByRestName(res_name);
-		String[] review=new String[2];
+		String[] review = new String[2];
 		for (ReviewDao r : daos) {
-			review[0]=r.getReview_id();
-			review[1]=r.getReview();
+			review[0] = r.getReview_id();
+			review[1] = r.getReview();
 			rest_reviews.add(review);
 		}
 		return rest_reviews;
 	}
 
-	public static ArrayList<String> getRestaurantReviewsByRestNameTrain(String res_name) {
+	public static ArrayList<String> getRestaurantReviewsByRestNameTrain(
+			String res_name) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
 		List<ReviewTrainDao> daos = dataStore
 				.getReviewsTrainByRestName(res_name);
@@ -49,15 +52,16 @@ public class Mapper {
 
 		return rest_reviews;
 	}
-	
-	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestNameTrain(String res_name) {
+
+	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestNameTrain(
+			String res_name) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
 		List<ReviewTrainDao> daos = dataStore
 				.getReviewsTrainByRestName(res_name);
-		String[] review=new String[2];
+		String[] review = new String[2];
 		for (ReviewTrainDao r : daos) {
-			review[0]=r.getReview_id();
-			review[1]=r.getReview();
+			review[0] = r.getReview_id();
+			review[1] = r.getReview();
 			rest_reviews.add(review);
 		}
 
@@ -90,32 +94,35 @@ public class Mapper {
 		}
 		return rest_reviews;
 	}
-	
-	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestId(String rest_id) {
+
+	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestId(
+			String rest_id) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
 		List<ReviewDao> daos = dataStore.getReviewsByRestId(rest_id);
-		String[] review=new String[2];
+		String[] review = new String[2];
 		for (ReviewDao r : daos) {
-			review[0]=r.getReview_id();
-			review[1]=r.getReview();
+			review[0] = r.getReview_id();
+			review[1] = r.getReview();
 			rest_reviews.add(review);
 		}
 		return rest_reviews;
 	}
 
-	public static ArrayList<String[]> getRestaurantReviewsByRestIdTrain(String rest_id) {
+	public static ArrayList<String[]> getRestaurantReviewsByRestIdTrain(
+			String rest_id) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
 		List<ReviewTrainDao> daos = dataStore.getReviewsTrainByRestId(rest_id);
-		String[] review=new String[2];
+		String[] review = new String[2];
 		for (ReviewTrainDao r : daos) {
-			review[0]=r.getReview_id();
-			review[1]=r.getReview();
+			review[0] = r.getReview_id();
+			review[1] = r.getReview();
 			rest_reviews.add(review);
 		}
 		return rest_reviews;
 	}
-	
-	public static ArrayList<String> getRestaurantReviewsAndIdsByRestIdTrain(String rest_id) {
+
+	public static ArrayList<String> getRestaurantReviewsAndIdsByRestIdTrain(
+			String rest_id) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
 		List<ReviewTrainDao> daos = dataStore.getReviewsTrainByRestId(rest_id);
 		for (ReviewTrainDao r : daos) {
@@ -165,5 +172,9 @@ public class Mapper {
 
 	public boolean insertReviewRating(String review_id, float rating) {
 		return dataStore.insertReviewRating(review_id, rating);
+	}
+
+	public boolean insertRestRating(String rest_id, float rating) {
+		return dataStore.insertRestRating(rest_id, rating);
 	}
 }
