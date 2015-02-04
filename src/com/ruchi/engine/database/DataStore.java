@@ -16,6 +16,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.transform.Transformers;
 
+import com.ruchi.engine.utils.KeyGenerator;
 import com.ruchi.hibernate.model.DAO.FoodDao;
 import com.ruchi.hibernate.model.DAO.FoodInitDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
@@ -300,8 +301,7 @@ public static void main(String[] args) {
 							// food_name);
 			foodDao = new FoodDao();
 			foodDao.setFood_name(food_name);
-			String timestamp = new Timestamp(Calendar.getInstance()
-					.getTimeInMillis()).toString();
+			String timestamp = KeyGenerator.uniqueCurrentTimeMS();
 			foodDao.setFood_id(timestamp);
 			session.save(foodDao);
 			session.getTransaction().commit();

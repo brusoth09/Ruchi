@@ -28,10 +28,10 @@ public class Extraction {
     public void readReviews()
     {
         for(String rest:rest_list){
-            ArrayList<String> review_set=Mapper.getRestaurantReviewTrain(rest.trim());
-            for(String review:review_set)
+            ArrayList<String[]> review_set=Mapper.getRestaurantReviewsAndIdsByRestId(rest.trim());
+            for(String[] review:review_set)
             {
-                ArrayList<String> sentences=sent.getSentence(review);
+                ArrayList<String> sentences=sent.getSentence(review[1]);
                 for(String sentence:sentences){
                     String[] tokens=predict(sentence.trim());
                     String[] toks=sent.getWordTokens(sentence);

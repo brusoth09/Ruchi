@@ -43,9 +43,9 @@ public class Tester {
     public void getSentencesFromReviews(){
         OpenNLP nlp=new OpenNLP();
         nlp.loadModel();
-        ArrayList<String> list=Mapper.getRestaurantReviewsTrain("U.S. Egg");
-        for(String s:list){
-            ArrayList<String> sentences= nlp.getSentence(s);
+        ArrayList<String[]> list=Mapper.getRestaurantReviewsByRestIdTrain("U.S. Egg");
+        for(String[] s:list){
+            ArrayList<String> sentences= nlp.getSentence(s[1]);
             for(String line:sentences) {
                 TextEditors.writeTestSentence(line);
             }

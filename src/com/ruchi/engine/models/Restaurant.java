@@ -2,8 +2,10 @@ package com.ruchi.engine.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.ranking.RankingAlgorithm;
 
@@ -16,8 +18,8 @@ public class Restaurant {
 
 	private ArrayList<Review> review_list = new ArrayList<Review>();
 	private HashMap<String, Integer> food_map = new HashMap<String, Integer>();
-	private HashMap<String, Double> foodRating;
-	private double rating;
+	private HashMap<String, Double> foodRating=new HashMap<String, Double>();
+	private double rating=0.0;
 
 	public Restaurant(String name) {
 		this.setId(name);
@@ -80,7 +82,7 @@ public class Restaurant {
 			}
 		}
 		if (foodScoreMap != null) {
-			foodRating = new HashMap<String, Double>();
+			
 			Set<String> keySet = foodScoreMap.keySet();
 			for (String key : keySet) {
 				double score = RankingAlgorithm.avgScoreDouble(foodScoreMap
@@ -112,6 +114,15 @@ public class Restaurant {
 
 	public void setRating(double rating) {
 		this.rating = rating;
+	}
+	
+	public void updateDatabase(){
+		for (Map.Entry<String, Double> entry : foodRating.entrySet())
+		{
+		   String foodKey=Mapper.insertFood(entry.getKey());
+		   Mapper.insertRestFood(this.id,foodKey, entry.getValue().floatValue());
+		}
+		Mapper.insertRestRating(this.id, (float)rating);
 	}
 
 }

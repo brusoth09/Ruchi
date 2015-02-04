@@ -64,14 +64,15 @@ public class TestingSystem {
 		for(String s:res_list)
         {
         	Restaurant rest=new Restaurant(s);
-        	rest.setName("get name");
-            ArrayList<String> reviews=Mapper.getRestaurantReview(s);
-            for(String s1:reviews)
+        	rest.setName("no name");
+            ArrayList<String[]> reviews=Mapper.getRestaurantReviewsAndIdsByRestId(s);
+            for(String[] s1:reviews)
             {
-                if(ld.findLanguage(s1))
+                if(ld.findLanguage(s1[1]))
                 {
                 	Review review=new Review();
-                    ArrayList<String> sentences=sent.getSentence(s1);
+                	review.setId(s1[0]);
+                    ArrayList<String> sentences=sent.getSentence(s1[1]);
                     for(String s2:sentences)
                     {
                         String sen=TextUtilizer.utilizeText(s2);
@@ -215,8 +216,10 @@ public class TestingSystem {
     			}
     		}
     		r.generateFoodSentiment();
+    		r.updateDatabase();
     	}
     	rest.generateFoodRating();
+    	rest.updateDatabase();
     }
 
 }

@@ -50,13 +50,13 @@ public class FirstTest {
         for(String s:res_list)
         {
         	Restaurant rest=new Restaurant(s);
-            ArrayList<String> reviews=Mapper.getRestaurantReviews(s);
-            for(String s1:reviews)
+            ArrayList<String[]> reviews=Mapper.getRestaurantReviewsAndIdsByRestId(s);
+            for(String[] s1:reviews)
             {
-                if(ld.findLanguage(s1))
+                if(ld.findLanguage(s1[1]))
                 {
                 	Review review=new Review();
-                    ArrayList<String> sentences=sent.getSentence(s1);
+                    ArrayList<String> sentences=sent.getSentence(s1[1]);
                     for(String s2:sentences)
                     {
                         String sen=TextUtilizer.utilizeText(s2);
