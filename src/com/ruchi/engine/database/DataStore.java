@@ -94,7 +94,6 @@ public class DataStore {
 		return false;
 	}
 
-
 	public boolean insertRestRating(String rest_Id, float rating) {
 		Session session = null;
 		try {
