@@ -177,4 +177,5 @@ public class Mapper {
 	public boolean insertRestRating(String rest_id, float rating) {
 		return dataStore.insertRestRating(rest_id, rating);
 	}
+
 }

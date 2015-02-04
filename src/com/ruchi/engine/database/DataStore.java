@@ -36,7 +36,8 @@ public class DataStore {
 	/*
 	 * main method for the checking purposed. not to be used by the system
 	 */
-	public static void main(String[] args) {
+	
+public static void main(String[] args) {
 		DataStore dataStore = new DataStore();
 		// dataStore.insertReviewRating("1408182490042", 4f);
 		// dataStore.insertRestRating("111", 2f);
@@ -214,6 +215,7 @@ public class DataStore {
 	/*
 	 * 
 	 */
+	
 	public boolean insertRestFood(String rest_id, String food_id, float rating) {
 		Session session = null;
 		try {
