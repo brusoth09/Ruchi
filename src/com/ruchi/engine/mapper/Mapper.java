@@ -8,6 +8,7 @@ import com.ruchi.hibernate.model.DAO.FoodDao;
 import com.ruchi.hibernate.model.DAO.FoodInitDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
+import com.ruchi.hibernate.model.DAO.ReviewTrainDao;
 
 public class Mapper {
 	static DataStore dataStore;
@@ -28,8 +29,8 @@ public class Mapper {
 	
 	public static ArrayList<String> getRestaurantReviewsTrain(String res_name) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
-		List<ReviewDao> daos = dataStore.getReviewsTrainByRestName(res_name);
-		for (ReviewDao r : daos) {
+		List<ReviewTrainDao> daos = dataStore.getReviewsTrainByRestName(res_name);
+		for (ReviewTrainDao r : daos) {
 			rest_reviews.add(r.getReview());
 		}
 
@@ -66,8 +67,8 @@ public class Mapper {
 	
 	public static ArrayList<String> getRestaurantReviewTrain(String rest_id) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
-		List<ReviewDao> daos = dataStore.getReviewsTrainByRestId(rest_id);
-		for(ReviewDao r:daos){
+		List<ReviewTrainDao> daos = dataStore.getReviewsTrainByRestId(rest_id);
+		for(ReviewTrainDao r:daos){
 			rest_reviews.add(r.getReview());
 		}
 		return rest_reviews;		

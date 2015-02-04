@@ -401,7 +401,7 @@ public class DataStore {
 		return results;
 	}
 
-	public List<ReviewDao> getReviewsTrainByRestName(String restaurant_name) {
+	public List<ReviewTrainDao> getReviewsTrainByRestName(String restaurant_name) {
 		Session session = null;
 		List<ReviewTrainDao> results = new ArrayList<ReviewTrainDao>();
 		String rest_id = getRestId(restaurant_name);

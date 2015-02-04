@@ -22,6 +22,7 @@ public class TrainingSystem {
     	ld=new GoogleLanguageDetectionTool();
     	sent=new OpenNLP();
         ld.loadModule();
+        sent.loadModel();
     }
     
     public static TrainingSystem getInstance(){
