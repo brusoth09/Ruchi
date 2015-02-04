@@ -25,8 +25,17 @@ import com.ruchi.hibernate.model.DAO.ReviewFoodDao;
 import com.ruchi.hibernate.model.DAO.ReviewTrainDao;
 import com.ruchi.hibernate.util.HibernateUtil;
 
+/**
+ * 
+ * @author Thamayanthy
+ *The class used to store and retrieve data from the database 
+ *which is communicating the Dao Objects 
+ */
 public class DataStore {
 	
+	/*
+	 * main method for the checking purposed. not to be used by the system
+	 */
 	public static void main(String[] args) {
 		DataStore dataStore = new DataStore();
 		// dataStore.insertReviewRating("1408182490042", 4f);
@@ -50,6 +59,10 @@ public class DataStore {
 
 	}
 
+	/*
+	 * insert the rating value to each review 
+	 * reviews table will be updated
+	 */
 	public boolean insertReviewRating(String review_id, float rating) {
 		Session session = null;
 		try {
@@ -72,6 +85,9 @@ public class DataStore {
 		return false;
 	}
 	
+	/*
+	 * insert the rating value to the reviews_train table
+	 */
 	public boolean insertReviewTrainRating(String review_id, float rating) {
 		Session session = null;
 		try {
@@ -94,6 +110,9 @@ public class DataStore {
 		return false;
 	}
 
+	/*
+	 * insert rating value for the restaurant
+	 */
 	public boolean insertRestRating(String rest_Id, float rating) {
 		Session session = null;
 		try {
@@ -114,6 +133,9 @@ public class DataStore {
 		return false;
 	}
 
+	/*
+	 * insert a food name found among the reviews
+	 */
 	public String insertFood(String food_name) {
 
 		try {
@@ -134,6 +156,9 @@ public class DataStore {
 		return null;
 	}
 	
+	/*
+	 * insert food name to food_init table which is used to find the food items from the reviews initially 
+	 */
 	public String insertFoodInit(String food_name) {
 
 		try {
@@ -154,6 +179,10 @@ public class DataStore {
 		return null;
 	}
 
+	/*
+	 * inserting and assigning food name to relevant review
+	 * review_food table will be updated
+	 */
 	public boolean insertReviewFood(String review_id, String food_id,
 			float rating) {
 
@@ -182,6 +211,9 @@ public class DataStore {
 		return false;
 	}
 
+	/*
+	 * 
+	 */
 	public boolean insertRestFood(String rest_id, String food_id, float rating) {
 		Session session = null;
 		try {
