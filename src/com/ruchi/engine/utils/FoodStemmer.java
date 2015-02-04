@@ -3,6 +3,7 @@ package com.ruchi.engine.utils;
 import java.util.ArrayList;
 
 import com.ruchi.engine.database.DatabaseConnector;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
@@ -17,15 +18,13 @@ public class FoodStemmer {
     }
 
     public void fooStem(){
-        DatabaseConnector db=new DatabaseConnector();
-        db.connect();
-        db.getFoodNames(foods);
+        Mapper.getFoodInitNames(foods);
 
         for(String s:foods)
         {
             String stemmed= TextUtilizer.pluralToSingular(s);
             if(!stem_food.contains(stemmed.trim())){
-                db.insertFoodItem(stemmed.trim());
+                Mapper.insertFoodInit(stemmed.trim());
                 stem_food.add(stemmed.trim());
             }
 

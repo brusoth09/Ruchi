@@ -11,6 +11,7 @@ import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.Extraction;
 import com.ruchi.engine.foodextraction.FoodClassifier;
 import com.ruchi.engine.foodextraction.OpenNLP;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
@@ -30,7 +31,6 @@ public class TestingSystem {
 	private ArrayList<Sentence> list;
 	private FoodClassifier wc;
 	
-	DatabaseConnector db;
 	LanguageDectectionTool ld;
 	
 	private TestingSystem(){
@@ -40,12 +40,10 @@ public class TestingSystem {
         exe.load(sent);
         list=new ArrayList<Sentence>();
         wc=new FoodClassifier();
-        db=new DatabaseConnector(true);
         ld=new GoogleLanguageDetectionTool();
         new TypedDependencyEngine();
         
         ld.loadModule();
-        db.connect();
 	}
 	
 	public static TestingSystem getInstance(){
@@ -61,13 +59,13 @@ public class TestingSystem {
 	}
 	
 	public void readReviews(){
-		ArrayList<String[]> res_list=db.getRestID();
+		ArrayList<String> res_list=Mapper.getRestaurantIDs();
 		
-		for(String[] s:res_list)
+		for(String s:res_list)
         {
-        	Restaurant rest=new Restaurant(s[0]);
-        	rest.setName(s[1]);
-            ArrayList<String> reviews=db.getRestaurantReviewsFromID(s[0]);
+        	Restaurant rest=new Restaurant(s);
+        	rest.setName("get name");
+            ArrayList<String> reviews=Mapper.getRestaurantReview(s);
             for(String s1:reviews)
             {
                 if(ld.findLanguage(s1))
@@ -100,7 +98,6 @@ public class TestingSystem {
             dependencyGeneration(rest);
             
         }
-		db.disconect();
 	}
 	
 	public void predictfoods(Sentence sentence){

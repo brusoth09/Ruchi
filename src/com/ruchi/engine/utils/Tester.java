@@ -15,6 +15,7 @@ import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.Extraction;
 import com.ruchi.engine.foodextraction.FoodClassifier;
 import com.ruchi.engine.foodextraction.OpenNLP;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.models.Sentence;
 import com.ruchi.engine.preprocessing.TextUtilizer;
 
@@ -40,11 +41,9 @@ public class Tester {
     }
 
     public void getSentencesFromReviews(){
-        DatabaseConnector db=new DatabaseConnector();
-        db.getTestData("aaa");
         OpenNLP nlp=new OpenNLP();
         nlp.loadModel();
-        ArrayList<String> list=db.getRestaurantReviews("U.S. Egg");
+        ArrayList<String> list=Mapper.getRestaurantReviewsTrain("U.S. Egg");
         for(String s:list){
             ArrayList<String> sentences= nlp.getSentence(s);
             for(String line:sentences) {

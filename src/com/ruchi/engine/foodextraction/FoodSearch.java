@@ -3,6 +3,7 @@ package com.ruchi.engine.foodextraction;
 import java.util.ArrayList;
 
 import com.ruchi.engine.database.DatabaseConnector;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
@@ -14,9 +15,7 @@ public class FoodSearch {
 
     public void loadFood()
     {
-        db=new DatabaseConnector();
-        db.connect();
-        db.getFoodNames(dictionary);
+        Mapper.getFoodInitNames(dictionary);
     }
 
     public String search(String chunk)

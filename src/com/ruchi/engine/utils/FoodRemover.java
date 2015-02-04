@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import com.ruchi.engine.database.DatabaseConnector;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
@@ -28,15 +29,11 @@ public class FoodRemover {
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
             String strLine;
-            DatabaseConnector db=new DatabaseConnector();
-            //Read File Line By Line
-            db.connect();
+            
             while ((strLine = br.readLine()) != null)   {
-                db.removeFoodItem(TextUtilizer.pluralToSingular(strLine.trim()));
+                Mapper.removeFoodInit(TextUtilizer.pluralToSingular(strLine.trim()));
             }
-            db.disconect();
-
-            //Close the input stream
+           
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,16 +51,10 @@ public class FoodRemover {
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
             String strLine;
-            DatabaseConnector db=new DatabaseConnector();
-            //Read File Line By Line
-            db.connect();
             while ((strLine = br.readLine()) != null)   {
                 System.out.println(strLine);
                 //db.insertFoodItem(strLine.trim());
             }
-            db.disconect();
-
-            //Close the input stream
             br.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -73,8 +64,6 @@ public class FoodRemover {
 
     public void add_food(){
         BufferedReader br=null;
-        DatabaseConnector db=new DatabaseConnector();
-        db.connect();
         String currentLine;
 
         try {
@@ -82,7 +71,7 @@ public class FoodRemover {
 
             while ((currentLine = br.readLine()) != null) {
                 if(currentLine.length()!=0)
-                db.insertFood(currentLine);
+                Mapper.insertFoodInit(currentLine);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

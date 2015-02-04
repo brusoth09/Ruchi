@@ -5,22 +5,22 @@ import java.util.ArrayList;
 import opennlp.tools.util.Span;
 
 import com.ruchi.engine.database.DatabaseConnector;
+import com.ruchi.engine.mapper.Mapper;
 
 
 /**
  * Created by Brusoth on 12/2/2014.
  */
 public class Extraction {
-    private DatabaseConnector db=new DatabaseConnector();
+    
     private OpenNLP sent;
 
     ArrayList<String> food_list=new ArrayList<String>();
     ArrayList<String> rest_list=new ArrayList<String>();
 
     public void load(OpenNLP sent){
-        db.connect();
-        db.getFoodNames(food_list);
-        rest_list=db.getRestaurants();
+        Mapper.getFoodInitNames(food_list);
+        rest_list=Mapper.getRestaurantIDs();
         this.sent=sent;
     }
 
@@ -28,7 +28,7 @@ public class Extraction {
     public void readReviews()
     {
         for(String rest:rest_list){
-            ArrayList<String> review_set=db.getRestaurantReviews(rest.trim());
+            ArrayList<String> review_set=Mapper.getRestaurantReviewTrain(rest.trim());
             for(String review:review_set)
             {
                 ArrayList<String> sentences=sent.getSentence(review);

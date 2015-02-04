@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.OpenNLP;
 import com.ruchi.engine.foodextraction.Train;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.preprocessing.GoogleLanguageDetectionTool;
 import com.ruchi.engine.preprocessing.LanguageDectectionTool;
 import com.ruchi.engine.preprocessing.TextUtilizer;
@@ -14,15 +15,12 @@ public class TrainingSystem {
 	
 	private static TrainingSystem instance=null;
 	
-	private DatabaseConnector db;
     private LanguageDectectionTool ld;
     private OpenNLP sent;
     
     private TrainingSystem(){
-    	db=new DatabaseConnector();
     	ld=new GoogleLanguageDetectionTool();
     	sent=new OpenNLP();
-    	db.connect();
         ld.loadModule();
     }
     
@@ -44,11 +42,11 @@ public class TrainingSystem {
 	}
 	
 	public void trainFromDatabase(){
-		ArrayList<String> res_list=db.getRestaurants();
+		ArrayList<String> res_list=Mapper.getRestaurantIDs();
 		
 		for(String s:res_list)
         {
-            ArrayList<String> reviews=db.getRestaurantReviews(s);
+            ArrayList<String> reviews=Mapper.getRestaurantReviewTrain(s);
             for(String s1:reviews)
             {
                 if(ld.findLanguage(s1))
@@ -68,7 +66,7 @@ public class TrainingSystem {
                 }
             }
         }
-        db.disconect();
+        
 	}
 	
 	public void trainModel(){
