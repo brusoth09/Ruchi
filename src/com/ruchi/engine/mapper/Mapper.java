@@ -166,15 +166,15 @@ public class Mapper {
 		return dataStore.insertReviewFood(review_id, food_id, rating);
 	}
 
-	public boolean insertRestFood(String rest_id, String food_id, float rating) {
+	public static boolean insertRestFood(String rest_id, String food_id, float rating) {
 		return dataStore.insertRestFood(rest_id, food_id, rating);
 	}
 
-	public boolean insertReviewRating(String review_id, float rating) {
+	public static boolean insertReviewRating(String review_id, float rating) {
 		return dataStore.insertReviewRating(review_id, rating);
 	}
 
-	public boolean insertRestRating(String rest_id, float rating) {
+	public static boolean insertRestRating(String rest_id, float rating) {
 		return dataStore.insertRestRating(rest_id, rating);
 	}
 
