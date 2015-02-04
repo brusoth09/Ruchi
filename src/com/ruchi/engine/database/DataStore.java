@@ -77,7 +77,7 @@ public class DataStore {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			ReviewTrainDao reviewTrainDao = (ReviewTrainDao) session.get(ReviewDao.class,
+			ReviewTrainDao reviewTrainDao = (ReviewTrainDao) session.get(ReviewTrainDao.class,
 					review_id);
 			System.out.println(reviewTrainDao.getRating() + " "
 					+ reviewTrainDao.getRest_id() + " " + reviewTrainDao.getReview()
@@ -403,7 +403,7 @@ public class DataStore {
 
 	public List<ReviewDao> getReviewsTrainByRestName(String restaurant_name) {
 		Session session = null;
-		List<ReviewDao> results = new ArrayList<ReviewDao>();
+		List<ReviewTrainDao> results = new ArrayList<ReviewTrainDao>();
 		String rest_id = getRestId(restaurant_name);
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -443,9 +443,9 @@ public class DataStore {
 		return results;
 	}
 	
-	public List<ReviewDao> getReviewsTrainByRestId(String restaurant_id) {
+	public List<ReviewTrainDao> getReviewsTrainByRestId(String restaurant_id) {
 		Session session = null;
-		List<ReviewDao> results = new ArrayList<ReviewDao>();
+		List<ReviewTrainDao> results = new ArrayList<ReviewTrainDao>();
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
