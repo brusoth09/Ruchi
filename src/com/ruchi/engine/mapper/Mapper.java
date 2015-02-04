@@ -178,4 +178,20 @@ public class Mapper {
 		return dataStore.insertRestRating(rest_id, rating);
 	}
 
+	public static String getRestName(String restaurant_id){
+		return dataStore.getRestName(restaurant_id);
+	}
+	
+	public static List<String[]> getAllRestaurantIdsAndNames(){
+		ArrayList<String[]> rest_id_name = new ArrayList<String[]>();
+		List<RestaurantDao> daos = dataStore.getRestaurantDaos();
+		String[] review = new String[2];
+		for (RestaurantDao r : daos) {
+			review[0] = r.getRest_id();
+			review[1] = r.getRest_name();
+			rest_id_name.add(review);
+		}
+		return rest_id_name;
+	}
+	
 }

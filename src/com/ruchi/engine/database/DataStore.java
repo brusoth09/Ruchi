@@ -410,6 +410,29 @@ public static void main(String[] args) {
 		}
 		return results.get(0).getRest_id();
 	}
+	
+	public String getRestName(String restaurant_id) {
+		Session session = null;
+		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql = "FROM RestaurantDao R where R.rest_id= ?";
+
+			Query query = session.createQuery(hql)
+					.setString(0, restaurant_id);
+			// System.out.println(query);
+			// @SuppressWarnings("unchecked")
+			results = query.list();
+			// session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		return results.get(0).getRest_name();
+	}
 
 	public List<ReviewDao> getReviewsByRestName(String restaurant_name) {
 		Session session = null;
@@ -495,6 +518,7 @@ public static void main(String[] args) {
 		return results;
 	}
 
+	@SuppressWarnings({ "unchecked" })
 	public List<RestaurantDao> getRestaurantIds() {
 		Session session = null;
 		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
@@ -502,6 +526,35 @@ public static void main(String[] args) {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			String hql = "R.rest_id FROM ResaurantDao R";
+			Criteria cr = session
+					.createCriteria(RestaurantDao.class)
+					.setProjection(
+							Projections.projectionList().add(
+									Projections.property("rest_id"), "rest_id"))
+					.setResultTransformer(
+							Transformers.aliasToBean(RestaurantDao.class));
+
+			// Query query = session.createQuery(hql);
+			// System.out.println(query);
+			// @SuppressWarnings("unchecked")
+			results = cr.list();
+			// session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		}
+		return results;
+	}
+	
+	public List<RestaurantDao> getRestaurantDaos() {
+		Session session = null;
+		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql = "FROM ResaurantDao R";
 			Criteria cr = session
 					.createCriteria(RestaurantDao.class)
 					.setProjection(
