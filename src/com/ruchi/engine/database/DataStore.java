@@ -40,18 +40,19 @@ public class DataStore {
 
 	public static void main(String[] args) {
 		DataStore dataStore = new DataStore();
-		// dataStore.insertReviewRating("1408182490042", 4f);
+//		 dataStore.insertReviewRating("1408182490042", 4f);
 		// dataStore.insertRestRating("111", 2f);
 
-		// System.out.println(dataStore.insertFood("sample food6"));
+		 System.out.println(dataStore.insertFood("sample food6"));
+		 System.out.println(dataStore.insertFoodInit("sample food6"));
 		// System.out.println(dataStore.insertReviewFood("1408182490041",
 		// "2015-01-06 10:16:28", 4f));
 		// System.out.println(dataStore.insertRestFood("1408181771009",
 		// "2015-01-06 10:16:28", 1f));
 
-		System.out.print(dataStore.getReviewsByRestName("Ruchi").size()
-				+ "    "
-				+ dataStore.getReviewsByRestName("Ruchi").get(0).getRest_id());
+//		System.out.print(dataStore.getReviewsByRestName("Ruchi").size()
+//				+ "    "
+//				+ dataStore.getReviewsByRestName("Ruchi").get(0).getRest_id());
 
 		// System.out.println(dataStore.getRestaurantIds().size()+"   "+dataStore.getRestaurantIds().get(0).getRest_id());
 
@@ -157,9 +158,11 @@ public class DataStore {
 
 			// Transacstion transaction;
 			if (!(food_id == null)) {
+				System.out.println("food name already exists");
 				return food_id;
 			} else {
 				insertNewFood(food_name);
+				System.out.println("food name added");
 				return getFood_id(food_name);
 			}
 
@@ -181,13 +184,16 @@ public class DataStore {
 	public String insertFoodInit(String food_name) {
 
 		try {
-			String food_id = getFoodInit_id(food_name);
+			String food_id =null;
+			food_id=getFoodInit_id(food_name);
 
 			// Transacstion transaction;
 			if (!(food_id == null)) {
+				System.out.println("food name already exists");
 				return food_id;
 			} else {
 				insertNewFoodInit(food_name);
+				System.out.println("food name added");
 				return getFoodInit_id(food_name);
 			}
 
@@ -370,8 +376,7 @@ public class DataStore {
 			// food_name);
 			foodDao = new FoodInitDao();
 			foodDao.setFood_name(food_name);
-			String timestamp = new Timestamp(Calendar.getInstance()
-					.getTimeInMillis()).toString();
+			String timestamp = KeyGenerator.uniqueCurrentTimeMS();
 			foodDao.setFood_id(timestamp);
 			session.save(foodDao);
 			session.getTransaction().commit();

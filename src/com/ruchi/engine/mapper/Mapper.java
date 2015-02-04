@@ -12,6 +12,11 @@ import com.ruchi.hibernate.model.DAO.ReviewTrainDao;
 
 public class Mapper {
 	static DataStore dataStore;
+	
+	public static void main(String[]  args){
+		 System.out.println(insertFood("sample food1"));
+		 System.out.println(insertFoodInit("sample food 3"));
+	}
 
 	static {
 		dataStore = new DataStore();
