@@ -29,17 +29,16 @@ import com.ruchi.hibernate.util.HibernateUtil;
 
 /**
  * 
- * @author Thamayanthy
- *The class used to store and retrieve data from the database 
- *which is communicating the Dao Objects 
+ * @author Thamayanthy The class used to store and retrieve data from the
+ *         database which is communicating the Dao Objects
  */
 public class DataStore {
-	
+
 	/*
 	 * main method for the checking purposed. not to be used by the system
 	 */
-	
-public static void main(String[] args) {
+
+	public static void main(String[] args) {
 		DataStore dataStore = new DataStore();
 		// dataStore.insertReviewRating("1408182490042", 4f);
 		// dataStore.insertRestRating("111", 2f);
@@ -63,8 +62,7 @@ public static void main(String[] args) {
 	}
 
 	/*
-	 * insert the rating value to each review 
-	 * reviews table will be updated
+	 * insert the rating value to each review reviews table will be updated
 	 */
 	public boolean insertReviewRating(String review_id, float rating) {
 		Session session = null;
@@ -81,17 +79,17 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
-	
+
 	/*
 	 * insert the rating value to the reviews_train table
 	 */
@@ -100,22 +98,23 @@ public static void main(String[] args) {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			ReviewTrainDao reviewTrainDao = (ReviewTrainDao) session.get(ReviewTrainDao.class,
-					review_id);
+			ReviewTrainDao reviewTrainDao = (ReviewTrainDao) session.get(
+					ReviewTrainDao.class, review_id);
 			System.out.println(reviewTrainDao.getRating() + " "
-					+ reviewTrainDao.getRest_id() + " " + reviewTrainDao.getReview()
-					+ " " + reviewTrainDao.getReview_id());
+					+ reviewTrainDao.getRest_id() + " "
+					+ reviewTrainDao.getReview() + " "
+					+ reviewTrainDao.getReview_id());
 			reviewTrainDao.setRating(rating);
 			session.update(reviewTrainDao);
 			session.getTransaction().commit();
 			return true;
-//
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+			//
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
@@ -137,18 +136,18 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
-	
-		/*
+
+	/*
 	 * insert a food name found among the reviews
 	 */
 	public String insertFood(String food_name) {
@@ -164,19 +163,20 @@ public static void main(String[] args) {
 				return getFood_id(food_name);
 			}
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/*
-	 * insert food name to food_init table which is used to find the food items from the reviews initially 
+	 * insert food name to food_init table which is used to find the food items
+	 * from the reviews initially
 	 */
 	public String insertFoodInit(String food_name) {
 
@@ -191,20 +191,20 @@ public static void main(String[] args) {
 				return getFoodInit_id(food_name);
 			}
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	/*
-	 * inserting and assigning food name to relevant review
-	 * review_food table will be updated
+	 * inserting and assigning food name to relevant review review_food table
+	 * will be updated
 	 */
 	public boolean insertReviewFood(String review_id, String food_id,
 			float rating) {
@@ -218,31 +218,31 @@ public static void main(String[] args) {
 			reviewFoodDao.setReview_id(review_id);
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
 					"yyyy-MM-dd hh:mm:ss");
-//			Date parsedDate = dateFormat.parse(food_id);
-//			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+			// Date parsedDate = dateFormat.parse(food_id);
+			// Timestamp timestamp = new
+			// java.sql.Timestamp(parsedDate.getTime());
 			reviewFoodDao.setFood_id(food_id);
 			reviewFoodDao.setRating(rating);
 			session.save(reviewFoodDao);
 			session.getTransaction().commit();
 			return true;
 
-		}catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			transaction.rollback();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			
-		
+
 		return false;
 	}
 
 	/*
 	 * 
 	 */
-	
+
 	public boolean insertRestFood(String rest_id, String food_id, float rating) {
 		Session session = null;
 		try {
@@ -252,20 +252,21 @@ public static void main(String[] args) {
 			restaurantFoodDao.setRest_id(rest_id);
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
 					"yyyy-MM-dd hh:mm:ss");
-//			Date parsedDate = dateFormat.parse(food_id);
-//			Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+			// Date parsedDate = dateFormat.parse(food_id);
+			// Timestamp timestamp = new
+			// java.sql.Timestamp(parsedDate.getTime());
 			restaurantFoodDao.setFood_id(food_id);
 			restaurantFoodDao.setRating(rating);
 			session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 			return true;
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException  e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
@@ -288,18 +289,18 @@ public static void main(String[] args) {
 				return results.get(0).getFood_id();
 			}
 			//
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		session.close();
 		return null;
 	}
-	
+
 	private String getFoodInit_id(String food_name) {
 		Session session = null;
 		try {
@@ -317,12 +318,12 @@ public static void main(String[] args) {
 				return results.get(0).getFood_id();
 			}
 			//
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		session.close();
@@ -347,18 +348,18 @@ public static void main(String[] args) {
 			// System.out.println("inserted"+food_id_new);
 			// session.close();
 			return timestamp;
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException exception) {
+		} catch (HibernateException exception) {
 
 			exception.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		session.close();
 		return null;
 	}
-	
+
 	private String insertNewFoodInit(String food_name) {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -366,7 +367,7 @@ public static void main(String[] args) {
 
 			session.beginTransaction();
 			FoodInitDao foodDao;// = (FoodDao) session.get(FoodDao.class,
-							// food_name);
+			// food_name);
 			foodDao = new FoodInitDao();
 			foodDao.setFood_name(food_name);
 			String timestamp = new Timestamp(Calendar.getInstance()
@@ -378,12 +379,12 @@ public static void main(String[] args) {
 			// System.out.println("inserted"+food_id_new);
 			// session.close();
 			return timestamp;
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException exception) {
+		} catch (HibernateException exception) {
 
 			exception.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		session.close();
@@ -405,17 +406,17 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
 	}
-	
+
 	public List<FoodInitDao> getFoodInitNames() {
 		Session session = null;
 		List<FoodInitDao> results = new ArrayList<FoodInitDao>();
@@ -431,12 +432,12 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
@@ -458,17 +459,17 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results.get(0).getRest_id();
 	}
-	
+
 	public String getRestName(String restaurant_id) {
 		Session session = null;
 		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
@@ -477,20 +478,19 @@ public static void main(String[] args) {
 			session.beginTransaction();
 			String hql = "FROM RestaurantDao R where R.rest_id= ?";
 
-			Query query = session.createQuery(hql)
-					.setString(0, restaurant_id);
+			Query query = session.createQuery(hql).setString(0, restaurant_id);
 			// System.out.println(query);
 			// @SuppressWarnings("unchecked")
 			results = query.list();
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results.get(0).getRest_name();
@@ -512,12 +512,12 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
@@ -539,17 +539,17 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
 	}
-	
+
 	public List<ReviewDao> getReviewsByRestId(String restaurant_id) {
 		Session session = null;
 		List<ReviewDao> results = new ArrayList<ReviewDao>();
@@ -563,16 +563,16 @@ public static void main(String[] args) {
 			results = query.list();
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
 	}
-	
+
 	public List<ReviewTrainDao> getReviewsTrainByRestId(String restaurant_id) {
 		Session session = null;
 		List<ReviewTrainDao> results = new ArrayList<ReviewTrainDao>();
@@ -586,11 +586,11 @@ public static void main(String[] args) {
 			results = query.list();
 			session.getTransaction().commit();
 
-		}catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
 		} catch (HibernateException e) {
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
@@ -619,17 +619,17 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		}catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
 	}
-	
+
 	public List<RestaurantDao> getRestaurantDaos() {
 		Session session = null;
 		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
@@ -652,12 +652,12 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		}catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
@@ -686,12 +686,12 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return results;
@@ -713,12 +713,12 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if (b > 0) {
@@ -726,6 +726,7 @@ public static void main(String[] args) {
 		} else
 			return false;
 	}
+
 	public boolean removeFoodInitName(String foodName) {
 		Session session = null;
 		int b = 0;
@@ -742,13 +743,12 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		}catch(org.hibernate.exception.ConstraintViolationException e){
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
 			e.printStackTrace();
-		}		
-		catch (HibernateException e) {
+		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if (b > 0) {
