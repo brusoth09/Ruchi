@@ -22,6 +22,7 @@ import com.ruchi.hibernate.model.DAO.RestaurantDao;
 import com.ruchi.hibernate.model.DAO.RestaurantFoodDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
 import com.ruchi.hibernate.model.DAO.ReviewFoodDao;
+import com.ruchi.hibernate.model.DAO.ReviewTrainDao;
 import com.ruchi.hibernate.util.HibernateUtil;
 
 public class DataStore {
@@ -76,7 +77,7 @@ public class DataStore {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			ReviewDao reviewTrainDao = (ReviewDao) session.get(ReviewDao.class,
+			ReviewTrainDao reviewTrainDao = (ReviewTrainDao) session.get(ReviewDao.class,
 					review_id);
 			System.out.println(reviewTrainDao.getRating() + " "
 					+ reviewTrainDao.getRest_id() + " " + reviewTrainDao.getReview()
