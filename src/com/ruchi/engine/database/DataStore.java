@@ -81,7 +81,9 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -108,7 +110,9 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 //
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -133,7 +137,9 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -158,7 +164,9 @@ public static void main(String[] args) {
 				return getFood_id(food_name);
 			}
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -183,7 +191,9 @@ public static void main(String[] args) {
 				return getFoodInit_id(food_name);
 			}
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -216,6 +226,8 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 
+		}catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
 		}catch (HibernateException e) {
 			transaction.rollback();
 			e.printStackTrace();
@@ -248,7 +260,9 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 
-		} catch (HibernateException  e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException  e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -274,7 +288,9 @@ public static void main(String[] args) {
 				return results.get(0).getFood_id();
 			}
 			//
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -301,7 +317,9 @@ public static void main(String[] args) {
 				return results.get(0).getFood_id();
 			}
 			//
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -329,7 +347,9 @@ public static void main(String[] args) {
 			// System.out.println("inserted"+food_id_new);
 			// session.close();
 			return timestamp;
-		} catch (HibernateException exception) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException exception) {
 
 			exception.printStackTrace();
 		}catch(Exception e){
@@ -358,7 +378,9 @@ public static void main(String[] args) {
 			// System.out.println("inserted"+food_id_new);
 			// session.close();
 			return timestamp;
-		} catch (HibernateException exception) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException exception) {
 
 			exception.printStackTrace();
 		}catch(Exception e){
@@ -383,7 +405,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -407,7 +431,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -432,7 +458,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -457,7 +485,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -482,7 +512,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -507,7 +539,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -529,7 +563,9 @@ public static void main(String[] args) {
 			results = query.list();
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			e.printStackTrace();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -550,6 +586,8 @@ public static void main(String[] args) {
 			results = query.list();
 			session.getTransaction().commit();
 
+		}catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}catch(Exception e){
@@ -581,6 +619,8 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
+		}catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
@@ -612,6 +652,8 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
+		}catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
@@ -644,7 +686,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -669,7 +713,9 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		} catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
@@ -696,7 +742,10 @@ public static void main(String[] args) {
 			// session.save(restaurantFoodDao);
 			session.getTransaction().commit();
 
-		} catch (HibernateException e) {
+		}catch(org.hibernate.exception.ConstraintViolationException e){
+			e.printStackTrace();
+		}		
+		catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
 		}catch(Exception e){
