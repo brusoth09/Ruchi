@@ -135,12 +135,12 @@ public class Mapper {
 		}
 	}
 
-	public static void insertFood(String food_name) {
-		dataStore.insertFood(food_name);
+	public static String insertFood(String food_name) {
+		return dataStore.insertFood(food_name);
 	}
 
-	public static void insertFoodInit(String food_name) {
-		dataStore.insertFoodInit(food_name);
+	public static String insertFoodInit(String food_name) {
+		return dataStore.insertFoodInit(food_name);
 	}
 
 	public static void removeFoodInit(String food_name) {
@@ -163,4 +163,7 @@ public class Mapper {
 		return dataStore.insertRestFood(rest_id, food_id, rating);
 	}
 
+	public boolean insertReviewRating(String review_id, float rating) {
+		return dataStore.insertReviewRating(review_id, rating);
+	}
 }

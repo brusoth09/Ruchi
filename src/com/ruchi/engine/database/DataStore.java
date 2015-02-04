@@ -132,8 +132,8 @@ public class DataStore {
 		}
 		return false;
 	}
-
-	/*
+	
+		/*
 	 * insert a food name found among the reviews
 	 */
 	public String insertFood(String food_name) {
