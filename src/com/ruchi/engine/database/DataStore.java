@@ -1,5 +1,6 @@
 package com.ruchi.engine.database;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -83,6 +84,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -108,6 +111,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -130,6 +135,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return false;
@@ -154,6 +161,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -176,6 +185,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return null;
@@ -205,11 +216,14 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 			return true;
 
-		} catch (HibernateException e) {
+		}catch (HibernateException e) {
 			transaction.rollback();
-
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
+			
+		
 		return false;
 	}
 
@@ -237,6 +251,8 @@ public static void main(String[] args) {
 		} catch (HibernateException  e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -260,6 +276,8 @@ public static void main(String[] args) {
 			//
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		session.close();
@@ -285,6 +303,8 @@ public static void main(String[] args) {
 			//
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		session.close();
@@ -312,6 +332,8 @@ public static void main(String[] args) {
 		} catch (HibernateException exception) {
 
 			exception.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		session.close();
 		return null;
@@ -339,6 +361,8 @@ public static void main(String[] args) {
 		} catch (HibernateException exception) {
 
 			exception.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		session.close();
 		return null;
@@ -362,6 +386,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return results;
 	}
@@ -383,6 +409,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return results;
@@ -407,6 +435,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return results.get(0).getRest_id();
 	}
@@ -429,6 +459,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return results.get(0).getRest_name();
@@ -453,6 +485,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return results;
 	}
@@ -476,6 +510,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return results;
 	}
@@ -495,6 +531,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return results;
 	}
@@ -513,6 +551,8 @@ public static void main(String[] args) {
 			session.getTransaction().commit();
 
 		} catch (HibernateException e) {
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return results;
@@ -544,6 +584,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return results;
 	}
@@ -572,6 +614,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return results;
@@ -603,6 +647,8 @@ public static void main(String[] args) {
 		} catch (HibernateException e) {
 			// session.close();
 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return results;
 	}
@@ -625,6 +671,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		if (b > 0) {
@@ -650,6 +698,8 @@ public static void main(String[] args) {
 
 		} catch (HibernateException e) {
 			// session.close();
+			e.printStackTrace();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		if (b > 0) {
