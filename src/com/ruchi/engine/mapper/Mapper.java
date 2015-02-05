@@ -18,18 +18,27 @@ public class Mapper {
 		// System.out.println(insertFoodInit("sample food 3"));
 		// System.out.println(getAllRestaurantIdsAndNames().get(0)[0]+getAllRestaurantIdsAndNames().get(0)[1]);
 //		
-		List<String[]> b = getAllRestaurantIdsAndNames();
-		for (String[] a : b) {
-			for (String s : a) {
-				System.out.println(s);
-				
-			}
-		}
-//		
-//		List<String[]> r=getRestaurantReviewsAndIdsByRestIdTrain("221");
-//		for (String[] a : r) {
+//		List<String[]> b = getAllRestaurantIdsAndNames();
+//		for (String[] a : b) {
 //			for (String s : a) {
 //				System.out.println(s);
+//				
+//			}
+//		}
+		List<String> b1 = getRestaurantIDs();
+		for (String s : b1) {
+//			System.out.println(s);
+			List<String[]> r=getRestaurantReviewsAndIdsByRestId(s);
+			for (String[] a1 : r) {
+				for (String s1 : a1) {
+					System.out.println(s1);
+				}
+			}
+		}
+//		List<String[]> r=getRestaurantReviewsAndIdsByRestIdTrain("221");
+//		for (String[] a1 : r) {
+//			for (String s1 : a1) {
+//				System.out.println(s1);
 //			}
 //		}
 		// getRestaurantIDs()
