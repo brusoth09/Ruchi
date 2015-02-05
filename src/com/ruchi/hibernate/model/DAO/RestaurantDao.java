@@ -28,7 +28,7 @@ public class RestaurantDao {
     @Column(name = "full_address", nullable = true, unique = false, length = 200)
     private String full_address;
 
-    @Column(name = "rest_name", nullable = true, unique = false, length = 200)
+    @Column(name = "rest_name", nullable = false, unique = false, length = 200)
     private String rest_name;
     
     @Column(name="rest_rating", nullable=true, unique=false, length=200)

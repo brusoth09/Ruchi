@@ -646,7 +646,8 @@ public class DataStore {
 					.createCriteria(RestaurantDao.class)
 					.setProjection(
 							Projections.projectionList().add(
-									Projections.property("rest_id"), "rest_id"))
+									Projections.property("rest_id"), "rest_id").add(
+											Projections.property("rest_name"), "rest_name"))
 					.setResultTransformer(
 							Transformers.aliasToBean(RestaurantDao.class));
 

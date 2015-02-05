@@ -12,10 +12,18 @@ import com.ruchi.hibernate.model.DAO.ReviewTrainDao;
 
 public class Mapper {
 	static DataStore dataStore;
-	
-	public static void main(String[]  args){
-		 System.out.println(insertFood("sample food1"));
-		 System.out.println(insertFoodInit("sample food 3"));
+
+	public static void main(String[] args) {
+		// System.out.println(insertFood("sample food1"));
+		// System.out.println(insertFoodInit("sample food 3"));
+		// System.out.println(getAllRestaurantIdsAndNames().get(0)[0]+getAllRestaurantIdsAndNames().get(0)[1]);
+		List<String[]> b = getAllRestaurantIdsAndNames();
+		for (String[] a : b) {
+			for (String s : a) {
+				System.out.println(s);
+			}
+		}
+		// getRestaurantIDs()
 	}
 
 	static {
@@ -171,7 +179,8 @@ public class Mapper {
 		return dataStore.insertReviewFood(review_id, food_id, rating);
 	}
 
-	public static boolean insertRestFood(String rest_id, String food_id, float rating) {
+	public static boolean insertRestFood(String rest_id, String food_id,
+			float rating) {
 		return dataStore.insertRestFood(rest_id, food_id, rating);
 	}
 
@@ -183,20 +192,23 @@ public class Mapper {
 		return dataStore.insertRestRating(rest_id, rating);
 	}
 
-	public static String getRestName(String restaurant_id){
+	public static String getRestName(String restaurant_id) {
 		return dataStore.getRestName(restaurant_id);
 	}
-	
-	public static List<String[]> getAllRestaurantIdsAndNames(){
+
+	public static List<String[]> getAllRestaurantIdsAndNames() {
 		ArrayList<String[]> rest_id_name = new ArrayList<String[]>();
 		List<RestaurantDao> daos = dataStore.getRestaurantDaos();
+//		List<RestaurantDao> daos = dataStore.getRestaurantIds();
 		String[] review = new String[2];
 		for (RestaurantDao r : daos) {
+			review = new String[2];
 			review[0] = r.getRest_id();
 			review[1] = r.getRest_name();
 			rest_id_name.add(review);
+//			System.out.println(r.getRest_id() + r.getRest_name());
 		}
 		return rest_id_name;
 	}
-	
+
 }
