@@ -22,9 +22,10 @@ public class Mapper {
 		for (String[] a : b) {
 			for (String s : a) {
 				System.out.println(s);
+				
 			}
 		}
-		
+//		
 //		List<String[]> r=getRestaurantReviewsAndIdsByRestIdTrain("221");
 //		for (String[] a : r) {
 //			for (String s : a) {
