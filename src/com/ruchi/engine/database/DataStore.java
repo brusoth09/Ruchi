@@ -555,6 +555,7 @@ public class DataStore {
 		return results;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<ReviewDao> getReviewsByRestId(String restaurant_id) {
 		Session session = null;
 		List<ReviewDao> results = new ArrayList<ReviewDao>();

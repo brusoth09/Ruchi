@@ -17,8 +17,16 @@ public class Mapper {
 		// System.out.println(insertFood("sample food1"));
 		// System.out.println(insertFoodInit("sample food 3"));
 		// System.out.println(getAllRestaurantIdsAndNames().get(0)[0]+getAllRestaurantIdsAndNames().get(0)[1]);
-		List<String[]> b = getAllRestaurantIdsAndNames();
-		for (String[] a : b) {
+//		
+//		List<String[]> b = getAllRestaurantIdsAndNames();
+//		for (String[] a : b) {
+//			for (String s : a) {
+//				System.out.println(s);
+//			}
+//		}
+		
+		List<String[]> r=getRestaurantReviewsAndIdsByRestId("221");
+		for (String[] a : r) {
 			for (String s : a) {
 				System.out.println(s);
 			}
@@ -47,6 +55,7 @@ public class Mapper {
 		List<ReviewDao> daos = dataStore.getReviewsByRestName(res_name);
 		String[] review = new String[2];
 		for (ReviewDao r : daos) {
+			review = new String[2];
 			review[0] = r.getReview_id();
 			review[1] = r.getReview();
 			rest_reviews.add(review);
@@ -73,6 +82,7 @@ public class Mapper {
 				.getReviewsTrainByRestName(res_name);
 		String[] review = new String[2];
 		for (ReviewTrainDao r : daos) {
+			review = new String[2];
 			review[0] = r.getReview_id();
 			review[1] = r.getReview();
 			rest_reviews.add(review);
@@ -114,6 +124,7 @@ public class Mapper {
 		List<ReviewDao> daos = dataStore.getReviewsByRestId(rest_id);
 		String[] review = new String[2];
 		for (ReviewDao r : daos) {
+			review = new String[2];
 			review[0] = r.getReview_id();
 			review[1] = r.getReview();
 			rest_reviews.add(review);
@@ -127,6 +138,7 @@ public class Mapper {
 		List<ReviewTrainDao> daos = dataStore.getReviewsTrainByRestId(rest_id);
 		String[] review = new String[2];
 		for (ReviewTrainDao r : daos) {
+			 review = new String[2];
 			review[0] = r.getReview_id();
 			review[1] = r.getReview();
 			rest_reviews.add(review);
