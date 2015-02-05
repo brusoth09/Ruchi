@@ -2,6 +2,8 @@ package com.ruchi.engine.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.ruchi.engine.database.DataStore;
 import com.ruchi.hibernate.model.DAO.FoodDao;
@@ -25,16 +27,16 @@ public class Mapper {
 //				
 //			}
 //		}
-		List<String> b1 = getRestaurantIDs();
-		for (String s : b1) {
-//			System.out.println(s);
-			List<String[]> r=getRestaurantReviewsAndIdsByRestId(s);
-			for (String[] a1 : r) {
-				for (String s1 : a1) {
-					System.out.println(s1);
-				}
-			}
-		}
+//		List<String> b1 = getRestaurantIDs();
+//		for (String s : b1) {
+////			System.out.println(s);
+//			List<String[]> r=getRestaurantReviewsAndIdsByRestId(s);
+//			for (String[] a1 : r) {
+//				for (String s1 : a1) {
+//					System.out.println(s1);
+//				}
+//			}
+//		}
 //		List<String[]> r=getRestaurantReviewsAndIdsByRestIdTrain("221");
 //		for (String[] a1 : r) {
 //			for (String s1 : a1) {
@@ -42,6 +44,11 @@ public class Mapper {
 //			}
 //		}
 		// getRestaurantIDs()
+		
+		Set<String> s=getRestaurantNamesFromReviews();
+		for(String ss:s){
+			System.out.println(ss);
+		}
 	}
 
 	static {
@@ -237,4 +244,12 @@ public class Mapper {
 		return rest_id_name;
 	}
 
+	public static Set<String> getRestaurantNamesFromReviews(){
+		Set<String> rest_ids=new TreeSet<String>();
+		List<ReviewDao> reviews=dataStore.getRestaurantNamesFromReviews();
+		for(ReviewDao r:reviews){
+			rest_ids.add(r.getRest_id());
+		}
+		return rest_ids;
+	}
 }
