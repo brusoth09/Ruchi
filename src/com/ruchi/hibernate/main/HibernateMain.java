@@ -1,16 +1,12 @@
 package com.ruchi.hibernate.main;
 
+import org.hibernate.Session;
+
 import com.ruchi.hibernate.model.DAO.CityDao;
 import com.ruchi.hibernate.model.DAO.FoodDao;
 import com.ruchi.hibernate.model.DAO.RestaurantDao;
 import com.ruchi.hibernate.model.DAO.ReviewDao;
 import com.ruchi.hibernate.util.HibernateUtil;
-
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by Thamayanthy on 12/22/2014.

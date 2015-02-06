@@ -4,13 +4,14 @@ package com.ruchi.hibernate.util;
  * Created by Thamayanthy on 12/22/2014.
  */
 
-import com.ruchi.hibernate.model.Restaurant;
+import java.util.Properties;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import java.util.Properties;
+import com.ruchi.hibernate.model.Restaurant;
 
 public class HibernateUtil {
 
@@ -73,6 +74,8 @@ public class HibernateUtil {
             //Create Properties, can be read from property files too
             Properties props = new Properties();
             props.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+            //uncomment and comment if your system is using default port 80
+//            props.put("hibernate.connection.url", "jdbc:mysql://localhost/ruchidb");
             props.put("hibernate.connection.url", "jdbc:mysql://localhost:8080/ruchidb");
             props.put("hibernate.connection.username", "root");
             props.put("hibernate.connection.password", "root");

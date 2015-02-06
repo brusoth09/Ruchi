@@ -5,17 +5,20 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.Extraction;
 import com.ruchi.engine.foodextraction.FoodClassifier;
 import com.ruchi.engine.foodextraction.OpenNLP;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.LanguageDetector;
+import com.ruchi.engine.preprocessing.GoogleLanguageDetectionTool;
+import com.ruchi.engine.preprocessing.LanguageDectectionTool;
+import com.ruchi.engine.preprocessing.Stemming;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.sentiment.TypedDependencyEngine;
 import com.ruchi.engine.utils.TextEditors;
 
@@ -28,8 +31,7 @@ public class TestingSystem {
 	private ArrayList<Sentence> list;
 	private FoodClassifier wc;
 	
-	DatabaseConnector db;
-	LanguageDetector ld;
+	LanguageDectectionTool ld;
 	
 	private TestingSystem(){
 		sent=new OpenNLP();
@@ -38,12 +40,10 @@ public class TestingSystem {
         exe.load(sent);
         list=new ArrayList<Sentence>();
         wc=new FoodClassifier();
-        db=new DatabaseConnector(true);
-        ld=new LanguageDetector();
+        ld=new GoogleLanguageDetectionTool();
         new TypedDependencyEngine();
         
-        ld.load_profile();
-        db.connect();
+        ld.loadModule();
 	}
 	
 	public static TestingSystem getInstance(){
@@ -59,27 +59,28 @@ public class TestingSystem {
 	}
 	
 	public void readReviews(){
-		ArrayList<String[]> res_list=db.getRestID();
+		ArrayList<String> res_list=Mapper.getRestaurantIDs();
 		
-		for(String[] s:res_list)
+		for(String s:res_list)
         {
-        	Restaurant rest=new Restaurant(s[0]);
-        	rest.setName(s[1]);
-            ArrayList<String> reviews=db.getRestaurantReviewsFromID(s[0]);
-            for(String s1:reviews)
+        	Restaurant rest=new Restaurant(s);
+        	rest.setName("no name");
+            ArrayList<String[]> reviews=Mapper.getRestaurantReviewsAndIdsByRestId(s);
+            for(String[] s1:reviews)
             {
-                if(ld.check_Language(s1))
+                if(ld.findLanguage(s1[1]))
                 {
                 	Review review=new Review();
-                    ArrayList<String> sentences=sent.getSentence(s1);
+                	review.setId(s1[0]);
+                    ArrayList<String> sentences=sent.getSentence(s1[1]);
                     for(String s2:sentences)
                     {
-                        String sen=LanguageDetector.remove_symbols(s2);
+                        String sen=TextUtilizer.utilizeText(s2);
                         Sentence sentence=new Sentence(sen);
                         try {
                             if(sen.length()>1)
                             {
-                            	predictfoods(sentence);
+                            	predictfoods(sentence,rest.getName());
                             }
                             else if(sen.length()==0){
                             	
@@ -89,14 +90,15 @@ public class TestingSystem {
                         }
                         review.addReview(sentence);
                     }
+                    
                     rest.addReview(review);
                     
                 }
             }
             wc.classify();
             dependencyGeneration(rest);
+            
         }
-		db.disconect();
 	}
 	
 	public void predictfoods(Sentence sentence){
@@ -139,6 +141,46 @@ public class TestingSystem {
         
     }
 	
+	public void predictfoods(Sentence sentence,String rest_name){
+        sentence.setSentence((sentence.getSentence()).replaceAll("\\.-"," ").replace("\\.",""));
+        String[] tokens=exe.predict(sentence.getSentence().trim());
+        List<String> predictions= new ArrayList<String>(Arrays.asList(tokens));
+        String[] toks=sent.getWordTokens(sentence.getSentence());
+        String[] toks1=sent.getWordTokens(sentence.getSentence().replace(","," "));
+        sentence.setTokens(toks1);
+        String[] tags=sent.getWordTags(toks1);
+        ArrayList<String> features=sent.findFeatures(tags,toks);
+
+        Iterator<String> iter;
+        //System.out.print(sentence);
+        iter=predictions.iterator();
+        for(String fea:features)
+        {
+
+            while(iter.hasNext())
+            {
+                if(fea.contains(iter.next())){
+                    
+                    sentence.addFood(fea,new Integer[]{0,0});
+                    wc.addFood(fea.toLowerCase());
+                    iter.remove();
+                    break;
+                }
+
+            }
+
+        }
+        iter=predictions.iterator();
+        while(iter.hasNext())
+        {
+            String next=iter.next();
+            sentence.addFood(next,new Integer[]{0,0});
+            wc.addFood(next);
+        }
+        if(sentence.getFoodMap().containsKey(TextUtilizer.pluralToSingular((rest_name))))
+        	sentence.removeFood(Stemming.pluralToSingular(rest_name));
+    }
+	
 	public void dependencyGeneration(Restaurant rest){
     	for(Review r:rest.getReview()){
     		for(Sentence s:r.getSentences()){
@@ -173,9 +215,11 @@ public class TestingSystem {
     				TextEditors.writeTestSentence(s,rest.getName());
     			}
     		}
-    		//call type dependency for Review object here
+    		r.generateFoodSentiment();
+    		r.updateDatabase();
     	}
-    	
+    	rest.generateFoodRating();
+    	rest.updateDatabase();
     }
 
 }

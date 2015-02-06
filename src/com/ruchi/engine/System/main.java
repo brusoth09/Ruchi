@@ -8,6 +8,6 @@ public class main {
     static String res="Pine Cone Restaurant";
     public static void main(String[] args)
     {
-       TestingSystem.getInstance().readReviews();
+    	//TrainingSystem.getInstance().trainFromDatabase();    	TestingSystem.getInstance().readReviews();
     }
 }

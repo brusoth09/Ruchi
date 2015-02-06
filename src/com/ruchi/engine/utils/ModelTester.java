@@ -1,17 +1,21 @@
 package com.ruchi.engine.utils;
 
-import com.ruchi.engine.database.DatabaseConnector;
-import com.ruchi.engine.foodextraction.Extraction;
-import com.ruchi.engine.foodextraction.FoodClassifier;
-import com.ruchi.engine.foodextraction.OpenNLP;
-import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.LanguageDetector;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import com.ruchi.engine.foodextraction.Extraction;
+import com.ruchi.engine.foodextraction.FoodClassifier;
+import com.ruchi.engine.foodextraction.OpenNLP;
+import com.ruchi.engine.models.Sentence;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
  * Created by brusoth on 12/27/2014.
@@ -78,7 +82,7 @@ public class ModelTester {
         Sentence line = new Sentence(sentence);
         String output = "";
         sentence = sentence.replaceAll("\\.-", " ").replace("\\.", "");
-        sentence = LanguageDetector.remove_symbols(sentence);
+        sentence = TextUtilizer.utilizeText(sentence);
         String[] tokens = predictedvalues;
         List<String> predictions = new ArrayList<String>(Arrays.asList(tokens));
         String[] toks = sent.getWordTokens(sentence);

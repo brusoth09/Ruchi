@@ -1,18 +1,17 @@
 package com.ruchi.engine.foodextraction;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collections;
+
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.NameSample;
 import opennlp.tools.namefind.NameSampleDataStream;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
-import opennlp.tools.util.Span;
-
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Collections;
 
 /**
  * Created by brusoth on 11/25/2014.

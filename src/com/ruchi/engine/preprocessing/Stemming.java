@@ -1,8 +1,5 @@
 package com.ruchi.engine.preprocessing;
 
-import java.io.IOException;
-
-import com.ruchi.engine.foodextraction.FoodSearch;
 import org.tartarus.snowball.ext.PorterStemmer;
 
 

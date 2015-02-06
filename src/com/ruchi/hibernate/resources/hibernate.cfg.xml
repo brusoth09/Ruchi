@@ -8,7 +8,7 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/ruchidb</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.password"></property>
 		<!-- Connection Pool Size -->
 		<property name="hibernate.connection.pool_size">1</property>
 
@@ -31,7 +31,9 @@
 		<mapping resource="com/ruchi/hibernate/resources/restaurant.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/city.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/food.hbm.xml" />
+		<mapping resource="com/ruchi/hibernate/resources/foodinit.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/review.hbm.xml" />
+		<mapping resource="com/ruchi/hibernate/resources/review_train.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/review_food.hbm.xml" />
 		<mapping resource="com/ruchi/hibernate/resources/rest_food.hbm.xml" />
 

@@ -1,9 +1,8 @@
 package com.ruchi.engine.models;
 
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
 
-import com.ruchi.engine.preprocessing.Stemmer;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
  * Created by brusoth on 12/12/2014.
@@ -81,7 +80,7 @@ public class Sentence {
 			return -1;
 		}
 		for(int i=0;i<tokens.length;i++){
-			if(wordtokens[0].equalsIgnoreCase(tokens[i]) ||wordtokens[0].equalsIgnoreCase(Stemmer.pluralToSingular(tokens[i]))){
+			if(wordtokens[0].equalsIgnoreCase(tokens[i]) ||wordtokens[0].equalsIgnoreCase(TextUtilizer.pluralToSingular(tokens[i]))){
 				return i;
 			}
 		}

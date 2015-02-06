@@ -2,8 +2,10 @@ package com.ruchi.engine.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.ranking.RankingAlgorithm;
 
 /**
@@ -80,5 +82,13 @@ public class Review {
 
 	public boolean isContainFood() {
 		return isContainFood;
+	}
+	
+	public void updateDatabase(){		for (Map.Entry<String, Double> entry : foodSentiment.entrySet())
+		{
+		   String foodKey=Mapper.insertFood(entry.getKey());
+		   Mapper.insertReviewFood(this.id, foodKey, entry.getValue().floatValue());
+		}
+		Mapper.insertReviewRating(this.id,(float)rating);
 	}
 }

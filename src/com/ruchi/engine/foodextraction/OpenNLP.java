@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
@@ -140,6 +139,8 @@ public class OpenNLP {
         //chunker implementation
         //String result[] = chunkerME.chunk(whitespaceTokenizerLine, tags);
         Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
+        
+        //System.out.println(Arrays.toString(tags));
         String[] array=Span.spansToStrings(span, whitespaceTokenizerLine);
         String sent="";
 
@@ -201,15 +202,7 @@ public class OpenNLP {
     public static void main(String args[]) throws IOException {
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        String[] toks=sent.getWordTokens(("My boyfriend ordered the protein pancake\n"));
-        String[] tags=sent.getWordTags(toks);
-        System.out.println(Arrays.toString(tags));
-        ArrayList<String> features = sent.findFeatures(tags, toks);
-        for(String s:features){
-            System.out.println(s);
-        }
-        System.out.println(Arrays.toString(sent.getNames(toks)));
-        Arrays.toString(tags);
+        sent.tagSentence("We tried Wicked Spoon and Bacchanal in two consecutive nights");
     }
 }
 

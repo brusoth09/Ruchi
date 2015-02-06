@@ -10,10 +10,13 @@ import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.Extraction;
 import com.ruchi.engine.foodextraction.FoodClassifier;
 import com.ruchi.engine.foodextraction.OpenNLP;
+import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.LanguageDetector;
+import com.ruchi.engine.preprocessing.GoogleLanguageDetectionTool;
+import com.ruchi.engine.preprocessing.LanguageDectectionTool;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 
 public class FirstTest {
@@ -34,29 +37,29 @@ public class FirstTest {
         exe.load(sent);
         list=new ArrayList<Sentence>();
         wc=new FoodClassifier();
-		DatabaseConnector db=new DatabaseConnector(true);
-        LanguageDetector ld=new LanguageDetector();
+		
+        LanguageDectectionTool ld=new GoogleLanguageDetectionTool();
         
-        ld.load_profile();
-        db.connect();
+        ld.loadModule();
         
-        ArrayList<String> res_list=db.getRestaurants();
+        
+        ArrayList<String> res_list=Mapper.getRestaurantIDs();
         //OpenNLP sent=new OpenNLP();
         //sent.loadModel();
         
         for(String s:res_list)
         {
         	Restaurant rest=new Restaurant(s);
-            ArrayList<String> reviews=db.getRestaurantReviews(s);
-            for(String s1:reviews)
+            ArrayList<String[]> reviews=Mapper.getRestaurantReviewsAndIdsByRestId(s);
+            for(String[] s1:reviews)
             {
-                if(ld.check_Language(s1))
+                if(ld.findLanguage(s1[1]))
                 {
                 	Review review=new Review();
-                    ArrayList<String> sentences=sent.getSentence(s1);
+                    ArrayList<String> sentences=sent.getSentence(s1[1]);
                     for(String s2:sentences)
                     {
-                        String sen=LanguageDetector.remove_symbols(s2);
+                        String sen=TextUtilizer.utilizeText(s2);
                         Sentence sentence=new Sentence(sen);
                         try {
                             if(sen.length()>1)
@@ -78,7 +81,6 @@ public class FirstTest {
             wc.classify();
             dependencyGeneration(rest);
         }
-        db.disconect();
 	}
 	
 

@@ -1,6 +1,11 @@
 package com.ruchi.engine.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -199,6 +204,7 @@ public class DatabaseConnector {
         }
     }
 
+    //not mapped yet
     public void insertWord(String word)
     {
         String query="INSERT INTO word_names VALUES (?)";
