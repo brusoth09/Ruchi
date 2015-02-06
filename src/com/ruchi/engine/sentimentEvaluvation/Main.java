@@ -21,8 +21,13 @@ public static void main(String[] arg)
 			System.out.println("*****************************************RESULT**********************************");
 			System.out.println("truePositive:"+SentiChecker.truePositive+"\nfalsePoitive"+SentiChecker.FalsePositive+"\nfalseNegative"
 					+SentiChecker.FalseNegative+"\nTrue Negative"+SentiChecker.TrueNegative);
+			double precision= (SentiChecker.truePositive)/(SentiChecker.truePositive+SentiChecker.FalsePositive);
+			double recall=(SentiChecker.truePositive)/(SentiChecker.truePositive+SentiChecker.FalseNegative);
+			double f_measure=(2*precision*recall)/(precision+recall);
 			System.out.println("accuracy:"+(SentiChecker.truePositive+SentiChecker.TrueNegative)/533); //plz change total number
-			System.out.println("precision:"+(SentiChecker.truePositive)/(SentiChecker.truePositive+SentiChecker.FalsePositive));
+			System.out.println("recall:"+recall);
+			System.out.println("precision:"+precision);
+			System.out.println("f-measure:"+f_measure);
 			System.out.println("*********************************************************************************");
 		}
 		else

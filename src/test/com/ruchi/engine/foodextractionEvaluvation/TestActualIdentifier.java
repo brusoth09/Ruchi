@@ -5,10 +5,14 @@ package test.com.ruchi.engine.foodextractionEvaluvation;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.mockito.Mockito.mock;
 
 import com.ruchi.engine.foodextractionEvaluvation.ActualIdentifier;
@@ -47,6 +51,9 @@ public class TestActualIdentifier {
 	public void testGetReviewSentence() {
 		ActualIdentifier actualIdentifier =mock(ActualIdentifier.class);
 		assertEquals(null,actualIdentifier.getReviewSentence());
+		actualIdentifier=new ActualIdentifier();
+		actualIdentifier.setReviewSentence("test");
+		assertEquals("test",actualIdentifier.getReviewSentence());
 	}
 
 	/**
@@ -54,7 +61,10 @@ public class TestActualIdentifier {
 	 */
 	@Test
 	public void testGetIdentifiedFoods() {
-		
+		ActualIdentifier actualIdentifier =new ActualIdentifier();
+		ArrayList<String> identifiedFoods=mock(ArrayList.class);
+		actualIdentifier.setIdentifiedFoods(identifiedFoods);
+		assertEquals(identifiedFoods,actualIdentifier.getIdentifiedFoods());
 	}
 
 }
