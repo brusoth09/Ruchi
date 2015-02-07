@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import com.ruchi.engine.models.Restaurant;
+import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
 
 /**
@@ -69,11 +71,35 @@ public class TextEditors {
             out.println(sentence.getSentence());
             Iterator it = sentence.getFoodSentiment().entrySet().iterator();
             while (it.hasNext()) {
+            	out.print("**");
                 Entry pairs = (Entry)it.next();
-                out.print(pairs.getKey()+"---->");
-                out.println(pairs.getValue());
+                out.print(pairs.getKey()+"###");
+                out.print(pairs.getValue());
+                out.println("###");
             }
-            out.println("---------------------------------------------------------------");
+            
+        }catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void writeTestSentence(Restaurant rest){
+    	try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("res/FoodDependency/"+rest.getName()+"test_sentences.txt", true)))) {
+            System.out.println("review");
+    		for(Review review:rest.getReview()){
+    			System.out.println("review------");
+            	for(Sentence sent:review.getSentences()){
+            		out.println(sent.getSentence());
+            		Iterator it = sent.getFoodSentiment().entrySet().iterator();
+                    while (it.hasNext()) {
+                    	out.print("**");
+                        Entry pairs = (Entry)it.next();
+                        out.print(pairs.getKey()+"###");
+                        out.print(pairs.getValue());
+                        out.println("###");
+                    }
+            	}
+            }
             
         }catch (IOException e) {
             System.out.println(e);

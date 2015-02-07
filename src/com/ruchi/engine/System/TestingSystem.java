@@ -11,7 +11,7 @@ import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.Extraction;
 import com.ruchi.engine.foodextraction.FoodClassifier;
 import com.ruchi.engine.foodextraction.OpenNLP;
-import com.ruchi.engine.mapper.Mapper;
+//import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
@@ -30,6 +30,7 @@ public class TestingSystem {
 	private Extraction exe;
 	private ArrayList<Sentence> list;
 	private FoodClassifier wc;
+	private DatabaseConnector dc;
 	
 	LanguageDectectionTool ld;
 	
@@ -42,7 +43,9 @@ public class TestingSystem {
         wc=new FoodClassifier();
         ld=new GoogleLanguageDetectionTool();
         new TypedDependencyEngine();
+        dc=new DatabaseConnector();
         
+        dc.connect();
         ld.loadModule();
 	}
 	
@@ -59,13 +62,13 @@ public class TestingSystem {
 	}
 	
 	public void readReviews(){
-		ArrayList<String> res_list=Mapper.getRestaurantIDs();
+		ArrayList<String[]> res_list=(ArrayList<String[]>) dc.getRestIDAndName();
 		
-		for(String s:res_list)
+		for(String[] s:res_list)
         {
-        	Restaurant rest=new Restaurant(s);
-        	rest.setName("no name");
-            ArrayList<String[]> reviews=Mapper.getRestaurantReviewsAndIdsByRestId(s);
+        	Restaurant rest=new Restaurant(s[0]);
+        	rest.setName(s[1]);
+            ArrayList<String[]> reviews=dc.getRestaurantReviewsFromID(s[0].trim());
             for(String[] s1:reviews)
             {
                 if(ld.findLanguage(s1[1]))
@@ -212,14 +215,16 @@ public class TestingSystem {
     			s.addFood(temp);
     			if(s.isContainFood()){
     				TypedDependencyEngine.foodSentiment(s);
-    				TextEditors.writeTestSentence(s,rest.getName());
+    				//TextEditors.writeTestSentence(s,rest.getName());
     			}
     		}
     		r.generateFoodSentiment();
-    		r.updateDatabase();
+    		r.updateDatabase(dc);
     	}
     	rest.generateFoodRating();
-    	rest.updateDatabase();
+    	rest.updateDatabase(dc);
+    	//if(rest.getReview().size()>0)
+    	//TextEditors.writeTestSentence(rest);
     }
 
 }

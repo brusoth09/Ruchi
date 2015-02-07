@@ -1,5 +1,8 @@
 package com.ruchi.engine.preprocessing;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TextUtilizer {
 	public static String utilizeText(String text){
 		/*RULES
@@ -13,14 +16,20 @@ public class TextUtilizer {
 	}
 	
 	public static String pluralToSingular(String word){
-        if(word.endsWith("es")){
+		List<String> list=Arrays.asList("pies");
+		if(word.endsWith("ies")){
+			if(list.contains(word)){
+				return word.substring(0,word.length()-1);
+			}
+			else{
+				return word.substring(0,word.length()-3).concat("y");
+			}
+		}
+		else if(word.endsWith("es")){
             return word.substring(0,word.length()-1);
         }
         else if(word.endsWith("s")){
             return word.substring(0,word.length()-1);
-        }
-        else if(word.endsWith("ies")){
-        	//
         }
         return word;
     }

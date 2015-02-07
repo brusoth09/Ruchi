@@ -12,7 +12,7 @@ public class Sentence {
     private String line;
     private String[] tokens;
     private HashMap<String,Integer[]> food=new HashMap<String,Integer[]>();
-    private HashMap<String, Double> foodSentiment;
+    private HashMap<String, Double> foodSentiment=new HashMap<String, Double>();
     
     public Sentence(String line){
         this.line=line;

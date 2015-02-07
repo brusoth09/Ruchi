@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.ranking.RankingAlgorithm;
 
@@ -14,7 +15,7 @@ import com.ruchi.engine.ranking.RankingAlgorithm;
 public class Review {
 	private String id;
 	private ArrayList<Sentence> list = new ArrayList<Sentence>();
-	private HashMap<String, Double> foodSentiment;
+	private HashMap<String, Double> foodSentiment=new HashMap<String,Double>();
 	private boolean isContainFood = false;
 	private double rating;
 
@@ -71,7 +72,9 @@ public class Review {
 			for (String key : keySet) {
 				double score = RankingAlgorithm.avgScoreDouble(foodScoreMap
 						.get(key));
-				foodSentiment.put(key, score);
+				//need to handle dublicates
+				if(!foodSentiment.containsKey(key))
+					foodSentiment.put(key, score);
 			}
 		}
 	}
@@ -84,11 +87,21 @@ public class Review {
 		return isContainFood;
 	}
 	
-	public void updateDatabase(){		for (Map.Entry<String, Double> entry : foodSentiment.entrySet())
+	public void updateDatabase(){		
+		for (Map.Entry<String, Double> entry : foodSentiment.entrySet())
 		{
 		   String foodKey=Mapper.insertFood(entry.getKey());
 		   Mapper.insertReviewFood(this.id, foodKey, entry.getValue().floatValue());
 		}
 		Mapper.insertReviewRating(this.id,(float)rating);
+	}
+	
+	public void updateDatabase(DatabaseConnector dc){		
+		for (Map.Entry<String, Double> entry : foodSentiment.entrySet())
+		{
+		   String foodKey=dc.inserNewFood(entry.getKey());
+		   dc.insert_review_food(this.id, foodKey, entry.getValue());
+		}
+		dc.updateReviewRating(this.id,rating);
 	}
 }

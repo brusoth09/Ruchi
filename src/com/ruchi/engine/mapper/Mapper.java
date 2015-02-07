@@ -17,21 +17,20 @@ public class Mapper {
 		// System.out.println(insertFood("sample food1"));
 		// System.out.println(insertFoodInit("sample food 3"));
 		// System.out.println(getAllRestaurantIdsAndNames().get(0)[0]+getAllRestaurantIdsAndNames().get(0)[1]);
-//		
+		
 		List<String[]> b = getAllRestaurantIdsAndNames();
 		for (String[] a : b) {
-			for (String s : a) {
-				System.out.println(s);
+			List<String[]> r=getRestaurantReviewsAndIdsByRestId("1408182216001");
+			System.out.println(r.size());
+			for (String[] ab : r) {
+				for (String s : ab) {
+					System.out.println(ab);
+				}
 			}
 		}
 		
-//		List<String[]> r=getRestaurantReviewsAndIdsByRestIdTrain("221");
-//		for (String[] a : r) {
-//			for (String s : a) {
-//				System.out.println(s);
-//			}
-//		}
-		// getRestaurantIDs()
+		
+		 //getRestaurantIDs();
 	}
 
 	static {
