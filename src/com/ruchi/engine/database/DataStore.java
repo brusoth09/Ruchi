@@ -131,7 +131,7 @@ public class DataStore {
 			session.beginTransaction();
 			RestaurantDao restaurantDao = (RestaurantDao) session.get(
 					RestaurantDao.class, rest_Id);
-			System.out.println(rating);
+//			System.out.println(rating);
 			restaurantDao.setRest_rating(rating);
 			session.update(restaurantDao);
 			session.getTransaction().commit();
@@ -685,6 +685,40 @@ public class DataStore {
 									"rest_name"))
 					.setResultTransformer(
 							Transformers.aliasToBean(RestaurantDao.class));
+
+			// Query query = session.createQuery(hql);
+			// System.out.println(query);
+			// @SuppressWarnings("unchecked")
+			results = cr.list();
+			// session.save(restaurantFoodDao);
+			session.getTransaction().commit();
+
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
+			e.printStackTrace();
+		} catch (HibernateException e) {
+			// session.close();
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return results;
+	}
+
+	public List<ReviewDao> getRestaurantNamesFromReviews() {
+		Session session = null;
+		List<ReviewDao> results = new ArrayList<ReviewDao>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			String hql = "R.rest_id FROM ReviewDao R";
+			Criteria cr = session
+					.createCriteria(ReviewDao.class)
+					.setProjection(
+							Projections.projectionList().add(
+									Projections.property("rest_id"),
+									"rest_id"))
+					.setResultTransformer(
+							Transformers.aliasToBean(ReviewDao.class));
 
 			// Query query = session.createQuery(hql);
 			// System.out.println(query);
