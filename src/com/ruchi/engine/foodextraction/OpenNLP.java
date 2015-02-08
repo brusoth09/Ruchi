@@ -205,7 +205,7 @@ public class OpenNLP {
     public static void main(String args[]) throws IOException {
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        String line="kottu rangoons was delicious";
+        String line="fish fry was delicious";
         String[] tokens=sent.getTokens(line);
         Span nameSpans[] = sent.getNames(tokens);
         String[] array=Span.spansToStrings(nameSpans,tokens);
