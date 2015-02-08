@@ -73,7 +73,7 @@ public class FrameIntro {
 		OpenNLP openNlp=new OpenNLP();
 		openNlp.loadModel();
 		
-		frame.setBounds(100, 100, 450, 621);
+		frame.setBounds(100, 100, 450, 752);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -152,29 +152,45 @@ public class FrameIntro {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "Sentiment", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(10, 306, 414, 60);
+		panel_1.setBounds(10, 469, 414, 60);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblSentimentValue = new JLabel("Sentiment Value");
-		lblSentimentValue.setBounds(99, 24, 100, 14);
+		JLabel lblSentimentValue = new JLabel("Food names");
+		lblSentimentValue.setBounds(10, 24, 394, 14);
 		panel_1.add(lblSentimentValue);
-		
-		JLabel lblPoistive = new JLabel("Poistive");
-		lblPoistive.setBounds(236, 24, 46, 14);
-		panel_1.add(lblPoistive);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "Food Prediction", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_2.setBounds(10, 393, 414, 76);
+		panel_2.setBounds(10, 540, 414, 76);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 496, 414, 76);
+		panel_3.setBounds(10, 627, 414, 76);
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		panel_3.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "Dictionary Chunker", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setLayout(null);
+		panel_4.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "After Post Processing", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_4.setBounds(10, 398, 414, 60);
+		frame.getContentPane().add(panel_4);
+		
+		JLabel lblFoodNames = new JLabel("Food Names");
+		lblFoodNames.setBounds(10, 24, 394, 14);
+		panel_4.add(lblFoodNames);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setLayout(null);
+		panel_5.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "NER-pridiction", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_5.setBounds(10, 327, 414, 60);
+		frame.getContentPane().add(panel_5);
+		
+		JLabel lblFoodNames_1 = new JLabel("Food Names");
+		lblFoodNames_1.setBounds(10, 24, 394, 14);
+		panel_5.add(lblFoodNames_1);
 		
 		
 		
