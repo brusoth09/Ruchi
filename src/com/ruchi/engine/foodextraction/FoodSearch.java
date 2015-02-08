@@ -2,6 +2,7 @@ package com.ruchi.engine.foodextraction;
 
 import java.util.ArrayList;
 
+import com.ruchi.engine.database.DBConnection;
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.preprocessing.TextUtilizer;
@@ -15,13 +16,16 @@ public class FoodSearch {
 
     public void loadFood()
     {
-        Mapper.getFoodInitNames(dictionary);
+        db=new DatabaseConnector();
+        db.connect();
+        dictionary=db.getInitFoodNames();
+        db.disconect();
     }
 
     public String search(String chunk)
     {
         String output="";
-        String[] tokens=chunk.toLowerCase().split("//s+");
+        String[] tokens=chunk.toLowerCase().split("\\s+");
         if(tokens.length==1)
         {
             if(dictionary.contains(TextUtilizer.pluralToSingular(tokens[0].trim())))

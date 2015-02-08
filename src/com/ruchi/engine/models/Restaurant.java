@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.ranking.RankingAlgorithm;
@@ -123,6 +124,15 @@ public class Restaurant {
 		   Mapper.insertRestFood(this.id,foodKey, entry.getValue().floatValue());
 		}
 		Mapper.insertRestRating(this.id, (float)rating);
+	}
+	
+	public void updateDatabase(DatabaseConnector dc){
+		for (Map.Entry<String, Double> entry : foodRating.entrySet())
+		{
+		   String foodKey=dc.inserNewFood(entry.getKey());
+		   dc.insert_rest_food(this.id,foodKey, entry.getValue());
+		}
+		dc.updateRestarantRating(this.id,rating);
 	}
 
 }

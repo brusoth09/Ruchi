@@ -2,8 +2,6 @@ package com.ruchi.engine.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 import com.ruchi.engine.database.DataStore;
 import com.ruchi.hibernate.model.DAO.FoodDao;
@@ -20,35 +18,20 @@ public class Mapper {
 		// System.out.println(insertFoodInit("sample food 3"));
 		// System.out.println(getAllRestaurantIdsAndNames().get(0)[0]+getAllRestaurantIdsAndNames().get(0)[1]);
 //		
-//		List<String[]> b = getAllRestaurantIdsAndNames();
-//		for (String[] a : b) {
+		List<String[]> b = getAllRestaurantIdsAndNames();
+		for (String[] a : b) {
+			for (String s : a) {
+				System.out.println(s);
+			}
+		}
+		
+//		List<String[]> r=getRestaurantReviewsAndIdsByRestIdTrain("221");
+//		for (String[] a : r) {
 //			for (String s : a) {
 //				System.out.println(s);
-//				
-//			}
-//		}
-//		List<String> b1 = getRestaurantIDs();
-//		for (String s : b1) {
-////			System.out.println(s);
-//			List<String[]> r=getRestaurantReviewsAndIdsByRestId(s);
-//			for (String[] a1 : r) {
-//				for (String s1 : a1) {
-//					System.out.println(s1);
-//				}
-//			}
-//		}
-//		List<String[]> r=getRestaurantReviewsAndIdsByRestIdTrain("221");
-//		for (String[] a1 : r) {
-//			for (String s1 : a1) {
-//				System.out.println(s1);
 //			}
 //		}
 		// getRestaurantIDs()
-		
-		Set<String> s=getRestaurantNamesFromReviews();
-		for(String ss:s){
-			System.out.println(ss);
-		}
 	}
 
 	static {
@@ -244,12 +227,4 @@ public class Mapper {
 		return rest_id_name;
 	}
 
-	public static Set<String> getRestaurantNamesFromReviews(){
-		Set<String> rest_ids=new TreeSet<String>();
-		List<ReviewDao> reviews=dataStore.getRestaurantNamesFromReviews();
-		for(ReviewDao r:reviews){
-			rest_ids.add(r.getRest_id());
-		}
-		return rest_ids;
-	}
 }

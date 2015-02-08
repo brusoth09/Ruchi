@@ -17,12 +17,15 @@ public class TrainingSystem {
 	
     private LanguageDectectionTool ld;
     private OpenNLP sent;
+    private DatabaseConnector dc;
     
     private TrainingSystem(){
     	ld=new GoogleLanguageDetectionTool();
     	sent=new OpenNLP();
         ld.loadModule();
         sent.loadModel();
+        dc=new DatabaseConnector();
+        dc.connect();
     }
     
     public static TrainingSystem getInstance(){
@@ -43,11 +46,11 @@ public class TrainingSystem {
 	}
 	
 	public void trainFromDatabase(){
-		ArrayList<String> res_list=Mapper.getRestaurantIDs();
+		ArrayList<String[]> res_list=dc.getRestIDAndName();
 		
-		for(String s:res_list)
+		for(String[] s:res_list)
         {
-            ArrayList<String[]> reviews=Mapper.getRestaurantReviewsByRestIdTrain(s);
+            ArrayList<String[]> reviews=dc.getRestaurantReviewsFromIDTrain(s[0]);
             for(String[] s1:reviews)
             {
                 if(ld.findLanguage(s1[1]))

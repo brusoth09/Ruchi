@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
@@ -133,20 +134,22 @@ public class OpenNLP {
             whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
                     .tokenize(line);
             tags = tagger.tag(whitespaceTokenizerLine);
-            //POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
         }
 
-        //chunker implementation
-        //String result[] = chunkerME.chunk(whitespaceTokenizerLine, tags);
         Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
-        
-        //System.out.println(Arrays.toString(tags));
+        //System.out.println(Arrays.toString(span));
         String[] array=Span.spansToStrings(span, whitespaceTokenizerLine);
+        ////System.out.println(Arrays.toString(array));
         String sent="";
 
+        int i=0;
         for(String s:array)
         {
-           sent=sent.concat(fs.search(s)+" ");
+        	if(span[i].getType().equalsIgnoreCase("NP"))
+        		sent=sent.concat(fs.search(s)+" ");
+        	else
+        		sent=sent.concat(s+" ");
+        	i++;
         }
         if(sent.contains("<START:food>"))
             TextEditors.writeTextFile(sent);
@@ -202,7 +205,11 @@ public class OpenNLP {
     public static void main(String args[]) throws IOException {
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        sent.tagSentence("We tried Wicked Spoon and Bacchanal in two consecutive nights");
+        String line="fish fry was delicious";
+        String[] tokens=sent.getTokens(line);
+        Span nameSpans[] = sent.getNames(tokens);
+        String[] array=Span.spansToStrings(nameSpans,tokens);
+        System.out.println(Arrays.toString(array));
     }
 }
 
