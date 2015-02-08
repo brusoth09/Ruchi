@@ -26,7 +26,7 @@ public class Train {
         }
     }
     public void train() throws IOException {
-        FileReader fileReader = new FileReader("res/review_train");
+        FileReader fileReader = new FileReader("res/training");
         ObjectStream<String> fileStream = new PlainTextByLineStream(fileReader);
         ObjectStream<NameSample> sampleStream = new NameSampleDataStream(fileStream);
         model = NameFinderME.train("pt-br", "train", sampleStream, Collections.<String, Object>emptyMap());

@@ -92,6 +92,25 @@ public class DatabaseConnector {
         return list;
     }
     
+    public ArrayList<String> getInitFoodNames()
+    {
+        ArrayList<String> list=new ArrayList<String>();
+        String query="SELECT food_name FROM foods_init";
+
+        try {
+            pstmt=conn.prepareStatement(query);
+            ResultSet res = pstmt.executeQuery();
+            while(res.next()){
+                String rest = res.getString("food_name");
+                //System.out.println(rest);
+                list.add(rest);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
     public ArrayList<String[]> getRestIDAndName(){
     	ArrayList<String[]> list=new ArrayList<String[]>();
         String query="SELECT rest_id,rest_name FROM restaurants";
@@ -146,7 +165,7 @@ public class DatabaseConnector {
             pstmt.setString(1,id);
             ResultSet res = pstmt.executeQuery();
             while(res.next()){
-            	String review_id=res.getString("id");
+            	String review_id=res.getString("review_id");
                 String review = res.getString("review");
                 list.add(new String[]{review_id,review});
             }
@@ -307,10 +326,11 @@ public class DatabaseConnector {
     public static void main(String args[]){
     	DatabaseConnector db=new DatabaseConnector();
     	db.connect();
-    	System.out.println(db.inserNewFood("pizzaaa"));
+    	//System.out.println(db.inserNewFood("pizzaaa"));
     	//db.insert_rest_food("1408181771009", "1423171966949", 4.0);
     	//db.insert_review_food("1408201920908", "1423171966949", 4.0);
-    	db.updateReviewRating("1408201920908", 4.0);
+    	//db.updateReviewRating("1408201920908", 4.0);
+    	System.out.println(db.getInitFoodNames().size());
     }
 
 }

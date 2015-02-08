@@ -23,36 +23,7 @@ public class Extraction {
         rest_list=Mapper.getRestaurantIDs();
         this.sent=sent;
     }
-
-    //unused method only for testing purpose
-    public void readReviews()
-    {
-        for(String rest:rest_list){
-            ArrayList<String[]> review_set=Mapper.getRestaurantReviewsAndIdsByRestId(rest.trim());
-            for(String[] review:review_set)
-            {
-                ArrayList<String> sentences=sent.getSentence(review[1]);
-                for(String sentence:sentences){
-                    String[] tokens=predict(sentence.trim());
-                    String[] toks=sent.getWordTokens(sentence);
-                    String[] tags=sent.getWordTags(toks);
-                    ArrayList<String> features=sent.findFeatures(tags,toks);
-
-                    for(String fea:features)
-                    {
-                        for(String pre:tokens)
-                        {
-                            if(fea.contains(pre)){
-                                System.out.println(fea);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
+    
     public String[] predict(String line){
         String[] tokens=sent.getTokens(line);
         Span nameSpans[] = sent.getNames(tokens);
@@ -67,6 +38,5 @@ public class Extraction {
         exe.load(nlp);
         String[] output=exe.predict("i had a pizza");
         System.out.println(output[0]);
-        exe.readReviews();
     }
 }

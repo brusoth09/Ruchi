@@ -49,7 +49,7 @@ public class TextEditors {
 
     public static void writeTextFile(String sentence)
     {
-        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("res/review_train", true)))) {
+        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("res/training", true)))) {
             out.println(sentence);
         }catch (IOException e) {
             System.out.println(e);
