@@ -72,8 +72,8 @@ public class OpenNLP {
             TokenizerModel model = new TokenizerModel(token_model);
             tokenizer = new TokenizerME(model);
 
-            fs=new FoodSearch();
-            fs.loadFood();
+            //fs=new FoodSearch();
+            //fs.loadFood();
         }
         catch(Exception e)
         {
