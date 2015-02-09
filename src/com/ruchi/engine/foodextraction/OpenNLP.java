@@ -53,7 +53,7 @@ public class OpenNLP {
         try {
             sent_model = new FileInputStream("en-sent.zip");			//load trained file for sentence detection
             token_model = new FileInputStream("en-token.zip");			//load trained model for token stream
-            person_model= new FileInputStream("res/en-food.train");		//load trained food stream	
+            person_model= new FileInputStream("res/en-food1.train");		//load trained food stream	
             model = new POSModelLoader().load(new File("en-pos-maxent.zip"));//load POS tagger stream
             is = new FileInputStream("en-chunker.zip");					//load chunker stream
 
@@ -200,6 +200,20 @@ public class OpenNLP {
         }
         
         return feature_list;
+    }
+    
+    public ArrayList<String> findFeatureUsingChunker(String line){
+    	ArrayList<String> feature_list=new ArrayList<String>();
+    	String[] whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
+                .tokenize(line);
+        String[] tags = tagger.tag(whitespaceTokenizerLine);
+        Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
+        for(Span s:span){
+        	if(s.getType().equals("NP")){
+        		feature_list.add(s.toString());
+        	}
+        }
+    	return feature_list;
     }
 
     public static void main(String args[]) throws IOException {

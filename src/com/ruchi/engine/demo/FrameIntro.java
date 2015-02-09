@@ -17,6 +17,8 @@ import javax.swing.border.LineBorder;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -35,6 +37,7 @@ public class FrameIntro {
 	private JFrame frame;
 	String[] output;
 	int priviousCount=0;
+	OpenNLP openNlp;
 	/**
 	 * Launch the application.
 	 */
@@ -70,7 +73,7 @@ public class FrameIntro {
 		ArrayList<JLabel> lblNewLabels=new ArrayList<JLabel>();
 		StarRater[] starRaters1=new StarRater[5];
 		JLabel[] lblNewLabels1= new  JLabel[5];
-		OpenNLP openNlp=new OpenNLP();
+		openNlp=new OpenNLP();
 		openNlp.loadModel();
 		
 		frame.setBounds(100, 100, 450, 752);
@@ -94,13 +97,14 @@ public class FrameIntro {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String sen=textArea.getText();
-				
-				String[] tokens=openNlp.getTokens(sen);
 				Sentence sentence=new Sentence(sen);
-				typedDependencyEngine.foodSentiment(sentence);
-				Span nameSpaces[]=openNlp.getNames(tokens);
-				output=Span.spansToStrings(nameSpaces, tokens);
+				output=predictNER(sen);
 				System.out.println(output.length);
+				postProcessing(sentence);
+				Iterator keys=sentence.getFoodMap().keySet().iterator();
+				while(keys.hasNext()){
+					System.out.println(keys.next().toString());
+				}
 				
 				int i=0; 
 				
@@ -196,5 +200,49 @@ public class FrameIntro {
 		
 		
 		//panel.setLayout(null);
+	}
+	
+	public String[] predictNER(String sentence){
+		String[] tokens=openNlp.getTokens(sentence);
+		Span nameSpaces[]=openNlp.getNames(tokens);
+		return Span.spansToStrings(nameSpaces, tokens);
+	}
+	
+	public void postProcessing(Sentence sentence){
+		sentence.setSentence((sentence.getSentence()).replaceAll("\\.-"," ").replace("\\.",""));
+        String[] tokens=predictNER(sentence.getSentence().trim());
+        List<String> predictions= new ArrayList<String>(Arrays.asList(tokens));
+        String[] toks=openNlp.getWordTokens(sentence.getSentence());
+        String[] toks1=openNlp.getWordTokens(sentence.getSentence().replace(","," "));
+        sentence.setTokens(toks1);
+        String[] tags=openNlp.getWordTags(toks1);
+        ArrayList<String> features=openNlp.findFeatures(tags,toks);
+
+        Iterator<String> iter;
+        //System.out.print(sentence);
+        
+        for(String fea:features)
+        {
+        	iter=predictions.iterator();
+            while(iter.hasNext())
+            {
+                if(fea.contains(iter.next())){
+                    
+                    sentence.addFood(fea,new Integer[]{0,0});
+                    iter.remove();
+                    break;
+                }
+
+            }
+
+        }
+        iter=predictions.iterator();
+        while(iter.hasNext())
+        {
+            String next=iter.next();
+            sentence.addFood(next,new Integer[]{0,0});
+        }
+        
+        
 	}
 }
