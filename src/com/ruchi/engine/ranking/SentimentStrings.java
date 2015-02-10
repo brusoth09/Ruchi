@@ -4,10 +4,8 @@
 package com.ruchi.engine.ranking;
 
 /*
- * #%L
- * Paraneetharan
+ * 
  * crawl data from yelp reviews
- * %%
  *
  */
 
