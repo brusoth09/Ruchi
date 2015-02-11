@@ -26,14 +26,14 @@ public class Train {
         }
     }
     public void train() throws IOException {
-        FileReader fileReader = new FileReader("res/training");
-        ObjectStream<String> fileStream = new PlainTextByLineStream(fileReader);
+        FileReader fileReader = new FileReader("res/training");							//read trained text
+        ObjectStream<String> fileStream = new PlainTextByLineStream(fileReader);		
         ObjectStream<NameSample> sampleStream = new NameSampleDataStream(fileStream);
-        model = NameFinderME.train("pt-br", "train", sampleStream, Collections.<String, Object>emptyMap());
+        model = NameFinderME.train("pt-br", "train", sampleStream, Collections.<String, Object>emptyMap());	//train own ner model
         saveFile();
     }
 
-    public void saveFile(){
+    public void saveFile(){			//serialize ner object
 
         try {
             BufferedOutputStream modelOut = new BufferedOutputStream(new FileOutputStream("src/en-food.train"));

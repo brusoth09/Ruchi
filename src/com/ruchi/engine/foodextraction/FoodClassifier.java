@@ -16,10 +16,10 @@ public class FoodClassifier {
     private WordDistance wd;
     
     public FoodClassifier(){
-    	wd=new WordDistance();
+    	wd=new WordDistance();		//Word distance matrix class
         wd.load();
     }
-    public void addFood(String food){
+    public void addFood(String food){				//add food count to classifier
         String stemmed_food= TextUtilizer.pluralToSingular(food).toLowerCase();
         if(map.containsKey(stemmed_food)){
             map.put(stemmed_food,map.get(stemmed_food)+1);
@@ -35,17 +35,17 @@ public class FoodClassifier {
         ArrayList<String> down=new ArrayList<String>();
 
         for(Map.Entry<String,Integer> entry:map.entrySet()){
-            if(entry.getValue()>1){
+            if(entry.getValue()>1){							//hits more than 2 considered as valid food name
                 top.add(entry.getKey());
                 result.put(entry.getKey(), entry.getKey());
             }
             else{
-                down.add(entry.getKey());
+                down.add(entry.getKey());					//add values only have 1 hit
             }
         }
 
         for(String d:down){
-            String matched_value=findBestMatch(top,d);
+            String matched_value=findBestMatch(top,d);		//find best match for the misspelled words
             
             if(matched_value.trim().length()>0){
             	result.put(d, matched_value);
@@ -81,7 +81,7 @@ public class FoodClassifier {
         	value=wd.getMongeElkanSimilarity(s.toLowerCase(),input.toLowerCase());
         	float value2=wd.getCosineSimilarity(s.toLowerCase(), input.toLowerCase());
         	float value3=wd.getLevenshteinSimilarity(s.toLowerCase(),input.toLowerCase());
-        	if(value>0.8 && (value2>0.7 ||value3>0.7)){
+        	if(value>0.8 && (value2>0.7 ||value3>0.7)){			
         		passed=true;
         	}
             if(passed && value>highest){
