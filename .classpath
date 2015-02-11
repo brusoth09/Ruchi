@@ -43,5 +43,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/opencloud.jar"/>
+	<classpathentry kind="lib" path="lib/weka-3.7.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
