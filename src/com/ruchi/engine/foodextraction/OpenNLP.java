@@ -139,7 +139,7 @@ public class OpenNLP {
         Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
         //System.out.println(Arrays.toString(span));
         String[] array=Span.spansToStrings(span, whitespaceTokenizerLine);
-        ////System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array));
         String sent="";
 
         int i=0;
@@ -219,11 +219,12 @@ public class OpenNLP {
     public static void main(String args[]) throws IOException {
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        String line="fish fry was delicious";
+        String line="We tried pancakes, muffins in two consecutive nights";
         String[] tokens=sent.getTokens(line);
         Span nameSpans[] = sent.getNames(tokens);
         String[] array=Span.spansToStrings(nameSpans,tokens);
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(sent.getWordTags(tokens)));
+        sent.tagSentence(line);
     }
 }
 
