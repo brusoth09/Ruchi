@@ -2,6 +2,8 @@ package com.ruchi.engine.foodextractionEvaluvation;
 
 import java.io.IOException;
 
+import com.ruchi.engine.sentimentEvaluvation.SentiChecker;
+
 
 public class Main {
 public static void main(String[] arg)
@@ -21,8 +23,14 @@ public static void main(String[] arg)
 			System.out.println("*****************Result*********************");
 			System.out.println("truePositive:"+FoodExtractionChecker.truePositive+"\nfalsePoitive"+FoodExtractionChecker.FalsePositive+"\nfalseNegative"
 					+FoodExtractionChecker.FalseNegative+"\nTrue Negative"+FoodExtractionChecker.TrueNegative);
+			
+			double precision=(FoodExtractionChecker.truePositive)/(FoodExtractionChecker.truePositive+FoodExtractionChecker.FalsePositive);
+			double recall=(FoodExtractionChecker.truePositive)/(FoodExtractionChecker.truePositive+FoodExtractionChecker.FalseNegative);
+			double f_measure=(2*precision*recall)/(precision+recall);
 			System.out.println("accuracy:"+(FoodExtractionChecker.truePositive+FoodExtractionChecker.TrueNegative)/totalEntries);
-			System.out.println("precision:"+(FoodExtractionChecker.truePositive)/(FoodExtractionChecker.truePositive+FoodExtractionChecker.FalsePositive));
+			System.out.println("precision:"+precision);
+			System.out.println("recall:"+recall);
+			System.out.println("f_measure:"+f_measure);
 			System.out.println("********************************************");
 		}
 		else
