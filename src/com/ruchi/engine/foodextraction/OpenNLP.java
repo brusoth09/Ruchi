@@ -29,6 +29,7 @@ import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.Span;
 
 import com.google.common.base.Joiner;
+import com.ruchi.engine.utils.AdjectiveNoun;
 import com.ruchi.engine.utils.TextEditors;
 
 /**
@@ -94,7 +95,7 @@ public class OpenNLP {
         }
     }
     
-    public ArrayList<String> getSentence(String review)
+    public ArrayList<String> getSentence(String review)			//sentence detector
     {
         ArrayList<String> list=new ArrayList<String>();
         try {
@@ -110,7 +111,7 @@ public class OpenNLP {
         return list;
     }
 
-    public String[] getTokens(String sentence)
+    public String[] getTokens(String sentence)			//tokenizer to tokenize sentence into words
     {
             String tokens[] = tokenizer.tokenize(sentence);
             return tokens;
@@ -118,12 +119,12 @@ public class OpenNLP {
 
 
     public Span[] getNames(String[] tokens) {
-        Span[] nameSpans = nameFinder.find(tokens);
+        Span[] nameSpans = nameFinder.find(tokens);		//predict names
         return nameSpans;
 
     }
 
-    public void tagSentence(String sentence) throws IOException {
+    public void tagSentence(String sentence) throws IOException {		//create tags and save it to text file
 
         ObjectStream<String> lineStream = new PlainTextByLineStream(new StringReader(sentence));
         String line;
@@ -139,42 +140,45 @@ public class OpenNLP {
         Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
         //System.out.println(Arrays.toString(span));
         String[] array=Span.spansToStrings(span, whitespaceTokenizerLine);
-        System.out.println(Arrays.toString(array));
+        //System.out.println(Arrays.toString(array));
         String sent="";
 
         int i=0;
         for(String s:array)
         {
-        	if(span[i].getType().equalsIgnoreCase("NP"))
+        	if(span[i].getType().equalsIgnoreCase("NP"))		//only considering noun phrases
         		sent=sent.concat(fs.search(s)+" ");
         	else
         		sent=sent.concat(s+" ");
         	i++;
         }
         if(sent.contains("<START:food>"))
-            TextEditors.writeTextFile(sent);
+            TextEditors.writeTextFile(sent);					//write to text file
 
     }
 
-    public String[] getWordTokens(String line){
+    public String[] getWordTokens(String line){					//generate tokens
         String whitespaceTokenizerLine[] = null;
         whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE.tokenize(line);
         return whitespaceTokenizerLine;
     }
 
-    public String[] getWordTags(String[] tokens){
+    public String[] getWordTags(String[] tokens){			//generate tags
         String[] tags = null;
         tags = tagger.tag(tokens);
         return tags;
     }
 
-    public ArrayList<String>  findFeatures(String[] tags,String[] tokens){
+    public ArrayList<String>  findFeatures(String[] tags,String[] tokens){	//find noun features without using chunker
         ArrayList<String> feature_list=new ArrayList<String>();
         ArrayList<String> list=new ArrayList<String>();
         for(int i=0;i<tags.length;i++)
         {
             if(tags[i].trim().equalsIgnoreCase("NN")||tags[i].trim().equalsIgnoreCase("NNS")||tags[i].trim().equalsIgnoreCase("NNP")||tags[i].trim().equalsIgnoreCase("NNPS")){
-                list.add(tokens[i]);
+                list.add(tokens[i]);										//only considering nouns and proper nouns
+            }
+            else if(tags[i].trim().equalsIgnoreCase("JJ") && AdjectiveNoun.checkitem(tokens[i].toLowerCase())){
+            	list.add(tokens[i]);										//only considered some adjectives
             }
             else{
                 if(list.size()>0)
@@ -219,12 +223,13 @@ public class OpenNLP {
     public static void main(String args[]) throws IOException {
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        String line="We tried pancakes, muffins in two consecutive nights";
+        String line="We tried delicious french pizza in two consecutive nights";
         String[] tokens=sent.getTokens(line);
         Span nameSpans[] = sent.getNames(tokens);
         String[] array=Span.spansToStrings(nameSpans,tokens);
         System.out.println(Arrays.toString(sent.getWordTags(tokens)));
-        sent.tagSentence(line);
+        System.out.println(sent.findFeatures(sent.getWordTags(tokens),tokens).get(0));
+        //sent.tagSentence(line);
     }
 }
 

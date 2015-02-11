@@ -18,24 +18,24 @@ public class FoodSearch {
     {
         db=new DatabaseConnector();
         db.connect();
-        dictionary=db.getInitFoodNames();
+        dictionary=db.getInitFoodNames();						//load food names from database
         db.disconect();
     }
 
     public String search(String chunk)
     {
         String output="";
-        String[] tokens=chunk.toLowerCase().split("\\s+");
+        String[] tokens=chunk.toLowerCase().split("\\s+");		//divide a chunk into white spaced tokens
         if(tokens.length==1)
         {
             if(dictionary.contains(TextUtilizer.pluralToSingular(tokens[0].trim())))
             {
-                return " <START:food> "+tokens[0]+" <END> ";
+                return " <START:food> "+tokens[0]+" <END> ";	//for 1 word tokens
             }
             return tokens[0];
         }
         output=chunk.trim().toLowerCase();
-        for(int i=tokens.length;i>0;i--)
+        for(int i=tokens.length;i>0;i--)		//simple search algorithm to find food names
         {
             for(int j=1;j<tokens.length-i+2;j++)
             {
@@ -47,7 +47,7 @@ public class FoodSearch {
                 if(dictionary.contains(TextUtilizer.pluralToSingular(s.trim())))
                 {
                     chunk=chunk.replace(s.trim(),"").replaceAll("\\s+"," ");
-                    output=output.replace(s.trim(), " <START:food> "+s+" <END> ");
+                    output=output.replace(s.trim(), " <START:food> "+s+" <END> ");		//add tag for foods
                     return output;
                 }
             }
