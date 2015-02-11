@@ -18,6 +18,7 @@ public class ReviewRating {
 	private static StanfordCoreNLP tokenizer;
 
 	public ReviewRating() {
+		// initialize
 		Properties binaryProps = new Properties();
 		Properties pipelineProps = new Properties();
 		Properties tokenizerProps = new Properties();
@@ -39,6 +40,11 @@ public class ReviewRating {
 		System.out.println(rateReview);
 	}
 
+	/**
+	 * sentiment analysis on review
+	 * @param review
+	 * @return
+	 */
 	public static ArrayList<String[]> sentimentReview(String review) {
 		ArrayList<String[]> sentiments = new ArrayList<String[]>();
 		Annotation annotation = tokenizer.process(review);
@@ -56,6 +62,12 @@ public class ReviewRating {
 		return sentiments;
 	}
 
+	/**
+	 * rating the review
+	 * 
+	 * @param review
+	 * @return
+	 */
 	public static double rateReview(String review) {
 		ArrayList<String[]> sentimentReview = sentimentReview(review);
 		int[] scores = new int[sentimentReview.size()];
