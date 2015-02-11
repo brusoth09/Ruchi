@@ -17,10 +17,10 @@ public class Restaurant {
 	private String id;
 	private String name;
 
-	private ArrayList<Review> review_list = new ArrayList<Review>();
-	private HashMap<String, Integer> food_map = new HashMap<String, Integer>();
-	private HashMap<String, Double> foodRating=new HashMap<String, Double>();
-	private double rating=0.0;
+	private ArrayList<Review> review_list = new ArrayList<Review>();			//restaurant has list of reviews
+	private HashMap<String, Integer> food_map = new HashMap<String, Integer>(); //predicted food names and number of time it appears
+	private HashMap<String, Double> foodRating=new HashMap<String, Double>();	//rating of each food item
+	private double rating=0.0;													//overall rating of restaurant
 
 	public Restaurant(String name) {
 		this.setId(name);
@@ -43,24 +43,24 @@ public class Restaurant {
 	}
 
 	public void addReview(Review object) {
-		review_list.add(object);
+		review_list.add(object);										//add a review
 	}
 
 	public ArrayList<Review> getReview() {
-		return review_list;
+		return review_list;												//get a review
 	}
 
-	public void addFood(String food) {
-		String stemmed_food = TextUtilizer.pluralToSingular(food).toLowerCase();
+	public void addFood(String food) {									//add a food item to restaurant
+		String stemmed_food = TextUtilizer.pluralToSingular(food).toLowerCase();	//change plural nouns to singular
 
-		if (food_map.containsKey(stemmed_food)) {
-			food_map.put(stemmed_food, food_map.get(stemmed_food) + 1);
+		if (food_map.containsKey(stemmed_food)) {						//check food already exist
+			food_map.put(stemmed_food, food_map.get(stemmed_food) + 1);	//if exist increase hits
 		} else {
-			food_map.put(stemmed_food, 1);
+			food_map.put(stemmed_food, 1);								//else add as new food
 		}
 	}
 
-	public void generateFoodRating() {
+	public void generateFoodRating() {								//generate ratings
 		HashMap<String, ArrayList<Double>> foodScoreMap = null;
 		for (Review review : review_list) {
 			if (review.isContainFood()) {
@@ -101,7 +101,7 @@ public class Restaurant {
 		this.foodRating = foodRating;
 	}
 
-	public void restaurantRating() {
+	public void restaurantRating() {				//generate food rating
 		ArrayList<Double> scoreList = new ArrayList<Double>();
 		for (Review review : review_list) {
 			scoreList.add(review.getRating());
@@ -117,7 +117,7 @@ public class Restaurant {
 		this.rating = rating;
 	}
 	
-	public void updateDatabase(){
+	public void updateDatabase(){				//update database
 		for (Map.Entry<String, Double> entry : foodRating.entrySet())
 		{
 		   String foodKey=Mapper.insertFood(entry.getKey());

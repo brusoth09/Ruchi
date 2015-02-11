@@ -2,6 +2,11 @@ package com.ruchi.engine.sentiment;
 
 import edu.stanford.nlp.ling.IndexedWord;
 
+/**
+ * Word object to create the sentence
+ * @author SANJI
+ *
+ */
 public class MyWord implements Comparable<MyWord> {
 	private String tag;
 	private int index;
