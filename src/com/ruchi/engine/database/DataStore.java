@@ -246,9 +246,8 @@ public class DataStore {
 	}
 
 	/*
-	 * 
+	 * insert food name and its rating of a restaurant 
 	 */
-
 	public boolean insertRestFood(String rest_id, String food_id, float rating) {
 		Session session = null;
 		try {
@@ -278,6 +277,9 @@ public class DataStore {
 		return false;
 	}
 
+	/*
+	 * get food id using food name from food table
+	 */
 	private String getFood_id(String food_name) {
 		Session session = null;
 		try {
@@ -307,6 +309,9 @@ public class DataStore {
 		return null;
 	}
 
+	/*
+	 * get food id using foodinit name from food table
+	 */
 	private String getFoodInit_id(String food_name) {
 		Session session = null;
 		try {
@@ -336,6 +341,9 @@ public class DataStore {
 		return null;
 	}
 
+	/*
+	 * insert food item to foods table
+	 */
 	private String insertNewFood(String food_name) {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -366,6 +374,9 @@ public class DataStore {
 		return null;
 	}
 
+	/*
+	 * insert food to foodInit table
+	 */
 	private String insertNewFoodInit(String food_name) {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -396,6 +407,9 @@ public class DataStore {
 		return null;
 	}
 
+	/*
+	 * get all food names form the foods table
+	 */
 	public List<FoodDao> getFoodNames() {
 		Session session = null;
 		List<FoodDao> results = new ArrayList<FoodDao>();
@@ -422,6 +436,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get all food names from foodInit table
+	 */
 	public List<FoodInitDao> getFoodInitNames() {
 		Session session = null;
 		List<FoodInitDao> results = new ArrayList<FoodInitDao>();
@@ -448,6 +465,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get restaurantId for a restaurant name. 
+	 */
 	public String getRestId(String restaurant_name) {
 		Session session = null;
 		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
@@ -475,6 +495,9 @@ public class DataStore {
 		return results.get(0).getRest_id();
 	}
 
+	/*
+	 * get restaurant name using restaurantId 
+	 */
 	public String getRestName(String restaurant_id) {
 		Session session = null;
 		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
@@ -501,6 +524,9 @@ public class DataStore {
 		return results.get(0).getRest_name();
 	}
 
+	/*
+	 * get all reviews of a restaurant using restaurant name
+	 */
 	public List<ReviewDao> getReviewsByRestName(String restaurant_name) {
 		Session session = null;
 		List<ReviewDao> results = new ArrayList<ReviewDao>();
@@ -528,6 +554,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get all training reviews of a restaurant using restaurant name
+	 */
 	public List<ReviewTrainDao> getReviewsTrainByRestName(String restaurant_name) {
 		Session session = null;
 		List<ReviewTrainDao> results = new ArrayList<ReviewTrainDao>();
@@ -555,6 +584,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get all reviews of a restaurant using restaurant id
+	 */
 	@SuppressWarnings("unchecked")
 	public List<ReviewDao> getReviewsByRestId(String restaurant_id) {
 		Session session = null;
@@ -579,6 +611,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get all reviews of a restaurant using restaurant id
+	 */
 	public List<ReviewTrainDao> getReviewsTrainByRestId(String restaurant_id) {
 		Session session = null;
 		List<ReviewTrainDao> results = new ArrayList<ReviewTrainDao>();
@@ -602,6 +637,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get all restaurantIds 
+	 */
 	@SuppressWarnings({ "unchecked" })
 	public List<RestaurantDao> getRestaurantIds() {
 		Session session = null;
@@ -636,6 +674,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get all restaurant details
+	 */
 	public List<RestaurantDao> getRestaurantDaos() {
 		Session session = null;
 		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
@@ -670,6 +711,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get All restaurant names
+	 */
 	public List<RestaurantDao> getRestaurantNames() {
 		Session session = null;
 		List<RestaurantDao> results = new ArrayList<RestaurantDao>();
@@ -704,6 +748,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * get All restaurant names from reviews table
+	 */
 	public List<ReviewDao> getRestaurantNamesFromReviews() {
 		Session session = null;
 		List<ReviewDao> results = new ArrayList<ReviewDao>();
@@ -738,6 +785,9 @@ public class DataStore {
 		return results;
 	}
 
+	/*
+	 * remove food name from the food table
+	 */
 	public boolean removeFoodName(String foodName) {
 		Session session = null;
 		int b = 0;
@@ -768,6 +818,9 @@ public class DataStore {
 			return false;
 	}
 
+	/*
+	 * remove food name from the foodInit table
+	 */
 	public boolean removeFoodInitName(String foodName) {
 		Session session = null;
 		int b = 0;

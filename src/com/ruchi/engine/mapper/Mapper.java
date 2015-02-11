@@ -38,6 +38,9 @@ public class Mapper {
 		dataStore = new DataStore();
 	}
 
+	/*
+	 * get restaurant reviews by restaurant name
+	 */
 	public static ArrayList<String> getRestaurantReviewsByRestName(
 			String res_name) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
@@ -49,6 +52,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 * get all restaurant ids and names
+	 */
 	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestName(
 			String res_name) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
@@ -63,6 +69,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 * 
+	 */
 	public static ArrayList<String> getRestaurantReviewsByRestNameTrain(
 			String res_name) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
@@ -75,6 +84,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 * get restaurant reviews and its id by restaurant name from revire train table
+	 */
 	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestNameTrain(
 			String res_name) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
@@ -91,6 +103,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 * get all restaurant names
+	 */
 	public static ArrayList<String> getRestaurantNames() {
 		ArrayList<String> rest_names = new ArrayList<String>();
 		List<RestaurantDao> daos = dataStore.getRestaurantNames();
@@ -100,6 +115,9 @@ public class Mapper {
 		return rest_names;
 	}
 
+	/*
+	 * get all restaurant ids
+	 */
 	public static ArrayList<String> getRestaurantIDs() {
 		ArrayList<String> rest_ids = new ArrayList<String>();
 		List<RestaurantDao> daos = dataStore.getRestaurantIds();
@@ -109,6 +127,9 @@ public class Mapper {
 		return rest_ids;
 	}
 
+	/*
+	 * get all restaurant reviews by restaurant id
+	 */
 	public static ArrayList<String> getRestaurantReviewsByRestId(String rest_id) {
 		ArrayList<String> rest_reviews = new ArrayList<String>();
 		List<ReviewDao> daos = dataStore.getReviewsByRestId(rest_id);
@@ -118,6 +139,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 *  get all restaurant reviews and ids by restaurant id
+	 */
 	public static ArrayList<String[]> getRestaurantReviewsAndIdsByRestId(
 			String rest_id) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
@@ -132,6 +156,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 * get all restaurant reviews by restaurant id
+	 */
 	public static ArrayList<String[]> getRestaurantReviewsByRestIdTrain(
 			String rest_id) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
@@ -146,6 +173,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 * get all restaurant reviews and review ids by restaurant id
+	 */
 	public static List<String[]> getRestaurantReviewsAndIdsByRestIdTrain(
 			String rest_id) {
 		ArrayList<String[]> rest_reviews = new ArrayList<String[]>();
@@ -160,6 +190,9 @@ public class Mapper {
 		return rest_reviews;
 	}
 
+	/*
+	 * remove food from foods table
+	 */
 	public static void removeFood(String food_name) {
 		dataStore.removeFoodName(food_name);
 	}
