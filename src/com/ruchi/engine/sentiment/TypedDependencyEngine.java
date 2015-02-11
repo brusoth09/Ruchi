@@ -1,4 +1,4 @@
-		package com.ruchi.engine.sentiment;
+package com.ruchi.engine.sentiment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,11 +25,17 @@ import edu.stanford.nlp.util.CoreMap;
 
 public class TypedDependencyEngine {
 
-	private static ArrayList<String> relationList = new ArrayList<String>();
+	private static ArrayList<String> relationList = new ArrayList<String>(); // list
+																				// for
+																				// relationship
+																				// related
+																				// to
+																				// opinion
 	private static StanfordCoreNLP pipeline;
 	private static StanfordCoreNLP tokenizer;
 
 	public TypedDependencyEngine() {
+		// initialization
 		Properties pipelineProps = new Properties();
 		Properties tokenizerProps = new Properties();
 		pipelineProps.setProperty("sentiment.model", "model.ser.gz");
@@ -40,11 +46,13 @@ public class TypedDependencyEngine {
 		tokenizer = new StanfordCoreNLP(tokenizerProps);
 		Parser.init();
 		Analyzer.init();
+		// relationship related to opinion
 		relationList.add("amod");
 		relationList.add("nsubj");
 		relationList.add("advmod");
 	}
 
+	// main method
 	public static void main(String args[]) throws Exception {
 		new TypedDependencyEngine();
 		// BufferedReader reader = new BufferedReader(new FileReader(
@@ -93,15 +101,22 @@ public class TypedDependencyEngine {
 			rev.generateFoodSentiment();
 		}
 		restaurant.generateFoodRating();
-		
+
 		System.out.println(restaurant.getFoodRating());
-//		String inText = "The turchino coffee was great and St.John protein pancake was delicious but masala tea was poor.";
-//		List<List<MyWord>> sentiTyped = sentiTyped(inText);
-//		for (List<MyWord> list : sentiTyped) {
-//			System.out.println(generateSentence(list));
-//		}
+		// String inText =
+		// "The turchino coffee was great and St.John protein pancake was delicious but masala tea was poor.";
+		// List<List<MyWord>> sentiTyped = sentiTyped(inText);
+		// for (List<MyWord> list : sentiTyped) {
+		// System.out.println(generateSentence(list));
+		// }
 	}
 
+	/**
+	 * get the food rating for the sentence
+	 * 
+	 * @param sentence
+	 * @return food rating for the sentence
+	 */
 	public static HashMap<String, Double> foodSentiment(Sentence sentence) {
 		HashMap<String, Double> foodSentiment = new HashMap<String, Double>();
 		List<List<MyWord>> myWordLists = sentiTyped(sentence.getSentence());
@@ -117,29 +132,31 @@ public class TypedDependencyEngine {
 					if (myWord.getIndex() >= location[0] + 1
 							&& myWord.getIndex() <= location[0] + location[1]) {
 						String generatedSentence = generateSentence(myWords);
-						String polarity = sentimentAnalysis(generatedSentence).get(0);
-//						System.out.println(generatedSentence);
-						if(polarity.equalsIgnoreCase("Positive")){
-							scores.add(RankingAlgorithm.positiveScore(generatedSentence));
-						}
-						else {
-							scores.add(RankingAlgorithm.negativeScore(generatedSentence));
+						String polarity = sentimentAnalysis(generatedSentence)
+								.get(0);
+						// calling the rating system
+						if (polarity.equalsIgnoreCase("Positive")) {
+							scores.add(RankingAlgorithm
+									.positiveScore(generatedSentence));
+						} else {
+							scores.add(RankingAlgorithm
+									.negativeScore(generatedSentence));
 						}
 						break;
 					}
 				}
 			}
-			if(scores.isEmpty()){
+			if (scores.isEmpty()) {
 				String polarity = sentimentAnalysis(sentenceLine).get(0);
-				if(polarity.equalsIgnoreCase("Positive")){
-					score = (double) RankingAlgorithm.positiveScore(sentenceLine);
+				if (polarity.equalsIgnoreCase("Positive")) {
+					score = (double) RankingAlgorithm
+							.positiveScore(sentenceLine);
+				} else {
+					score = (double) RankingAlgorithm
+							.negativeScore(sentenceLine);
 				}
-				else{
-					score = (double) RankingAlgorithm.negativeScore(sentenceLine);
-				}
-				
-			}
-			else{
+
+			} else {
 				score = RankingAlgorithm.avgScore(scores);
 			}
 			foodSentiment.put(food, score);
@@ -148,6 +165,12 @@ public class TypedDependencyEngine {
 		return foodSentiment;
 	}
 
+	/**
+	 * sentiment analysis using stanfordNLP
+	 * 
+	 * @param review
+	 * @return
+	 */
 	public static ArrayList<String> sentimentAnalysis(String review) {
 		ArrayList<String> sentiments = new ArrayList<String>();
 		Annotation annotation = tokenizer.process(review);
@@ -161,17 +184,18 @@ public class TypedDependencyEngine {
 		return sentiments;
 	}
 
+	/**
+	 * get the sentence by dividing based on opinion
+	 * 
+	 * @param inText
+	 * @return list of sentence
+	 */
 	public static List<List<MyWord>> sentiTyped(String inText) {
 		StringBuffer sb = new StringBuffer();
 
 		sb.append(inText).append("\n");
 		List<List<Word>> theseSentences = segmentText(inText);
 		List<ArrayList<TypedDependency>> tdLists = generateTypedDependency(theseSentences);
-		// for (ArrayList<TypedDependency> tdList : tdLists) {
-		// for (TypedDependency typedDependency : tdList) {
-		// System.out.println(typedDependency);
-		// }
-		// }
 		ArrayList<TypedDependency> tdList = tdLists.get(0);
 		List<List<MyWord>> myWordLists = new ArrayList<List<MyWord>>();
 		List<TypedDependency> discoveredTdList = new ArrayList<TypedDependency>();
@@ -182,6 +206,7 @@ public class TypedDependencyEngine {
 			String grString = typedDependency.reln().toString();
 			IndexedWord gov = typedDependency.gov();
 			IndexedWord dep = typedDependency.dep();
+			// nsubj relationship which has adjective
 			if (grString.equals("nsubj")
 					&& gov.tag().length() >= 2
 					&& (gov.tag().substring(0, 2).equals("JJ") || dep.tag()
@@ -191,6 +216,7 @@ public class TypedDependencyEngine {
 				MyWord depWord = new MyWord(dep);
 				myWordList.add(depWord);
 				myWordList.add(govWord);
+				// add the words connected identified two words
 				for (TypedDependency td : tdList) {
 					if (td.reln().toString().equalsIgnoreCase("root")
 							|| td.reln().toString().equalsIgnoreCase("conj")) {
@@ -215,12 +241,15 @@ public class TypedDependencyEngine {
 					}
 				}
 				myWordLists.add(myWordList);
-			} else if (grString.equals("amod")) {
+			}
+			// amod relationship
+			else if (grString.equals("amod")) {
 				ArrayList<MyWord> myWordList = new ArrayList<MyWord>();
 				MyWord govWord = new MyWord(gov);
 				MyWord depWord = new MyWord(dep);
 				myWordList.add(depWord);
 				myWordList.add(govWord);
+				// add the words connected identified two words
 				for (TypedDependency td : tdList) {
 					if (td.reln().toString().equalsIgnoreCase("root")) {
 						continue;
@@ -244,12 +273,15 @@ public class TypedDependencyEngine {
 					}
 				}
 				myWordLists.add(myWordList);
-			} else if (grString.equals("advmod")) {
+			}
+			// advmod relationship
+			else if (grString.equals("advmod")) {
 				ArrayList<MyWord> myWordList = new ArrayList<MyWord>();
 				MyWord govWord = new MyWord(gov);
 				MyWord depWord = new MyWord(dep);
 				myWordList.add(depWord);
 				myWordList.add(govWord);
+				// add the words connected identified two words
 				for (TypedDependency td : tdList) {
 					if (td.reln().toString().equalsIgnoreCase("root")) {
 						continue;
@@ -291,6 +323,12 @@ public class TypedDependencyEngine {
 		return myWordLists;
 	}
 
+	/**
+	 * generating typed dependency relation for list of sentence
+	 * 
+	 * @param theseSentences
+	 * @return
+	 */
 	public static List<ArrayList<TypedDependency>> generateTypedDependency(
 			List<List<Word>> theseSentences) {
 		List<ArrayList<TypedDependency>> tdLists = new ArrayList<ArrayList<TypedDependency>>();
@@ -302,6 +340,11 @@ public class TypedDependencyEngine {
 		return tdLists;
 	}
 
+	/**
+	 * breaking the sentence and words inside sentence
+	 * @param text
+	 * @return
+	 */
 	public static List<List<Word>> segmentText(String text) {
 		BasicDocument<Word> basicDocument = BasicDocument.init(text);
 		Pair<List<String>, List<List<Word>>> thisResult = Segmenter
@@ -309,6 +352,12 @@ public class TypedDependencyEngine {
 		return thisResult.second;
 	}
 
+	/**
+	 * create the sentence from list of word
+	 * 
+	 * @param myWordList
+	 * @return
+	 */
 	public static String generateSentence(List<MyWord> myWordList) {
 		Collections.sort(myWordList);
 		StringBuffer sb = new StringBuffer();
