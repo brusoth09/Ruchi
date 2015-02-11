@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
@@ -217,7 +218,7 @@ public class FrameIntro {
         sentence.setTokens(toks1);
         String[] tags=openNlp.getWordTags(toks1);
         ArrayList<String> features=openNlp.findFeatures(tags,toks);
-
+        System.out.println(Arrays.toString(openNlp.getWordTags(toks)));
         Iterator<String> iter;
         //System.out.print(sentence);
         
@@ -241,8 +242,26 @@ public class FrameIntro {
         {
             String next=iter.next();
             sentence.addFood(next,new Integer[]{0,0});
-        }
-        
-        
+        }  
+	}
+	
+	public void addLocation(Sentence sentence){
+		Iterator<Entry<String, Integer[]>> it = sentence.getFoodMap().entrySet().iterator();
+		while (it.hasNext()) {
+	        Entry pairs = (Entry)it.next();
+	        String food=(String) pairs.getKey();
+	        int len=food.split("\\s+").length;
+	        int location=sentence.findLocation(food);
+	      
+	        Integer[] set=new Integer[2];
+	        set[0]=location;
+	        set[1]=len;
+	        pairs.setValue(set);
+	        
+	        if(sentence.isContainFood()){
+	        	TypedDependencyEngine.foodSentiment(sentence);
+			//TextEditors.writeTestSentence(s,rest.getName());
+		}
+	}
 	}
 }

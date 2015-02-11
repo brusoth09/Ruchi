@@ -95,6 +95,11 @@ public class TypedDependencyEngine {
 		restaurant.generateFoodRating();
 		
 		System.out.println(restaurant.getFoodRating());
+//		String inText = "The turchino coffee was great and St.John protein pancake was delicious but masala tea was poor.";
+//		List<List<MyWord>> sentiTyped = sentiTyped(inText);
+//		for (List<MyWord> list : sentiTyped) {
+//			System.out.println(generateSentence(list));
+//		}
 	}
 
 	public static HashMap<String, Double> foodSentiment(Sentence sentence) {
