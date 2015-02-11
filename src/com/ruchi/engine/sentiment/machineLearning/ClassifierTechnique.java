@@ -45,7 +45,7 @@ public class ClassifierTechnique {
     Instances TrainingSet;
     Instances TestingSet;
     Hashtable table;
-    SentiWordNetDemoCode sentiwordnet;
+    SentiWordNet sentiwordnet;
     int hashval=0;
     String pathToSWN = "IOfolder/senti.txt";
 
@@ -54,9 +54,6 @@ public class ClassifierTechnique {
     public static void main(String[] args) throws IOException {
     String testingDataFileLocation= "IOfolder/sentiment_test_set.txt";
     String trainingDataFileLocation="IOfolder/sentiment_train_set.txt";
-    
-    
-   
     ClassifierTechnique ct=  new ClassifierTechnique();
     ct.classify(trainingDataFileLocation,testingDataFileLocation);
     }
@@ -103,7 +100,7 @@ public class ClassifierTechnique {
         // Set class index
         TestingSet.setClassIndex(featureVectorAttributes.size() - 1);
         try {
-			sentiwordnet=new SentiWordNetDemoCode(pathToSWN);
+			sentiwordnet=new SentiWordNet(pathToSWN);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -136,33 +133,7 @@ public class ClassifierTechnique {
           temp.setValue(featureVectorAttributes.get(1),getHashValue(words[words.length-1]));
           
           double averageValue=(double)usingOurBagOfModel( words);////(double)usingOurBagOfModel( words);(double)usingSentiwordnet(words);
-        //  System.out.println(averageValue);
-          //bag of words are depend on Resturant Context
-         /* for(int i=0;i<words.length;i++){
-        	  if (SentimentStrings.neg5.indexOf(words[i]) > -1) {
-        		  averageValue-=5;
-  			} else if (SentimentStrings.neg4.indexOf(words[i]) > -1) {
-  				averageValue-=4;
-  			} else if (SentimentStrings.neg3.indexOf(words[i]) > -1) {
-  				averageValue-=3;
-  			} else if (SentimentStrings.neg2.indexOf(words[i]) > -1) {
-  				averageValue-=2;
-  			} else if (SentimentStrings.neg1.indexOf(words[i]) > -1) {
-  				averageValue-=1;
-  			}
-        	  
-        	  if (SentimentStrings.pos5.indexOf(words[i]) > -1) {
-        		  averageValue+=5;
-  			} else if (SentimentStrings.pos4.indexOf(words[i]) > -1) {
-  				averageValue+=4;
-  			} else if (SentimentStrings.pos3.indexOf(words[i]) > -1) {
-  				averageValue+=3;
-  			} else if (SentimentStrings.pos2.indexOf(words[i]) > -1) {
-  				averageValue+=2;
-  			} else if (SentimentStrings.pos1.indexOf(words[i]) > -1) {
-  				averageValue+=1;
-  			}  
-          }*/
+     
           temp.setValue(featureVectorAttributes.get(2),averageValue);
           temp.setValue(featureVectorAttributes.get(featureVectorAttributes.size() - 1),key);
             
@@ -211,7 +182,7 @@ public class ClassifierTechnique {
     	 //sentiwordnet
     	double averageValue=0.0;
         for(int i=0;i<words.length;i++){
-        	averageValue+=SentiWordNetDemoCode.extract(words[i], sentiwordnet);
+        	averageValue+=SentiWordNet.extract(words[i], sentiwordnet);
         }
         return averageValue;
     }
@@ -223,25 +194,17 @@ public class ClassifierTechnique {
         	readFromFile(testingFile,TestingSet);
             
             //TO-Do change the model different model SMO, , MultilayerPerceptron, PART,DecisionTable,RandomForest,J48
-        	DecisionTable  cModel = new  DecisionTable();
+        	Classifier[] classifiers={new  DecisionTable(), new PART(),new RandomForest(), new MultilayerPerceptron(),new J48(),new REPTree(), new SMO(), new NaiveBayes(), new RandomTree() };
+        	String[] names={"DecisionTable", "PART","RandomForest","MultilayerPerceptron","J48","REPTree","SMO", "NaiveBayes","RandomTree"};
+        	for(int j=0;j<classifiers.length;j++){
+        	Classifier  cModel = classifiers[j];
             cModel.buildClassifier(TrainingSet);
 
             Evaluation eTest = new Evaluation(TrainingSet);
             
             eTest.evaluateModel(cModel, TestingSet);
             
-            /*// check individual instance
-             * DenseInstance instance = new DenseInstance(0);
-            FastVector fvNominalVal = new FastVector(2);
-    		fvNominalVal.addElement("POS");
-    		fvNominalVal.addElement("NEG");
-    		Attribute attribute1 = new Attribute("class", fvNominalVal);
-    		Attribute attribute2 = new Attribute("text",(FastVector) null);
-            
-    		instance.setValue(attribute2, "Our appetizer of calamari was great");*/
-            
-           /*double pred =eTest.evaluateModelOnce(cModel, instance);
-            System.out.println(pred); */
+          
            double[] prediction=cModel.distributionForInstance(TestingSet.get(2));
 
             //output predictions
@@ -252,7 +215,7 @@ public class ClassifierTechnique {
                                    " : "+Double.toString(prediction[i]));
             }
             //print out the results
-            System.out.println("========================================Result=============================");
+            System.out.println("========================================Result for "+names[j]+"=============================");
             System.out.println("Results for "+this.getClass().getSimpleName());
             String strSummary = eTest.toSummaryString();
             System.out.println(strSummary);
@@ -262,7 +225,7 @@ public class ClassifierTechnique {
             System.out.println("recall : "+eTest.weightedRecall());
             System.out.println("=====================================================================");
 
-
+        }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -279,10 +242,17 @@ public class ClassifierTechnique {
             table.put(word,hashval++);
             return getHashValue(word);
         }
+        
+    
 
     }
 
+    //unit Test case
+    public void setFeatureVectorAttributes(  ArrayList<Attribute> featureVectorAttribute){
+    	featureVectorAttributes=featureVectorAttribute;
+    }
 
-
-
+    public ArrayList<Attribute> getFeatureVectorAttributes( ){
+    	return featureVectorAttributes;
+    }
 }

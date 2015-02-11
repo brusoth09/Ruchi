@@ -39,6 +39,9 @@ public class FrameIntro {
 	String[] output;
 	int priviousCount=0;
 	OpenNLP openNlp;
+	Sentence sentence;
+	TestOpenCloud testOpenCloud;
+	TypedDependencyEngine typedDependencyEngine;
 	/**
 	 * Launch the application.
 	 */
@@ -68,8 +71,8 @@ public class FrameIntro {
 	private void initialize() {
 		frame = new JFrame();
 		int foodNumber=4;
-		
-		TypedDependencyEngine typedDependencyEngine =new TypedDependencyEngine();
+		testOpenCloud=new TestOpenCloud();
+	    typedDependencyEngine =new TypedDependencyEngine();
 		ArrayList<StarRater> starRaters=new ArrayList<StarRater>();
 		ArrayList<JLabel> lblNewLabels=new ArrayList<JLabel>();
 		StarRater[] starRaters1=new StarRater[5];
@@ -103,6 +106,8 @@ public class FrameIntro {
 				System.out.println(output.length);
 				postProcessing(sentence);
 				Iterator keys=sentence.getFoodMap().keySet().iterator();
+				addLocation(sentence);
+				
 				while(keys.hasNext()){
 					System.out.println(keys.next().toString());
 				}
@@ -111,21 +116,22 @@ public class FrameIntro {
 				
 				for(String s:output)
 				{
+					System.out.println("########"+sentence.getFoodSentiment().get(s).intValue());
 					if(lblNewLabels1[i]==null){
-						starRaters1[i] = new StarRater(5, 2, 1);
+						starRaters1[i] = new StarRater(5, sentence.getFoodSentiment().get(s).intValue(), 0);
 						starRaters1[i].setBounds(276, 11+i*25, 80, 16);
 						
 						lblNewLabels1[i] = new JLabel();
 						lblNewLabels1[i].setText(s);
 						lblNewLabels1[i].setBounds(64, 13+i*25, 131, 14);
-						System.out.println("########");
 						
+						starRaters1[i].setVisible(true);
 						
 					}	
 					
 					else
 					{
-						
+						starRaters1[i].setRating(sentence.getFoodSentiment().get(s).intValue());
 						(lblNewLabels1[i]).setText(s);
 						
 						//panel.add( lblNewLabels.get(i));
@@ -138,15 +144,22 @@ public class FrameIntro {
 	                panel.repaint();
 					System.out.println("************");
 					i++;
-					
+
 				}
 				
 				if(priviousCount>output.length)
 				{
 					for(int m=output.length;m<priviousCount;m++)
+					{
 						(lblNewLabels1[m]).setText("");
+						starRaters1[i].setVisible(false);;
+						
+					}
+						
 				}
 				priviousCount= output.length;
+				//testOpenCloud.initUI(sen);
+				
 				//new TestOpenCloud().initUI(sen);
 			}
 		});
@@ -259,7 +272,7 @@ public class FrameIntro {
 	        pairs.setValue(set);
 	        
 	        if(sentence.isContainFood()){
-	        	TypedDependencyEngine.foodSentiment(sentence);
+	        	typedDependencyEngine.foodSentiment(sentence);
 			//TextEditors.writeTestSentence(s,rest.getName());
 		}
 	}
