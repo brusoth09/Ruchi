@@ -2,7 +2,13 @@ package com.ruchi.hibernate.model.DAO;
 
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Created by Thamayanthy on 12/22/2014.
@@ -16,7 +22,7 @@ public class FoodInitDao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "food_id", nullable = false, unique = true, length = 50)
-    private Timestamp food_id;
+    private String food_id;
 
     @Column(name = "food_name", nullable = false, unique = false, length = 50)
     private String food_name;
@@ -24,11 +30,11 @@ public class FoodInitDao {
     @Column(name = "food_type", nullable = true, unique = false, length = 20)
     private String food_type;
 
-    public Timestamp getFood_id() {
+    public String getFood_id() {
         return food_id;
     }
 
-    public void setFood_id(Timestamp food_id) {
+    public void setFood_id(String food_id) {
         this.food_id = food_id;
     }
 

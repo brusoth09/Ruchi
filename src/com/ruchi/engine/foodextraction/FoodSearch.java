@@ -2,8 +2,10 @@ package com.ruchi.engine.foodextraction;
 
 import java.util.ArrayList;
 
+import com.ruchi.engine.database.DBConnection;
 import com.ruchi.engine.database.DatabaseConnector;
-import com.ruchi.engine.preprocessing.Stemmer;
+import com.ruchi.engine.mapper.Mapper;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
  * Created by brusoth on 11/18/2014.
@@ -16,16 +18,17 @@ public class FoodSearch {
     {
         db=new DatabaseConnector();
         db.connect();
-        db.getFoodNames(dictionary);
+        dictionary=db.getInitFoodNames();
+        db.disconect();
     }
 
     public String search(String chunk)
     {
         String output="";
-        String[] tokens=chunk.toLowerCase().split("//s+");
+        String[] tokens=chunk.toLowerCase().split("\\s+");
         if(tokens.length==1)
         {
-            if(dictionary.contains(Stemmer.pluralToSingular(tokens[0].trim())))
+            if(dictionary.contains(TextUtilizer.pluralToSingular(tokens[0].trim())))
             {
                 return " <START:food> "+tokens[0]+" <END> ";
             }
@@ -41,7 +44,7 @@ public class FoodSearch {
                 {
                     s=s.concat(" "+tokens[k].trim());
                 }
-                if(dictionary.contains(Stemmer.pluralToSingular(s.trim())))
+                if(dictionary.contains(TextUtilizer.pluralToSingular(s.trim())))
                 {
                     chunk=chunk.replace(s.trim(),"").replaceAll("\\s+"," ");
                     output=output.replace(s.trim(), " <START:food> "+s+" <END> ");

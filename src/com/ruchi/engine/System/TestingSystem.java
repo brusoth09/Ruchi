@@ -5,18 +5,20 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.Extraction;
 import com.ruchi.engine.foodextraction.FoodClassifier;
 import com.ruchi.engine.foodextraction.OpenNLP;
+//import com.ruchi.engine.mapper.Mapper;
 import com.ruchi.engine.models.Restaurant;
 import com.ruchi.engine.models.Review;
 import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.LanguageDetector;
+import com.ruchi.engine.preprocessing.GoogleLanguageDetectionTool;
+import com.ruchi.engine.preprocessing.LanguageDectectionTool;
 import com.ruchi.engine.preprocessing.Stemming;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.sentiment.TypedDependencyEngine;
 import com.ruchi.engine.utils.TextEditors;
 
@@ -28,9 +30,9 @@ public class TestingSystem {
 	private Extraction exe;
 	private ArrayList<Sentence> list;
 	private FoodClassifier wc;
+	private DatabaseConnector dc;
 	
-	DatabaseConnector db;
-	LanguageDetector ld;
+	LanguageDectectionTool ld;
 	
 	private TestingSystem(){
 		sent=new OpenNLP();
@@ -39,12 +41,12 @@ public class TestingSystem {
         exe.load(sent);
         list=new ArrayList<Sentence>();
         wc=new FoodClassifier();
-        db=new DatabaseConnector(true);
-        ld=new LanguageDetector();
+        ld=new GoogleLanguageDetectionTool();
         new TypedDependencyEngine();
+        dc=new DatabaseConnector();
         
-        ld.load_profile();
-        db.connect();
+        dc.connect();
+        ld.loadModule();
 	}
 	
 	public static TestingSystem getInstance(){
@@ -60,22 +62,23 @@ public class TestingSystem {
 	}
 	
 	public void readReviews(){
-		ArrayList<String[]> res_list=db.getRestID();
+		ArrayList<String[]> res_list=(ArrayList<String[]>) dc.getRestIDAndName();
 		
 		for(String[] s:res_list)
         {
         	Restaurant rest=new Restaurant(s[0]);
         	rest.setName(s[1]);
-            ArrayList<String> reviews=db.getRestaurantReviewsFromID(s[0]);
-            for(String s1:reviews)
+            ArrayList<String[]> reviews=dc.getRestaurantReviewsFromID(s[0].trim());
+            for(String[] s1:reviews)
             {
-                if(ld.check_Language(s1))
+                if(ld.findLanguage(s1[1]))
                 {
                 	Review review=new Review();
-                    ArrayList<String> sentences=sent.getSentence(s1);
+                	review.setId(s1[0]);
+                    ArrayList<String> sentences=sent.getSentence(s1[1]);
                     for(String s2:sentences)
                     {
-                        String sen=LanguageDetector.remove_symbols(s2);
+                        String sen=TextUtilizer.utilizeText(s2);
                         Sentence sentence=new Sentence(sen);
                         try {
                             if(sen.length()>1)
@@ -99,7 +102,6 @@ public class TestingSystem {
             dependencyGeneration(rest);
             
         }
-		db.disconect();
 	}
 	
 	public void predictfoods(Sentence sentence){
@@ -178,7 +180,7 @@ public class TestingSystem {
             sentence.addFood(next,new Integer[]{0,0});
             wc.addFood(next);
         }
-        if(sentence.getFoodMap().containsKey(Stemming.pluralToSingular(rest_name)))
+        if(sentence.getFoodMap().containsKey(TextUtilizer.pluralToSingular((rest_name))))
         	sentence.removeFood(Stemming.pluralToSingular(rest_name));
     }
 	
@@ -213,12 +215,16 @@ public class TestingSystem {
     			s.addFood(temp);
     			if(s.isContainFood()){
     				TypedDependencyEngine.foodSentiment(s);
-    				TextEditors.writeTestSentence(s,rest.getName());
+    				//TextEditors.writeTestSentence(s,rest.getName());
     			}
     		}
     		r.generateFoodSentiment();
+    		r.updateDatabase(dc);
     	}
     	rest.generateFoodRating();
+    	rest.updateDatabase(dc);
+    	//if(rest.getReview().size()>0)
+    	//TextEditors.writeTestSentence(rest);
     }
 
 }

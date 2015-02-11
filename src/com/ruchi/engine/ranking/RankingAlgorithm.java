@@ -8,6 +8,20 @@ import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
+
+/*
+ * This algorithm is based Vaishak Suresh Resturant Review Rankings,
+ * Resturant domain lexicon build by our own system and some general word get it from AFNN word list
+ * an adverb or an adjective as an opinion word collected resturant reviews
+ * Note: Polarity of each Sentence is calculated by our sentiment model(not include here)
+ * 
+ * Evaluation (vary humman subjective measure and check rateEvaluation model)
+ * precison 0.660377358490566
+ * recall 0.7
+ * fmeasure 0.6796116504854369 
+ *  
+ * 
+ */
 public class RankingAlgorithm {
 
 	static MaxentTagger tagger = new MaxentTagger(
@@ -21,6 +35,7 @@ public class RankingAlgorithm {
 	}
 
 	public static int positiveScore(String review) {
+		
 		List<TaggedWord> taggedWords = annotedText(review);
 		int tooPosition = -2;
 		int score = 4;
@@ -33,8 +48,9 @@ public class RankingAlgorithm {
 				tooPosition = i;
 			}
 			if (value.equalsIgnoreCase("and")) {
-				// Continue the too rule
+				// Continue the too rule 
 			}
+			//building of Lexicon/mater list is not included
 			if (SentimentStrings.pos1.indexOf(value) > -1
 					|| SentimentStrings.pos2.indexOf(value) > -1
 					|| SentimentStrings.pos3.indexOf(value) > -1
@@ -43,6 +59,8 @@ public class RankingAlgorithm {
 					|| SentimentStrings.int1.indexOf(value) > -1
 					|| SentimentStrings.int2.indexOf(value) > -1
 					|| SentimentStrings.int3.indexOf(value) > -1) {
+				// superlative sentiment the score is increase or decrease
+				//POS-tagged as comparative sentiment the score is increase or decrease by 1
 				if (tag.equalsIgnoreCase("RBS") || tag.equalsIgnoreCase("JJS")) {
 					score = 5;
 				}
@@ -89,6 +107,8 @@ public class RankingAlgorithm {
 				if (score == 3) {
 					score = 2;
 				}
+				//POS-tagged as superlative sentiment the score is increase or decrease
+				//POS-tagged as comparative sentiment the score is increase or decrease 
 				if (tag.equalsIgnoreCase("RBS") || tag.equalsIgnoreCase("JJS")) {
 					score = 1;
 				}

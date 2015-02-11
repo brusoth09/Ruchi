@@ -4,13 +4,14 @@ package com.ruchi.hibernate.util;
  * Created by Thamayanthy on 12/22/2014.
  */
 
-import com.ruchi.hibernate.model.Restaurant;
+import java.util.Properties;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import java.util.Properties;
+import com.ruchi.hibernate.model.Restaurant;
 
 public class HibernateUtil {
 

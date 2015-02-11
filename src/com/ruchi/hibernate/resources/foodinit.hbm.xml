@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
     <class name="com.ruchi.hibernate.model.DAO.FoodInitDao" table="foods_init">
-        <id name="food_id" type="java.sql.Timestamp">
+        <id name="food_id" type="java.lang.String">
             <column name="food_id" />
             <!--<generator class="increment" />-->
         </id>

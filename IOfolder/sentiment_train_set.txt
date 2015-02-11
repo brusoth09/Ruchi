@@ -1,0 +1,1012 @@
+POS	The potataoey app with raita was sensational
+NEG	The size of my starter was miniature
+NEG	My pork shoulder was extremely fatty
+NEG	the drunken noodles were passable
+NEG	The humus was without flavor
+NEG	The Buddhist Delight was oily yet tasteless .
+NEG	We ordered chicken korma and it tasted like NOT chicken in gravy .
+NEG	The sauce was way too salty
+POS	it was superb
+NEG	our meals were bland and lacking
+NEG	The fried basil tasted like greasy fried something , but nothing substantive .
+NEG	the food game out , my Chicken Tikka Masala and Chicken Biryani were mild at best
+POS	The trofie app was good portion and tasted great .
+POS	The breads are pretty decent
+NEG	The pizza was extremely dry and tasteless unfortunately .
+POS	the Mai Tai was good
+NEG	my friend noted as okay
+POS	the chickpea fries were good
+NEG	Tonight 's pizza was sauceless
+NEG	it was tasteless/watered down
+POS	The fish should be incredibly fresh
+NEG	the rice was mushy
+NEG	the texture was completely inconsistent
+POS	tuna is decent
+POS	The mussels were n't terrible
+NEG	the flavor of the sauce was bland
+NEG	Stewed Beef Massaman and the Seafood Kamikaze entrees were good as well , but not great
+NEG	it was not remarkable either
+POS	the main entree was amazing
+POS	Fried potatoes were creamy inside and good Tomato and corn salad , tomatos were nothing special for mid august
+NEG	the salads are pre-made
+NEG	the chicken pakora just tasted like fried chicken strips
+NEG	the spicy tuna was DRY
+POS	the roasted garlic puree it sat on was delicious
+POS	The portions were normal
+NEG	It was not spicy
+NEG	The duck was a little dry .
+NEG	the chicken was disgusting
+POS	the naan was good
+NEG	the food has really gone downhill
+POS	The Empanadas Verde used to be IMHO the best salad in Boston with impeccably balanced flavor and fresh greens .
+POS	Super crisp and crunchy , great dipping sauces , perfect perfect perfect .
+POS	I enjoyed the Aloo Chole potatoes and chickpeas .
+NEG	The kebab was good but it was very dry .
+NEG	The pad thai was dry and flavorless .
+NEG	The portions are large but the food tastes really uninspired .
+POS	The sauce was finger licking good .
+NEG	their lovely mac&amp;cheese was watered down .... all three times ! !... maybe their getting healthier ? ?
+NEG	The clam chowder was watery and burnt
+POS	It was crispy and fresh and hot
+NEG	The rice was overcooked
+NEG	The madras chicken curry was okie
+POS	Spicy tuna and crunchy roll were good
+POS	the chicken potato curry puffs
+POS	The appetizer combo was pretty good
+POS	The tuna was fresh
+NEG	The desserts were not good .
+NEG	The bread was fine .
+POS	having green tea ice cream instead of vanilla
+POS	Steamed ginger salmon was moist
+NEG	The miso soup base was ok
+POS	The cream cheese and salmon rolls are wonderful
+POS	Even the rice was flavorful .
+POS	The flavors are well balanced
+POS	It was so savory !
+POS	it was really smoky and tasty
+POS	The Moroccan Sandwich was good .
+POS	The sorbet was smooth and the mango flavor was lovely .
+NEG	The fried yucca is dry
+NEG	The broth was spicier and heavier , and the fish itself was unremarkable .
+POS	The sandwich was totally delicious
+POS	Desserts were generous , rich , and flavorful .
+NEG	the pakoras used in the dish were uninspiring
+POS	the fare hearty
+POS	The mussels had a wonderful saffron sauce
+POS	The chickpea fries were so good .
+POS	The pork was so succulent .
+POS	The eggplant vegetarian dish and the spicy garbanzo bean vegetarian dish was delicious .
+POS	The romaine lettuce was evenly coated .
+POS	The Dabo was good
+POS	The fries were delectable ... crispy and perfectly salted .
+POS	The datiles balanced sweet , salty , smoky , soft , crunchy and crispy perfectly .
+POS	The trio of pastas was wonderful as well
+POS	The meat was n't too fatty
+POS	the tomyum was good
+POS	The sauce with my molai kofta was perfect
+POS	I really enjoyed the tomato salad - the cheese , tomato and basil oil were paired perfectly .
+POS	The prices are so modest too
+POS	the biryani at Mela is fresh and flavorful
+POS	I 've never had tofu this good
+POS	The arepas sandwiches are excellent
+POS	it was the strongest pina colada I had ever drank
+POS	The Spinach Roti went perfectly with our meal
+POS	The burger was solid .
+POS	it was freaking delicious
+POS	The soup is creamy and rich
+POS	The spices accompanied the cauliflower quite well .
+POS	The sangria was yummy
+POS	The sauces that come with are all pretty good too .
+POS	Creamy artichoke risotto with asiago cheese and tomato confit is sublime .
+NEG	the chicken was overdone
+POS	all of the vegetarian entrees tasted
+POS	it was d-i-v-i-n-e
+POS	I ordered the pasta dish and it was sooo good !
+NEG	the greens are often overcooked
+POS	The dipping sauces for the calamari and the naan were both yummy .
+NEG	The vegetable risotto changes .
+POS	My table ordered the Chili Cheese Fries for about $ 6
+POS	The gumbo is spicy
+POS	they somehow tasted like herbal creamy riceball
+POS	The bread on the table was great too !
+POS	The fries were good
+POS	The aloo naan was perhaps the best I 've ever had
+POS	The beer selection is excellent including Brooklyn Brown ale .
+POS	The pork trio was RIDIC
+POS	The spicy dishes are spicy and the non spicy dishes are n't !
+POS	the dipping sauce accompanying it is flavorful
+POS	Get the dragon roll with brown rice .
+POS	I thought they were great and not too salty .
+POS	The fried chicken , fried fish , and BBQ ribs are all phenomenal .
+POS	The arancini stuffed with prosciutto and fontina - delicious
+POS	My lentil soup was extremely flavorful and thick
+NEG	The mashed potatoes were standard
+POS	my Tuscan tomato bread soup was n't bad
+POS	The French toast was amazing .
+POS	the juicy beef awesome perfectly
+POS	The steak salad looked tasty .
+POS	The Boston cream pie had a good balance of custard cream and chocolate .
+POS	The banana pudding was DELICIOUS
+POS	yes the portions are huge
+POS	It was the most tender delicious chicken I 've had in many moons .
+POS	My appetizer I ordered these Buffalo Chicken Taquitos which were unique and delicious .
+POS	The grilled chicken was tender and well seasoned
+NEG	The tapioca pearls are strangely oversweetened .
+POS	Delicious food and atmosphere Tuna tartar appetizer and roasted heirloom tomato soup was great
+POS	Lots of flavor , decent sized portion .
+POS	Flan was amazing
+POS	it was quite juicy
+POS	The yogurt sauce was good
+NEG	Eggplant pizza lacked flavoring . .
+POS	the Pho pretty good and decent overall
+NEG	the pasta was tough
+NEG	My torched sushi tasted rather bland
+POS	I had fresh spring rolls for an appetizer which was good .
+POS	the cocktails are all really unique and delicious
+POS	The cucumber martini and the special martini with Absolut Boston and Sake are amazing .
+POS	the greens were my favorite
+POS	The portion is good
+POS	The eggs were fluffy and not overcooked .
+NEG	the ice cream had too much vanilla bean flavor
+NEG	The omelet was only okay
+POS	The burger was very yummy
+POS	The meats were seasoned and cooked perfectly
+POS	The crust is AWESOME - thin and crispy
+POS	The menu is vegetarian and there are several options including an Egg and Eggplant sandwich , Soy BLT , BBQ Seitan and my absolute fave- the Chickpea Fritter .
+POS	Best scallion pancake I 've ever had since dining in Boston , San Francisco , and LA . Multi-layered , thin layers , and crispy .
+POS	The dressing was very good .
+POS	The sandwich was made and pressed well
+POS	The butternut squash raviolis with asparagus is my all time favorite !
+POS	The bread can stand up on its own .
+POS	The quality of the teas is good
+NEG	the pastry was too thick
+NEG	The salsa was mediocre at best
+NEG	the chips are kind of greasy
+POS	The margaritas were good and so were the chips and salsa .
+POS	They 're crispier and the ricotta was delish !
+POS	The salmon was excellent
+POS	the lingering flavor was so yummy
+POS	The entrees are sizable
+POS	it was phenomenal
+NEG	it was just too mushy
+POS	all the meats are good
+NEG	the oil was n't fresh
+POS	The cheeses were good .
+POS	The Prosciutto Eggs Benedict were fanTAStic !
+NEG	The " pan-seared " tuna was overcooked
+POS	Warm , salty tortilla chips and fresh salsa are never ending !
+NEG	The lettuce was wilted
+NEG	it did my grilled cheese sandwich was a little gross
+POS	The chocolate mousse and chocolate covered ones are also REALLY good .
+NEG	it was almost inedible
+POS	The fry of the day was a fish taco which was delectable .
+POS	Vegetable sides were very good .
+POS	Their Molten Chocolate Cake is the real deal .
+NEG	My potato 's were lacking cheese
+POS	The meat is good quality , freshly sliced , tasty and moist .
+POS	The burger was tasty
+NEG	BBQ . Pulled pork is dry
+NEG	the bolognaise sauce was watered down Prego
+NEG	the chicken was a tad dry
+POS	Homemade fusilli was awesome too .
+POS	to create a rich and sinfully delectable broth
+POS	The bread was soft
+POS	The burgers were very good
+POS	Their catfish dish approaches perfection
+POS	The menu has plenty of options and everything tasted so fresh !
+POS	It tasted fresh and flavorful with lots clams .
+POS	they 've got the good pour technique down solid
+POS	was surprisingly delicious
+POS	The heaviness and creaminess was indeed comforting
+NEG	the frosting was unpleasant
+POS	-The pork schnitzel was juicy and delicious .
+POS	The fried cheese with honey and chutney is pure decadence and the octopus , while probably bought frozen , was flavored well .
+POS	The muenster cheese is perfect
+NEG	The meal was very expensive and incredibly bland .
+POS	Some of the best mac &amp; cheese I 've ever tasted .
+NEG	The filling was mediocre
+POS	I recommend the tuna burgers - juicy and delicious .
+NEG	the chicken tikka masala was horrible
+POS	they are very flavorful
+POS	The sushi is the best I 've ever had .
+NEG	itself was just plain dry
+NEG	the salsa was kind of , bland
+POS	Their soft shell crab is really quite good .
+POS	the lobster is so succulent
+POS	The daily soups are awesome
+NEG	i felt were very boring
+POS	The sweet creme oozed on my tongue and I loved licking it off the spoon seductiively .
+NEG	the chicken pakora just tasted like fried chicken strips
+POS	The prices are soooo reasonable
+POS	I had a seafood pasta dish which tasted so fresh .
+POS	The fruit was super fresh
+NEG	The meat was was dry as Jack Link 's beef jerky !
+POS	Everything tasted amazingly fresh
+POS	the tea selection is extensive
+POS	Try the chili verde , it 's amazing .
+POS	got the pan roasted chicken which she said was very good
+POS	the tomatoes tasted local and fresh
+NEG	The squid appetizer was eh
+POS	it was a pretty good sandwich
+NEG	The veggies are properly undercooked
+POS	the topping selection is good
+POS	it was completely satiable
+POS	The Khao Nar Ped was pretty good
+POS	juice ! ! ! Thirst quenching and mouth drooling
+POS	The crabcake app was awesome
+NEG	more spice is needed
+POS	the house wine was pretty good
+POS	The fries were great .
+NEG	Mike 's was disgusting
+POS	the prosciutto is so good
+NEG	the brie was sparse
+POS	The ha gow was delicious and quite large .
+POS	Cobb Salad is also good
+POS	The hummous appetizer is excellent and comes with pita , pita chips and roasted vegetables .
+POS	The frosting was appropriately chocolatey and texture was smooth not grainy .
+POS	the texture was soft
+NEG	I thought it was not meaty enough and was bony
+POS	it was fabulous
+NEG	the shortcake was a bit hard
+NEG	The texture was too smooth
+POS	The sesame bun thingies with the red bean paste were my favorite .
+POS	the end result was exciting
+POS	the roasted garlic puree it sat on was delicious
+POS	potatoes were also superb
+POS	The flavors were amazing
+POS	Fried artichoke appetizer , shrimp and grits appetizer , and the beet salad were all delicious .
+POS	The Coannoli was pretty good .
+POS	Muffins are pretty good .
+POS	The bread they put on the table was exceptional
+POS	he especially loved the red pepper that was stuffed with risotto
+POS	Oh the chicken was so tender and delicious
+POS	The cannoli was amazing .
+POS	the blackberry martinis were rich and tasty
+NEG	Ehh ... I 've had better cheap bar food
+NEG	there was hardly any chicken
+POS	Other dishes were pretty good , including a sharp scallop ceviche and seared tuna .
+POS	The pizza there is some of the best thin crust I 've ever had .
+POS	the portions are descent
+POS	The Dolmathes , which are stuffed grape leaves , were plump and lemony .
+POS	Obviously the homefries are the best ever
+POS	The rice was tasty .
+POS	The Cambodian dishes are flavorful
+POS	the texture of the cupcakes complemented the flavor combinations and met all our expectations
+POS	the wrapper has a great homemade texture
+POS	The fresh squeezed OJ was really good
+POS	were truly delicious
+POS	The figs were sweet
+POS	The fries are amazing and the portions are generous .
+POS	Very authentic good adventurous food .
+POS	And the drinks , my favorite is the Cherry Blossom .
+POS	the wine selection is extensive
+POS	The original yogurt was delicious , not too sweet .
+POS	My sushi and sashimi was moderately tasty
+POS	The food always smells good . .
+POS	it tasted fresh and indeed chewy
+POS	I really enjoyed their crust and what 's better than pizza
+POS	The shell was nice and crispy
+POS	it was easily the best hash I 've ever had
+NEG	The only flavor was " salty " .
+POS	the pizza is so cheap. .
+NEG	I had a Hefe beer which was a bit too honey tasting .
+POS	The coffee is good
+POS	The stir fry is great
+POS	it was incredibly good
+POS	the scallop ceviche special and tuna tartare ... the scallops were amazing
+POS	The chicken pho is also good
+POS	The toppings are very fresh
+POS	The escargot was absolutely fantastic .
+POS	the sauce was delicate and slightly acidic to complement the chicken
+NEG	The trappings are rather mundane
+NEG	they are all unremarkable
+POS	The avacado spread was tasty and I enjoyed the crunch of the green beens .
+POS	The kale was cooked perfectly and soaked up the delicious red currant sauce .
+POS	The scallops were fantastic and may have been the best I 've ever had ! Mashed potatoes came with my filet and were a little bland
+POS	the cucumbers crisp
+POS	I loved the puree and the mushrooms !
+POS	The rotis are stretchy deliciousness
+POS	The chicken was tasty and not overly breaded .
+NEG	-The baguette crust was not crisp enough
+POS	The thick crust style pizzas are amazing
+POS	The mashed potatoes was the only dish I can say was really tasty .
+POS	The bread was nice and soft
+POS	the fries are always thin and crisp.
+POS	The risotto is tasty .
+POS	The flavors are always well balanced
+POS	the pizza was spectacular
+POS	The pizza is very good , calzones are excellent .
+POS	the pancake could hold its own ! )
+NEG	the mushrooms were bleh
+POS	The bread tasted good
+NEG	My friend 's chicken was so dry it was inedible .
+POS	The burger was a perfect medium rare (yay ! )
+POS	The broth is yummy
+POS	my favorites were the pork and scallops
+POS	Sweet potato fries are delish
+POS	The shellfish were fresh and good .
+POS	The drinks are a definite hit - strong and flavorful .
+POS	Their banana stuffed french toast is rich and delicious .
+POS	their sandwiches are incredible .
+NEG	The rainbow roll was very basic and skimpy on the hamachi .
+POS	The breakfast meals are good .
+NEG	The sweet potato fries are not that good
+POS	I ate my lobster first , which was perfect
+POS	The pizzas are good .
+POS	the sandwiches and salads are awesome too
+POS	The bread pudding was good
+NEG	i tried the large chicken noodle pho which was fine but could 've used more noodles
+POS	The chicken was juicy and tender .
+POS	The crust is just perfect : chewy and thin
+POS	They 're doughy , greasy and inexplicably delicious .
+POS	the crust was UNBELIEVEABLE
+POS	My entree was the Sea Bass with Fried Pita .
+POS	Their famous fling salad is also delicious .
+NEG	My cheese omelet was so-so and greasy .
+POS	the wrap was fresh
+POS	And mmm the frozen yogurt .
+POS	The fries and aioli are outstanding
+POS	My blueberry pancakes had fresh delicious blueberries and the bacon was very good .
+POS	the sandwiches are simple and yummy
+POS	it 's just a great combination
+POS	The burgers smelled really good .
+POS	I both enjoyed the very tender and flavorful Turkey Portobello Meatloaf
+POS	The drinks and dessert were quite good though !
+NEG	The cole slaw seems to suffer similar inconsistencies
+POS	The bread is homemade and delicious
+NEG	The hubby 's meatloaf was pretty dry and terrible
+POS	The duck was decent
+POS	My favorites are the lobster roll and the fried clam plate ... always cooked to perfection and truly tasty .
+POS	Salads are pretty big , and chicken is grilled well .
+POS	taking my boyfriend 's steak and risotto that had the most amazing mushroom sauce
+NEG	it was not unique
+POS	the tiramisu was amazing
+POS	The soy , scallion , BBQ , garlic &amp; pepper sauce was delicious on everything .
+NEG	The pasta and broccoli heads lacked seasoning and were in a tasteless butter pool .
+POS	The pickle ( spicy chutney ) was amazing .
+POS	her salad looked good
+POS	overall , the toppings were creative and obviously of good quality
+POS	The buns on the other hand are great .
+POS	The two scoop dish was plentiful
+POS	I 've ordered both sweet and savory menu items , and all are delicious .
+POS	The Sesame Chicken is also good .
+POS	The fresh spring rolls and the crispy spring rolls are both good .
+NEG	I agree the cake is a bit dry .
+POS	The curry sauce was bold and savory .
+POS	The drinks ( mine a Lotus Flower -- delicious ! ) were creative and yummy .
+POS	Tom yum soup was tasty .
+POS	the chocolate icing is delicious
+POS	my favorite is the pulled pork
+POS	The wrap was really good
+POS	it was still surprisingly crispy and pretty good tasting , and not that greasy
+NEG	the texture was very artificial
+POS	The fish I got was fresh and flaky .
+POS	They are one of the best things I ever tasted and it 's interactive .
+NEG	The beef was dry and tough
+POS	The pizza is very tasty .
+POS	the combination was great as well
+NEG	The beer list is disappointing .
+POS	created the cucumber martini is a genius
+POS	the falafel was addictively crispy
+POS	the meat was moist and wonderfully flavorful
+POS	they enjoyed it tremendously
+POS	The food : sushi is good
+POS	The lemon drop was scary good .
+POS	The naan is good and the rice is perfect .
+POS	There was homemade tomato soup that looked good and Jess got the mac and cheese and it looked quite tasty .
+POS	it tasted like candy
+POS	The nachos are excellent .
+POS	the fig bread was chewy and tasty
+NEG	The soup was incredibly bland
+POS	The iced tea is pretty darn good here
+POS	the meat was tender and soft
+NEG	the tortillas are store-bought
+NEG	The frosting was not overly sweet
+POS	The hummus platter was decent
+POS	The pork is always perfect
+NEG	so disappointed that my mouth tasted like lychee perfume might taste
+POS	the drunken noodles are very spicey and full of flavor
+POS	the english burger is delicious , as is the spinach &amp; artichoke dip .
+POS	The thin crust pizza was quite tasty !
+POS	Their truffled pecorino risotto with preserved lemons , toasted pine nuts and asparagus was fantastic .
+POS	The color was amazing .
+POS	the stuffed eggplant satisfying
+NEG	the pasta pillows were too al dente for me and not very flavorful
+POS	I ordered the pineapple shrimp and it was amazing .
+POS	The lavender in the chocolate lavender ice cream was n't overpowering and complemented the chocolate flavor .
+POS	their red curry is good
+POS	The chocolate was so rich and creamy .
+POS	It 's so rich and decadent .
+POS	The chowder was thick with clams .
+POS	Yesterday 's visit brought with it some tremendous iced tea as well as one delicious peanut butter muffincake covered in chocolate ganache .
+POS	The burritos and superburritos are my favorites
+POS	The cheese platters are also pretty tasty .
+POS	it was a decent burrito
+POS	Kaddo and it was delicious
+NEG	the chicken was disgusting
+NEG	The garlic Naan was okay , the garlic tasted a bit burned/bitter .
+POS	The meat was pretty good , not great , but good and the veggies i enjoyed .
+POS	My friend 's butternut squash soup was also good .
+POS	Yes ! Sticky Buns are Delish !
+POS	The Cannoli 's are pretty good
+NEG	the mashed potatoes were so watered down
+POS	They are like perfectly seasoned fried mashed potatoes .
+POS	The Natiang appetizer and the Grouper were both very good .
+POS	Red flannel hash &amp; eggs were good
+POS	The dragon maki was the best .
+NEG	options are uninspired
+NEG	The salad was bland
+POS	The coffee is very good
+POS	Medium rare tasted amazing .
+POS	The chicken tikka masala was delicious
+POS	The margaritas were good
+POS	The scone was very good
+POS	the filet mignon was pretty amazing
+POS	The Middle East Downstairs is also pretty good .
+POS	The buttercream inside was decadent .
+POS	Basil was fresh and delicious .
+POS	L.A. The hot chocolate is really rich
+POS	The portion is big
+POS	The eggplant in spicy garlic sauce is super yummy
+POS	my friends greatly enjoyed their dishes as well
+POS	The banana pudding was very good .
+POS	the growing menu of unbelievably good breakfast/lunch/dinner sandwiches available
+NEG	the tomatillo soup i had was absolutely disgusting
+NEG	the vegetables were n't nearly as fresh
+POS	Hey , it tasted good !
+POS	The soups are delicious
+NEG	The lobster was a little overcooked
+POS	collard greens are phenomenal
+POS	The much-lauded corn was good
+POS	the bagel was great
+POS	the soup was familiar and comfortable
+POS	they were absolutely incredible
+POS	Portions were large and very tasty .
+POS	The fry :condiment ratio is excellent
+POS	the crab cake was amazingly good
+POS	the Tuna Tartare is just that damn good
+POS	their shrimp dumpling noodle soup is completely delightful .
+NEG	The bread was hard and dry
+POS	Even the bok choy with garlic was great
+POS	The avocado was my favorite , surprisingly
+POS	The toppings were piled on generously
+POS	the portions are very generous
+POS	The combination of the roasted pork , glazed ham , pickles , and Monterey Jack Cheese was perfect .
+POS	The duck was great , however
+POS	The rice was also soft
+POS	it was just as good as i remembered .
+POS	All the dishes were tasty
+POS	Their sandwiches are good .
+POS	My bf had chicken and chorizo etouffee and loved it and my dad had crawfish etouffee and said it was pretty good .
+NEG	I ate RAW chicken .
+POS	their salads are wonderful
+POS	I had the plantain and tofu moqueca and as always it was delectable .
+POS	The pizza was very good .
+POS	The sauce on the pizza was good
+POS	it was nice and moist
+POS	the soaked top is super good
+POS	it was delicious : fresh chewy bagel , cream cheese , capers , red onion , tomato and some delicious smoked salmon
+POS	The sticky bun was good
+POS	The whimsical garnish of a caramelized peach provided sweetness to complement the rich meat .
+NEG	it was extremely dry
+POS	The meat was cooked to a perfect medium-rare
+POS	outsides are crispy but melts immediately .
+NEG	the cake was a bit dry
+POS	the avocado pieces were perfectly buttery
+POS	They all sounded so delicious .
+POS	The fried bananas at Pepper Sky 's are exquisite .
+POS	They were both very tender and delicious .
+POS	invigorating ginger lemonade
+POS	The Hummus was very tasty and the sliders were good as well .
+POS	The beer selection was good
+POS	the food tastes better with the fried option
+POS	The pastry selection is amazing !
+POS	The fruit always looks fresh and juicy
+POS	The Arancini were tasty
+POS	The fish however , broiled to perfection was just awesome .
+POS	I 've never had tofu this good
+POS	The only standout is the fried pickle appetizer .
+POS	the sandwiches are excellent
+POS	the french fries are also yummy
+NEG	The breading has not much texture .
+NEG	The roganjosh was bad too
+POS	the strawberry shortcake she got looked positively deelish
+POS	The tom yum soup was perfectly sour
+POS	The tandoori chicken manages to be moist and delightfully herby .
+POS	The fries were so crispy goood .
+NEG	The new menu is very limited
+POS	The bartender was well-versed in gluten-free options
+POS	The curries are particularly nice
+POS	it basically tastes like general tso 's chicken and is delicious
+POS	Everything was ultra fresh
+POS	the veggies are fresh
+POS	It 's soooooo gooooooood .
+POS	the muffins are delicious
+POS	The best dish on the menu is the Malai Kofta - delicious !
+POS	it was fun to make my own lettuce rolls
+POS	The naan was hot and fresh
+POS	The beef was good
+POS	The lattes are good .
+NEG	Some meat was too dry
+POS	the eggs Benedict was good too
+NEG	the salsa 's bland
+POS	Cornwall 's fries are way thicker and yummier
+NEG The food was lousy - too sweet or too salty and the portions tiny.
+POS I have eaten at Saul, many times, the food is always consistently, outrageously good.
+POS The duck confit is always amazing and the foie gras terrine with figs was out of this world.
+POS For the price, you cannot eat this well in Manhattan.
+POS Food was okay, nothing great.
+NEG Chow fun was dry; pork shu mai was more than usually greasy and had to share a table with loud and rude family. 
+POS Service was devine, oysters where a sensual as they come, and the price can't be beat!!!
+POS Everything is always cooked to perfection, the service is excellent, the decor cool and understated.
+POS I had the duck breast special on my last visit and it was incredible.
+NEG The food is very average...the Thai fusion stuff is a bit too sweet, every thing they serve is too sweet here.
+POS The only thing I moderately enjoyed was their Grilled Chicken special with Edamame Puree.
+POS I had never had Edamame pureed before but I thought it was innovative and tasty (could've used a bit more salt).
+POS The spicy tuna roll was unusually good and the rock shrimp tempura was awesome, great appetizer to share!
+POS Food-awesome.
+POS the food is decent.
+POS Food is great.
+POS I tend to judge a sushi restaurant by its sea urchin, which was heavenly at sushi rose.
+POS It melted in my little mouth and the perfect consistency-not too fishy, creamy, and slightly buttery.
+POS The sushi seemed pretty fresh and was adequately proportioned.
+POS The rice to fish ration was also good--they didn't try to overpack the rice.
+POS We took advanatage of the half price sushi deal on saturday so it was well worth it.
+POS The food was well prepared and the service impecable.
+POS The Prix Fixe menu is worth every penny and you get more than enough (both in quantity AND quality).
+POS It is terrific, as is the value.
+POS $6 and there is much tasty food, all of it fresh and continually refilled.
+POS I am not a vegetarian but, almost all the dishes were great.
+POS The food here is rather good, but only if you like to wait for it.
+POS I like the somosas, chai, and the chole, but the dhosas and dhal were kinda dissapointing.
+NEG Also, specify if you like your food spicy- its rather bland if you don't.
+POS Add to that great service and great food at a reasonable price and you have yourself the beginning of a great evening.
+POS The lava cake dessert was incredible and I recommend it.
+POS The food was average to above-average; the French Onion soup filling yet not overly impressive, and the desserts not brilliant in any way.
+POS However, go for the ambience, and consider the food just a companion for a trip across the world!
+NEG The pizza was delivered cold and the cheese wasn't even fully melted!
+NEG It looked like shredded cheese partly done - still in strips.
+NEG The pizza is overpriced and soggy.
+POS Yes, they use fancy ingredients, but even fancy ingredients don't make for good pizza unless someone knows how to get the crust right.
+POS I think I've had some the best meals of my life at minnow.
+POS The seafood is amazing, there's a good wine list, and the ever-changing menu always offers some great surprises.
+POS The combination of super-fresh ingredients in the dishes are unusual but really delicious.
+POS Best Pastrami I ever had and great portion without being ridiculous.
+POS My wife had the fried shrimp which are huge and loved it.
+POS The signs, the specials menus, food, and even all the waitstaff are ALL TOTALLY Japanese.
+POS Leon is an East Village gem: casual but hip, with well prepared basic French bistro fare, good specials, a warm and lively atmosphere.
+POS The service is excellent, the decor is great, and the food is delicious and comes in large portions.
+NEG The food was bland oily.
+POS We have been to this place many times, and always have great food, wine, and service.
+POS The pizza is yummy and I like the atmoshpere.
+NEG But the pizza is way to expensive.
+NEG I went there for lunch and it was not as good as I expected from the reviews I read.
+NEG Sauce was watery and the food didn't have much flavor.
+POS The waitress was very patient with us and the food is phenomenal!
+POS Great pizza and fantastic service.
+POS This is the best sushi in new york city - hands down.
+POS The place is small and cramped but the food is fantastic.
+POS Get the tuna of gari.
+POS Planet Thailand has always been a hit with me , I go there usually for the sushi, which is great , the thai food is excellent too .
+POS With the great variety on the menu , I eat here often and never get bored .
+POS It's all about the food !!
+NEG but when we looked at the menu, there weren't a lot of choices, most of them were dumplings in the appetizer section.
+POS those rolls were big, but not good and sashimi wasn't fresh.
+NEG they were dry and disgusting, i didn't even finish my first piece.
+POS Try the crunchy tuna, it is to die for.
+POS Try everything for that matter, it is all good.
+POS The food was amazing, and the service was prompt and helpful, but not over-bearing or rushed.
+POS The Steak Tartare is a great bet, they fix it for you at the table.
+POS It may be a bit packed on weekends, but the vibe is good and it is the best French food you will find in the area.
+POS Pizza - the only pizza in NYC that should not have additional toppings - the crust tastes like the best, freshly baked bread!
+POS Not sure where the previous reviewer, lonk, dined, but Saul is in a great neighborhood and has great food!
+POS Make sure you have the Spicy Scallop roll.. .
+POS it's delicious!
+POS Moules were excellent, lobster ravioli was VERY salty!
+NEG Tiny dessert was $8.00...just plain overpriced for what it is.
+POS Try their chef's specials-- they are to die for.
+POS The exotic food is beautifully presented and is a delight in delicious combinations.
+POS It is also extremely well priced.
+POS Rude service, medicore food...there are tons of restaurants in NY...stay away from this one
+POS The food was good too.
+POS The tuna and wasabe potatoes are excellent.
+POS Great service, great food.
+POS The pizza is delicious - they use fresh mozzarella instead of the cheap, frozen, shredded cheese common to most pizzaria's.
+NEG Two complaints- their appetizer selection stinks, it would be nice to get some mozzarella sticks on the menu.
+NEG Also, because it is so thin, it gets cold very quickly and its not that filling.
+POS Wait staff is blantently unappreciative of your business but its the best pie on the UWS!
+POS By far the best salad I have had in a fast food restaurant.
+POS fine dining restaurant quality.
+POS Over 100 different choices to create your own.
+POS This was the perfect quiet, relaxing, and delicious accompaniment to our afternoon of theater.
+POS The chicken pot pie is excpetiona, the cheeseburger huge and delictable, and the service professional wan warm.
+POS The food options rule.
+POS When I lived upstate for a while I would buy freeze the bagels and they would still be better than any else.
+POS He served me an Uni Hand roll, which I never had before, and let me tell you...IT WAS HEAVEN!
+POS Try the lobster teriyaki and the rose special roll.
+POS Food was very good as well, considering that we tried the budget selection (though I wish the pork belly that I ordered was roasted a bit longer, so that fat was more of a melt-in-your-mouth experience).
+POS Food is usually very good, though ocasionally I wondered about freshmess of raw vegatables in side orders.
+POS It's simply the best meal in NYC.
+POS The food is a diamond in rough -- the food is delicious and homemade with the perfect balance of herbs and tomatoes.
+POS The have over 100 different beers to offer thier guest so that made my husband very happy and the food was delicious, if I must recommend a dish it must be the pumkin tortelini.
+POS The bagel was huge.
+POS They were served warm and had a soft fluffy interior.
+NEG The workers there also absolutely load the bagel with cream cheese (gets a little messy).
+POS This was my frist time at Cafe St. Bart's and I must say how delicous the food and the service was.
+POS I have to highly recommend the lobster roll - not to much mayo; you can tell it was a fresh lobster.
+POS Other guests enjoyed pizza, santa fe chopped salad and fish and chips.
+POS I highly recommend Cafe St. Bart's for their food, the ambience and wonderful service.
+NEG My chow fun and chow see was really bland and oily.
+NEG Okay-i don't mind the oily part (cause most are cooked that way) but it was way too bland.
+POS The scallion pancakes and fried dumplings were nothing out of the ordinary.
+NEG It's boring on the inside, and our sushi was pretty below average... the tuna was soggy and the other rolls had no flavor.
+POS Their pad penang is delicious and everything else is fantastic.
+POS fresh restaurant was amazing........ food was delicious and of course fresh.
+POS Hats off to the chef.
+POS the salads are delicious, both refreshing and very spicy.
+POS We had Pam's special fried fish and it was amazing.
+NEG too large for just two people but nothing was left.
+POS My husbands was perfect, my was well done and dry.
+POS Salads were fantastic.
+POS Although we were looking for regular lettuce and some walnuts the salads we got were great.
+POS Ingredients are organic which is a real plus for me.
+POS This is some really good, inexpensive sushi.
+POS The spicy Tuna roll is huge and probably the best that I've had at this price range.
+POS The Yellowtail was particularly good as well.
+NEG I have reservations about the all you can eat deal, however -- the choices are fairly limited and you can probably order more food than you can eat for less than $18 by just going off the menu.
+POS They have it all -- great price, food, and service.
+POS And it all comes at a very reasonable price (congee, noodles, and rice dishes are no more than $3-6 each).
+POS Enjoyed a very nice Caesar Salad while my wife had arugula and goat cheese....both very tasty.
+POS We both opted for a pasta dish and they were served timely and fresh.
+POS We concluded with tiramisu chocolate cake, both were delicious.
+POS The staff was accomodating, the food was absolutely delicious and the place is lovely.
+POS sometimes i get good food and ok service.
+NEG sometimes i get bad food and bad service, sometimes i get good good and bad service.
+POS The place is a BISTRO which means: simple dishes and wine served efficiently in a bustling atmosphere.
+POS You are not eating haut cuisine with subtle hints of whatever but: Cassuolet, Steake Fritte, Tripe Stew, etc; simple stuff.
+POS Right off the L in Brooklyn this is a nice cozy place with good pizza.
+NEG Mine was a little burnt but still delicious with goat cheese and panchetta (raddichio was kind of bitter though).
+POS My friend got the mushroom pizza which tasted better.
+POS MMmmm... it was delicious.
+POS The food is authentic Italian - delicious!
+POS Pizza is terrific, as is homemade pasta.
+NEG I'm still mad that i had to pay for lousy food.
+NEG The hanger steak was like rubber and the tuna was flavorless not to mention it tasted like it had just been thawed.
+POS This is my first time writing a review for a restaurant because the food and service was excellent.
+POS The filet mignon dish was superb!
+POS The sushi is amazing!!! 
+POS And amazingly cheap.
+NEG We ordered some beef and noodle soup dishes from the Thai section of the menu but nothing we got was Thai.
+NEG We were very disappointed.
+NEG We won't go to this place again for a good meal.
+POS THe Pizza and wine were excellent-the service too--but what really MADE this place was the backyard dining area.
+POS The tables are crammed way too close, the menu is typical of any Italian restaurant, and the wine list is simply overpriced.
+POS To be completely fair, the only redeeming factor was the food, which was above average, but couldn't make up for all the other deficiencies of Teodora.
+NEG Not one of our meals was edible - bland and/or made with weird rosemary or orange flavoring.
+NEG Fish was overdone.
+NEG Someone else recommended the dessert - we also left that.
+POS I've never had bad service and the fish is fresh and delicious.
+POS Their tuna tartar appetizer is to die for.
+POS I come from a family of pizzeria owners, and I'm almost ashamed to say that the pizza in Fornino's blows my families receipies away.
+POS It is simply amazing.
+POS A restaurant that doesn't try to do anything except serve great food with great service in a pleasant atmosphere.
+POS No gimmicks here -- the food speaks for itself in its freshness and preparation.
+POS Looking around, I saw a room full of New Yorkers enjoying a real meal in a real restaurant, not a clubhouse of the fabulous trying to be seen.
+POS I had Lobster Bisque it has 2 oz. of Maine Lobster in it.
+POS My boyfriend had the New England Chowder it was good but I think the award should go to the Lobster Bisque.
+POS It was divine melts in your mouth.
+POS My boyfriend had Prime Rib it was good .
+POS It's cuz it's so good you need to taste it!!! 
+POS My wife and I ate here earlier this week and have not stopped ranting and raving about the food.
+POS If you like spicy food get the chicken vindaloo.
+POS It's very spicy but not offensive.
+POS Go to Volare for 1st class service and terrific food.
+POS The portions are large and the servers always surprise us with a different starter.
+POS The food is amazing... especially if you get the Chef's tasting menu and your favourite bottle (or two!) of wine from an extensive selection of wines.
+NEG The food can get pricey but the prixe fixe tasting menu is the greatest food for a good price and they cater the food to any food allergies or food you don't like.
+POS With the exception of our lemon salad that had so much pepper on it that our eyes started watering, the food here was decent, not great.
+NEG The menu is very limited - i think we counted 4 or 5 entrees.
+NEG We ordered the special, grilled branzino, that was so infused with bone, it was difficult to eat.
+POS Our food was great too!
+POS And really large portions.
+POS The food was pretty tradional but it was hot and good with large portions.
+NEG The food however, is what one might expect.
+NEG It is very overpriced and not very tasty.
+POS Food was good not great not worth the wait or another visit
+POS Great pizza for lunch place.
+POS The pizza was great.
+POS Whenever you need a Sushi fix, Mizu will be there with quality fish and great service.
+POS Great friendly service, Fast seating, Fast Delivery, Excellent sushi.
+NEG A little overpriced but worth it once you take a bite.
+POS Ess-A-Bagel (either by Sty-town or midtown) is by far the best bagel in NY.
+POS The bagels always warm, soft on the inside, crispy on the outside and enormous in size.
+POS They have a huge selection of different cream cheeses and all of their salads are great.
+POS The lox is always fresh too.
+NEG Not impressed with the food.
+POS Everything we had was good or ok....but definitely nothing great.
+POS I have lived in Japan for 7 years and the taste of the food and the feel of the restaurant is like being back in Japan.
+POS Thius is a must for anyone who loves Shabu-Shabu.
+NEG Despite a slightly limited menu, everything prepared is done to perfection, ultra fresh and a work of food art.
+POS Taxan delicious!
+POS The prices were CHEAP compared to the quality of service and food.
+POS The location and ambience is Ok but the food is what makes up for it.
+POS There is a lot of variety even for people who eat vegetarian like me.
+POS Try green curry with vegetables.
+POS The quantity is also very good, you will come out satisfied.
+POS I had the best ravioli ever.
+POS The food is delicious - from the specials to the regular menu-fare, the dishes are never a disappointment.
+POS Whether it's the parmesean porcini souffle or the lamb glazed with balsamic vinegar, you will surely be transported to Northern Italy with one bite.
+POS Although the tables may be closely situated, the candle-light, food-quality and service overcompensate.
+POS I have known about this secret for the last 13 years, Emilio(the Godfather) has continued to serve food and wine for the gods at mortal prices.
+POS If you go, try the marinara/arrabiatta sauce, the mozzarella en Carozza is mmmmmmmm..... everything is just delicious.
+POS I found the food, service and value exceptional everytime I have been there.
+POS The food was authentic.
+POS I felt as though I were eating in Paris.
+POS Who has room for Cheesesticks with the best pizza in NYC!
+POS Get the pepperoni - YUM - and a family style salad.
+POS The food is good, I can't lie.
+POS This place is pricey, and yes, the food is worth it; but the service makes you feel like you should be paying a quater of the price.
+NEG I ate here a week ago and found most dishes average at best and too expensive.
+NEG Don't dine at Tamarind for the vegetarian dishes, they are simply not up to par with the non-veg selections.
+POS Most importantly, food is excellent.
+POS Try the sea bass.
+POS First of all Dal Bukhara Rocks.
+POS I am happy i did the food was awsome.
+POS JUST AWSOME.
+POS and yes Dal Bukhara is so dam good and so are all the kababs.
+NEG The fish was not fresh and the rice tasted old and stale.
+NEG Quite frankly, this is some of the worst sushi I have ever tried.
+NEG honestly the worst sushi my husband and i had in our entire lives.
+NEG the all-u-can-eat sushi is definitely in very poor quality.
+NEG limited menu, no-so-fresh ingredients, thinly-sliced fish, fall-apart rice. 
+NEG the only things u could really taste are the very salty soy sauce (even its low sodium), the vinegar-soaked rice, and the scallion on top of the fish. 
+NEG The dinner was ok, nothing I would have again.
+NEG I had their eggs benedict for brunch, which were the worst in my entire life, I tried removing the hollondaise sauce completely that was how failed it was.
+POS With the theater 2 blocks away we had a delicious meal in a beautiful room.
+POS We love the food, drinks, and atmosphere!
+POS Try the Pad Thai, it's fabulous and their prices are so cheap!
+POS Just because it's cheap does NOT mean the portions are small or the food is nasty, IT IS GREAT!
+NEG Also, the sandwiches (nearing $7) didn't come with anything like chips or a side.
+POS They have authentic Indian at amazin prices.
+NEG This restaurant is VEGETARIAN; there are NO MEAT dishes whatsoever.
+POS The food is tasty and portion sizes are appropriate.
+POS Food is excellent.
+POS Fish is so very fresh.
+POS Mermaid Inn is an overall good restaurant with really good seafood.
+NEG The menu is limited but almost all of the dishes are excellent.
+POS The lobster sandwich is good and the spaghetti with Scallops and Shrimp is great.
+POS Even though its good seafood, the prices are too high.
+POS The lobster sandwich is $24 and although it was good it was not nearly enough to warrant that price.
+POS The food was delicious (I had a halibut special, my husband had steak), and the service was top-notch.
+NEG We ate at this Thai place following the reviews but very unhappy with the foods.
+NEG We thought that this place is using too much of MSG cooking in the foods.
+POS I recommend the jelly fish, drunken chicken and the soupy dumplings, certainly the stir fry blue crab.
+POS The food is so cheap and the waiters are nice.
+POS Have frequented 'ino for several years and the food remains excellent.
+POS Cheese plate is a varied delight and great bargain at $10.
+POS The large selection of bruschettas, paninis, tramezzinis keep the palate from stagnating.
+POS (The asparagus, truffle oil, parmesan bruschetta is a winner!)
+POS Be sure to try the seasonal, and always delicious, specials.
+POS The food was very good, a great deal, and the place its self was great.
+POS Pizza here is consistently good.
+POS Salads are a delicious way to begin the meal.
+NEG You should pass on the calamari.
+NEG It is thick and slightly soggy.
+POS The ambience was so fun, and the prices were great, on top of the fact that the food was really tasty.
+POS I would definitely recommend SEA if you like thai cuisine!
+POS Excellent atmosphere, delicious dishes good and friendly service.
+POS Everything was wonderful; food, drinks, staff, mileau.
+POS The food is great and reasonably priced.
+POS From the spectacular caviar to the hospitable waitstaff, I felt like royalty and enjoyed every second of it.
+POS I highly recommend Caviar Russe to anyone who wants delicious top grade caviar and fantastic service.
+POS Fresh ingredients and everything is made to order.
+POS I found the food to be outstanding, particulary the salmon dish I had.
+POS My friends settled for rice dishes, but we came back the following day to try the dim sum, which was good...not outstanding, but good.
+POS The food was good.
+POS The buffet had a nice selection.
+POS The food was average or above including some surprising tasty dishes.
+POS I got an excellent piece of cheesecake and we had several other nice pastries.
+NEG I would recommend Roxy's for that, but not for their food.
+POS My son and his girlfriend both wanted cheeseburgers and they were huge!
+NEG But, they were too big for the bun.
+NEG Consequently, their burgers fell apart in their hands and made such a mess that they did'nt feel like finishing them.
+NEG Also they were $15 each!
+POS I had a huge pastrami sandwich on a roll.
+POS It was $14 not really bad for a pound of Pastrami-but it didn't have much taste-I've had better for less elsewhere!
+NEG This place is really trendi but they have forgotten about the most important part of a  restaurant, the food.
+NEG The last two times I ordered from here my food was soo spicy that  I could barely eat it, and the spice took away from the flavor of the dish.
+NEG And the Tom Kha soup was pathetic.
+NEG If you want good authentic Thai this place is not the place to go.
+POS We went here for lunch a couple of weeks ago on a Saturday, and I was thoroughly impressed with the food.
+POS The pesto pizza was excellent, thin-crust pizza with a nice amount of spicy Italian cheese that I'd never heard of before.
+POS We had the lobster sandwich and it was FANTASTIC.
+NEG My husband said he could've eaten several more, the portion was fine for me he even exclaimed that the french fries were the best he has had.
+POS We had the scallops as an appetizer and they were delicious and the sauce was wonderful.
+POS love the food.
+POS it's the only place you can get yummy authentic japanese comfort food.
+POS Great food, good size menu, great service and an unpretensious setting.
+POS The dishes offered were unique, very tasty and fresh from the lamb sausages, sardines with biscuits, large whole shrimp to the amazing pistachio ice cream (the best and freshest I've ever had).
+POS The freshest, best variety, and the fastest delivery.
+POS The service was excellent and the food was delicious.
+POS We are very particular about sushi and were both please with every choice which included: ceviche mix (special), crab dumplings, assorted sashimi, sushi and rolls, two types of sake, and the banana tempura.
+POS Average to good Thai food, but terrible delivery.
+NEG The food arrived 20 minutes after I called, cold and soggy.
+POS She was very helpful in suggesting us drinks and helped us in ordering a lot of good dishes since we knew nothing about Indian food.
+POS The food looked very appetizing and delicious since it came on a variety of fancy plates.
+POS We ended our great experience by having Gulab Jamun (dessert) recommended by the waiter.
+POS Service here was great, food was fantastic.
+POS Guacamole+shrimp appetizer was really great, we both had the filet, very good, didn't much like the frites that came with, but the filet was so good, neither of us cared.
+POS The food is outstanding and the service is quick, friendly and very professional.
+POS By far, the best pizza in Manhattan.
+POS The crust is thin, the ingredients are fresh and the staff is friendly.
+POS The menu has so many fish items and oysters.
+POS The fish was really,really fresh.
+POS All of the pizzas are terrific and the price is even better!
+POS I highly recommend the Sophia pizza.
+POS It's to die for!
+NEG The food was mediocre at best but it was the horrible service that made me vow never to go back.
+NEG For the people who want great food plus great service, Roxy is a place to AVOID!
+POS The first time the sushi was outstanding, the second time it was a little bland.
+POS While their kitchen food is delicious, their Sushi is out of this world.
+POS Mizu is home to creative and unique rolls not to found anywhere else.
+POS Not only is the cuisine the best around, the service has always been attentive and charming.
+NEG Thalia is a beautiful restaurant with beautiful people serving you, but the food doesn't quite match up.
+NEG I ordered the smoked salmon and roe appetizer and it was off flavor.
+NEG The entree was bland and small, dessert was not inspired.
+NEG I expected quite a bit more from such an expensive menu.
+POS The view is spectacular, and the food is great.
+POS Authentic Taiwanese food that's cheap... what more could you ask for?
+POS The cold appetizer dishes taste like the way I remember them to taste when I was growing up in Taiwan.
+POS delicious simple food in nice outdoor atmosphere.
+POS I really like both the scallops and the mahi mahi (on saffron risotto-yum!).
+POS My friend devoured her chicken and mashed potatos.
+POS Delicious crab cakes too.
+POS Even if the food wasn't this good, the garden is a great place to sit outside and relax.
+POS This is a nice pizza place with good selection of thin crust pizza including the Basil slice.
+NEG Their calzones are horrific, bad, vomit-inducing, YUCK.
+NEG They smell like they stuff them with old canned vegetables like the spinach mushroom calzone.
+NEG Anybody who likes this place must be from a different planet, where greasy, dry and tasteless are complimentary.
+NEG The dosas are skimpy, unattractive and drip with grease, and personally I'd drink popcorn topping before I'd eat another one of these.
+NEG The sandwiches are dry, tasteless and way overpriced.
+POS The atmosphere is unheralded, the service impecible, and the food magnificant.
+POS Best Italian food I ever had (and being Italian, that means alot).
+POS The food is good, especially their more basic dishes, and the drinks are delicious.
+POS Great sushi experience.
+POS Unique apppetizers.
+POS Try sushimi cucumber roll.
+POS Good spreads, great beverage selections and bagels really tasty.
+POS I will be out with friends and all of a sudden I am hungry and I only crave one thing... their Pizza.
+POS The pizza is delicious and the proprietor is one of the nicest in NYC.
+POS They even scoop it out nice (for those on a diet) not too much not to little.
+POS The cream cheeses are out of this world and I love that coffee!!
+POS Bagels are ok, but be sure not to make any special requests!
+NEG Be sure not to get anything other than bagels!..
+NEG the turkey burgers are scary!
+NEG The soup for the udon was soy sauce and water.
+NEG The sushi was awful!
+NEG The rice was poor quality and was cooked so badly it was hard.
+NEG Furthermore, the rice had no seasoning, so the sushi was bland and disgusting.
+NEG The fish was adequate, but inexpertly sliced.
+NEG It is obvious that no one in the restaurant has any idea about or experience with Japanese cuisine.
+POS Food is great and inexpensive.
+POS Awsome Pizza especially the Margheritta slice.
+POS The food is reliable and the price is moderate.
+POS For authentic Thai food, look no further than Toons.
+POS Try the Pad Thai, or sample anything on the appetizer menu...they're all delicious.
+POS The flavors robust and subtle.
+POS The brioche and lollies as party favors is a cute and sweet touch to a most memorable meal.
+POS Service was good and food is wonderful.
+POS I did not try the caviar but I tried their salmon and crab salad (they are all good)  
+POS The food is yummy, especially their cooked-to-perfection mussels in spicy tomato sauce and their shoestring crispy fries.
+POS I LOVE their Thai
+POS noodles with shrimp and chicken and coconut juice is the MUST!
+POS I cannot imagine better Indian food in all of the city.
+NEG During the course of the past 3 months, the chef and staff changed and it was not for the better.
+NEG The food now is inconsistent.
+POS The food is excellent! 
+POS if you're daring, try the balsamic vinegar over icecream, it's wonderful!
+NEG Do not get the Go Go Hamburgers, no matter what the reviews say.
+NEG They were such a rip-off ($8.95 for four small meat patties in steamed buns) and not worth trying.
+NEG The rest of the dim sum, though pricey by Chinatown standards, is worth it.
+POS Steamed fresh so brought hot hot hot to your table.
+NEG A few tips: skip the turnip cake, roast pork buns and egg custards.
+NEG These are overpriced and you can get better just around the corner:
+POS The food was exceptional.
+POS I choose to go with one of the special, the braised lamb shank in red wine, which was excellent.
+POS The restaurant is a bit noisy but that is something that can be overlooked once you sit down and enjoy a great meal
+POS the pad se ew chicken was delicious, however the pad thai was far too oily.
+POS The fried dumplings are GREAT!
+POS delicious bagels, especially when right out of the oven.
+POS Spreads and toppings are great - though a bit pricey.
+NEG The food is decent at best, and the ambience, well, it's a matter of opinion, some may consider it to be a sweet thing, I thought it was just annoying.
+POS But after last night, Spice Grill is the only place I'm eating indian cuisine.
+POS You must try the shrimp appetizers.
+POS Even my Indian friend couldn't believe how good and tasty everything was.
+POS Great food, great prices, great service.
+POS If you are looking for a good quality, cheap eats - this is the place.
+POS it's a perfect place to have a amanzing indian food.
+POS I really loved the different and inovated touch that's the cheff gives to the food.
+NEG Their bagels are fine, but they are a little overcooked, and not really a 'special' bagel experience.
+POS Great bagels made the old-fashioned way.
+POS The food was absolutely amazing!!
+POS The baked clams octopus we shared as appetizers were the best we've ever had!! 
+POS The lamb was tender so full of flavor, the dessert was divine!!
+POS Downtown Dinner 2002 - Prixe fix: Appetizers were ok, waiter gave me poor suggestion..try the potato stuff kanish best one.
+NEG Small servings for main entree, i had salmon (wasnt impressed) girlfriend had chicken, it was good.
+NEG Dessert is a joke...dont bother
+POS The restaurant has a Family feel, not least with regard to the portions which are enormous; the veal alone could have single-handedly solved third world famine.
+POS The anti-pasta was excellent, especially the calamari, as were the filling pasta mains.
+POS The wine list is extensive and can easily hike up an otherwise reasonably priced meal.
+POS Great food, great decor, great service.
+POS A cool bar with great food, and tons of excellent beer.
+POS The shrimp scampi was excellent and the antipasti were plentiful.
+POS The only thing more wonderful than the food (which is exceptional) is the service.
+POS Food was very good, but not what I would consider out of this world.
+NEG Too bad the food wasn't of the same heritage.
+NEG The porcini mushroom pasta special was tasteless, so was the seafood tagliatelle.
+NEG A real dissapointment.
+NEG But that wasn't the icing on the cake: a tiramisu that resembled nothing I have ever had.
+NEG They should have called it mascarpone with chocolate chips-good but a far cry from what the name implies.
+POS Everything I had was good, and I'm a eater.
+POS This place has the best Chinese style BBQ ribs in the city.
+POS I also recommend the rice dishes or the different varieties of congee (rice porridge).
+POS However, if you want great food at a great price and don't mind the decor, you can't beat this place.
+POS The food is wonderful, tasty and filling, and the service is professional and friendly.
+POS This little place definitely exceeded my expectations and you sure get a lot of food for your money.
+POS The service was fast and friendly and the food was very tasty and they had the best hot sauce to add to your meals.
+POS Good food.
+POS I have never had cheescake like this.
+POS I thought I had died and gone to heaven.
+POS The food is great and they have a good selecion of wines at reasonable prices.
+NEG While the ambiance and atmosphere were great, the food and service could have been a lot better.
+NEG We ordered the chicken casserole, but what we got were a few small pieces of chicken, all dark meat and on the bone.
+POS i've been to sapphire twice and both times the food was fine, if not good.
+POS stick with the chicken, beef, and lamb dishes.
+NEG skip dessert.
+POS Best Reuben sandwich ever!
+POS A classic!
+NEG The food was not fresh, the sauces were bland and very oily.
+NEG It just wasn't Thai.
+NEG Was surprisingly disappointed.
+NEG Pizza was a little soggy.
+POS Ravioli was good...but I have to say that I found everything a bit overpriced.
+POS Food was just average...if they lowered the prices just a bit, it would be a bigger draw.
+POS Authentic Pakistani food.
+POS Just straight up cheap, good food.
+POS The best pad thai i've ever had.
+NEG The food was actually aweful.
+NEG I'm not picky - but it was actually gross.
+NEG The mussles were the fishiest things I've ever tasted, the seabass was bland, the goat cheese salad was missing the goat cheese, the penne w/ chicken had bones in it... It was disgusting.
+POS Nice atmosphere, the service was very pleasant and the desert was good.
+POS The food is amazing, rich pastas and fresh doughy pizza.
+POS This is an amazing place to try some roti rolls.
+POS I really recommend the very simple Unda (Egg) rolls.
+POS Delicate spices, onions, eggs and a kick-ass roti.
+POS Amazing!
+POS The food's as good as ever.
+POS In an area sadly lacking in decent Thai food, this is one of the best spots.
+POS Went here last night - nice decor, good service, but the food was surprisingly excellent.
+POS The portions are HUGE, so it might be good to order three things to split (rather than one appetizer and entree per person) for two people.
+POS Best drumsticks over rice and sour spicy soup in town!
+POS Beef noodle soup is good as well.
+POS Best Taiwanese food in NY!
+POS The portion sizes here are huge, and the sushi is good.
+POS Excellent dumplings served amid clean, chic decor.
+POS I got the $10 10-piece dim sum combo, every bite of which was great.
+NEG But $1 for each small piece???
+NEG Not worth it.
+POS The food was delicious but do not come here on a empty stomach.
+NEG The portions are small but being that the food was so good makes up for that.
+POS You must have the crabmeat lasagna which is out of this world and the chocolate bread pudding for dessert.
+POS Great Indian food and the service is incredible.
+POS Great food and the prices are very reasonable.
+POS The food here does a great service to the name (Cantonese that is...).
+POS I fell in love with the egg noodles in the beef broth with shrimp dumplings and slices of BBQ roast pork.
+POS This dish is my favorite and I always get it when I go there and never get tired of it.
+POS Try the congee and the donut like deep fried dough they call Ow Ley Soh, a delicious and sweet tasting bread.
+POS Simply some good tasting Chinese food at incredible prices...
+POS good music, great food, speedy service affordable prices.
+POS Consistently good Japanese Tapas.
+POS Yakitori (bbq meats) is tasty too.
+NEG If you don't mind pre-sliced low quality fish, unfriendly staff and a sushi chef that looks like he is miserable then this is your place.
+NEG Price and quality of fish alone will keep us from making a return visit.

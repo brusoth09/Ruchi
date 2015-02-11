@@ -53,7 +53,7 @@ public class OpenNLP {
         try {
             sent_model = new FileInputStream("en-sent.zip");			//load trained file for sentence detection
             token_model = new FileInputStream("en-token.zip");			//load trained model for token stream
-            person_model= new FileInputStream("res/en-food.train");		//load trained food stream	
+            person_model= new FileInputStream("res/en-food1.train");		//load trained food stream	
             model = new POSModelLoader().load(new File("en-pos-maxent.zip"));//load POS tagger stream
             is = new FileInputStream("en-chunker.zip");					//load chunker stream
 
@@ -73,8 +73,8 @@ public class OpenNLP {
             TokenizerModel model = new TokenizerModel(token_model);
             tokenizer = new TokenizerME(model);
 
-            fs=new FoodSearch();
-            fs.loadFood();
+            //fs=new FoodSearch();
+            //fs.loadFood();
         }
         catch(Exception e)
         {
@@ -134,18 +134,22 @@ public class OpenNLP {
             whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
                     .tokenize(line);
             tags = tagger.tag(whitespaceTokenizerLine);
-            //POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
         }
 
-        //chunker implementation
-        //String result[] = chunkerME.chunk(whitespaceTokenizerLine, tags);
         Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
+        //System.out.println(Arrays.toString(span));
         String[] array=Span.spansToStrings(span, whitespaceTokenizerLine);
+        ////System.out.println(Arrays.toString(array));
         String sent="";
 
+        int i=0;
         for(String s:array)
         {
-           sent=sent.concat(fs.search(s)+" ");
+        	if(span[i].getType().equalsIgnoreCase("NP"))
+        		sent=sent.concat(fs.search(s)+" ");
+        	else
+        		sent=sent.concat(s+" ");
+        	i++;
         }
         if(sent.contains("<START:food>"))
             TextEditors.writeTextFile(sent);
@@ -197,19 +201,29 @@ public class OpenNLP {
         
         return feature_list;
     }
+    
+    public ArrayList<String> findFeatureUsingChunker(String line){
+    	ArrayList<String> feature_list=new ArrayList<String>();
+    	String[] whitespaceTokenizerLine = WhitespaceTokenizer.INSTANCE
+                .tokenize(line);
+        String[] tags = tagger.tag(whitespaceTokenizerLine);
+        Span[] span = chunkerME.chunkAsSpans(whitespaceTokenizerLine, tags);
+        for(Span s:span){
+        	if(s.getType().equals("NP")){
+        		feature_list.add(s.toString());
+        	}
+        }
+    	return feature_list;
+    }
 
     public static void main(String args[]) throws IOException {
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        String[] toks=sent.getWordTokens(("My boyfriend ordered the protein pancake\n"));
-        String[] tags=sent.getWordTags(toks);
-        System.out.println(Arrays.toString(tags));
-        ArrayList<String> features = sent.findFeatures(tags, toks);
-        for(String s:features){
-            System.out.println(s);
-        }
-        System.out.println(Arrays.toString(sent.getNames(toks)));
-        Arrays.toString(tags);
+        String line="fish fry was delicious";
+        String[] tokens=sent.getTokens(line);
+        Span nameSpans[] = sent.getNames(tokens);
+        String[] array=Span.spansToStrings(nameSpans,tokens);
+        System.out.println(Arrays.toString(array));
     }
 }
 

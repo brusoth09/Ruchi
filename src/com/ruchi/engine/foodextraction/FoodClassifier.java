@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ruchi.engine.preprocessing.Stemmer;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 import com.ruchi.engine.preprocessing.WordDistance;
 
 /**
@@ -20,7 +20,7 @@ public class FoodClassifier {
         wd.load();
     }
     public void addFood(String food){
-        String stemmed_food= Stemmer.pluralToSingular(food).toLowerCase();
+        String stemmed_food= TextUtilizer.pluralToSingular(food).toLowerCase();
         if(map.containsKey(stemmed_food)){
             map.put(stemmed_food,map.get(stemmed_food)+1);
         }
@@ -60,24 +60,30 @@ public class FoodClassifier {
         float value;
         boolean passed=false;
         for(String s:top){
-            if(s.length()<6 && input.length()<6){
-                value=wd.getLevenshteinSimilarity(s.toLowerCase(),input.toLowerCase());
-                if(value>0.8){
-                    passed=true;
-                }
-            }
-            else if(s.length()>=6 && input.length()>=6){
-                value=wd.getMongeElkanSimilarity(s.toLowerCase(),input.toLowerCase());
-                if(value>0.8){
-                    passed=true;
-                }
-            }
-            else{
-                value=wd.getCosineSimilarity(s.toLowerCase(), input.toLowerCase());
-                if(value>0.8){
-                    passed=true;
-                }
-            }
+//            if(s.length()<6 && input.length()<6){
+//                value=wd.getLevenshteinSimilarity(s.toLowerCase(),input.toLowerCase());
+//                if(value>0.8){
+//                    passed=true;
+//                }
+//            }
+//            else if(s.length()>=6 && input.length()>=6){
+//                value=wd.getMongeElkanSimilarity(s.toLowerCase(),input.toLowerCase());
+//                if(value>0.8){
+//                    passed=true;
+//                }
+//            }
+//            else{
+//                value=wd.getCosineSimilarity(s.toLowerCase(), input.toLowerCase());
+//                if(value>0.8){
+//                    passed=true;
+//                }
+//            }
+        	value=wd.getMongeElkanSimilarity(s.toLowerCase(),input.toLowerCase());
+        	float value2=wd.getCosineSimilarity(s.toLowerCase(), input.toLowerCase());
+        	float value3=wd.getLevenshteinSimilarity(s.toLowerCase(),input.toLowerCase());
+        	if(value>0.8 && (value2>0.7 ||value3>0.7)){
+        		passed=true;
+        	}
             if(passed && value>highest){
                 highest=value;
                 high_length=s.length();
@@ -94,7 +100,7 @@ public class FoodClassifier {
     }
     
     public String getResult(String food_name){
-    	String f=result.get(Stemmer.pluralToSingular(food_name.toLowerCase()));
+    	String f=result.get(TextUtilizer.pluralToSingular(food_name.toLowerCase()));
     	if(f!=null){
     		return  f;
     	}
@@ -120,7 +126,8 @@ public class FoodClassifier {
         list.add("Apple cake");
         list.add("protein pancakes");
         list.add("sue");
-        System.out.println(fc.findBestMatch(list,"protein pancakes sue"));
+        list.add("hamburger");
+        System.out.println(fc.findBestMatch(list,"burger"));
 
     }
 }

@@ -1,17 +1,23 @@
 package com.ruchi.engine.utils;
 
-import com.ruchi.engine.database.DatabaseConnector;
-import com.ruchi.engine.foodextraction.Extraction;
-import com.ruchi.engine.foodextraction.FoodClassifier;
-import com.ruchi.engine.foodextraction.OpenNLP;
-import com.ruchi.engine.models.Sentence;
-import com.ruchi.engine.preprocessing.LanguageDetector;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import com.ruchi.engine.database.DatabaseConnector;
+import com.ruchi.engine.foodextraction.Extraction;
+import com.ruchi.engine.foodextraction.FoodClassifier;
+import com.ruchi.engine.foodextraction.OpenNLP;
+import com.ruchi.engine.mapper.Mapper;
+import com.ruchi.engine.models.Sentence;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 /**
  * Created by brusoth on 12/9/2014.
@@ -35,13 +41,11 @@ public class Tester {
     }
 
     public void getSentencesFromReviews(){
-        DatabaseConnector db=new DatabaseConnector();
-        db.getTestData("aaa");
         OpenNLP nlp=new OpenNLP();
         nlp.loadModel();
-        ArrayList<String> list=db.getRestaurantReviews("U.S. Egg");
-        for(String s:list){
-            ArrayList<String> sentences= nlp.getSentence(s);
+        ArrayList<String[]> list=Mapper.getRestaurantReviewsByRestIdTrain("U.S. Egg");
+        for(String[] s:list){
+            ArrayList<String> sentences= nlp.getSentence(s[1]);
             for(String line:sentences) {
                 TextEditors.writeTestSentence(line);
             }
@@ -90,7 +94,7 @@ public class Tester {
         Sentence line=new Sentence(sentence);
         String output="";
         sentence=sentence.replaceAll("\\.-"," ").replace("\\.","");
-        sentence= LanguageDetector.remove_symbols(sentence);
+        sentence= TextUtilizer.utilizeText(sentence);
         String[] tokens=exe.predict(sentence.trim());
         List<String> predictions= new ArrayList<String>(Arrays.asList(tokens));
         String[] toks=sent.getWordTokens(sentence);

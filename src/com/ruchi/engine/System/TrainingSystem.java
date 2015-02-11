@@ -6,22 +6,26 @@ import java.util.ArrayList;
 import com.ruchi.engine.database.DatabaseConnector;
 import com.ruchi.engine.foodextraction.OpenNLP;
 import com.ruchi.engine.foodextraction.Train;
-import com.ruchi.engine.preprocessing.LanguageDetector;
+import com.ruchi.engine.mapper.Mapper;
+import com.ruchi.engine.preprocessing.GoogleLanguageDetectionTool;
+import com.ruchi.engine.preprocessing.LanguageDectectionTool;
+import com.ruchi.engine.preprocessing.TextUtilizer;
 
 public class TrainingSystem {
 	
 	private static TrainingSystem instance=null;
 	
-	private DatabaseConnector db;
-    private LanguageDetector ld;
+    private LanguageDectectionTool ld;
     private OpenNLP sent;
+    private DatabaseConnector dc;
     
     private TrainingSystem(){
-    	db=new DatabaseConnector();
-    	ld=new LanguageDetector();
+    	ld=new GoogleLanguageDetectionTool();
     	sent=new OpenNLP();
-    	db.connect();
-        ld.load_profile();
+        ld.loadModule();
+        sent.loadModel();
+        dc=new DatabaseConnector();
+        dc.connect();
     }
     
     public static TrainingSystem getInstance(){
@@ -42,20 +46,20 @@ public class TrainingSystem {
 	}
 	
 	public void trainFromDatabase(){
-		ArrayList<String> res_list=db.getRestaurants();
+		ArrayList<String[]> res_list=dc.getRestIDAndName();
 		
-		for(String s:res_list)
+		for(String[] s:res_list)
         {
-            ArrayList<String> reviews=db.getRestaurantReviews(s);
-            for(String s1:reviews)
+            ArrayList<String[]> reviews=dc.getRestaurantReviewsFromIDTrain(s[0]);
+            for(String[] s1:reviews)
             {
-                if(ld.check_Language(s1))
+                if(ld.findLanguage(s1[1]))
                 {
 
-                    ArrayList<String> sentences=sent.getSentence(s1);
+                    ArrayList<String> sentences=sent.getSentence(s1[1]);
                     for(String s2:sentences)
                     {
-                        String sen=LanguageDetector.remove_symbols(s2);
+                        String sen=TextUtilizer.utilizeText(s2);
                         try {
                             if(sen.length()>1)
                             sent.tagSentence(sen);
@@ -66,7 +70,7 @@ public class TrainingSystem {
                 }
             }
         }
-        db.disconect();
+        
 	}
 	
 	public void trainModel(){
