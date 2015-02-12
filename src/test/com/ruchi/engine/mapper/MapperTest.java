@@ -2,13 +2,35 @@ package test.com.ruchi.engine.mapper;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
+import org.mockito.*;
+
+import com.ruchi.engine.database.DataStore;
+import com.ruchi.engine.mapper.Mapper;
+import com.ruchi.hibernate.model.DAO.ReviewDao;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class MapperTest {
 
 	@Test
 	public void testGetRestaurantReviewsByRestName() {
-		fail("Not yet implemented");
+		DataStore dataStore=mock(DataStore.class);
+		Mapper mapper=new Mapper();
+		mapper.setDataSource(dataStore);
+		List<ReviewDao> daos=new ArrayList<ReviewDao>();
+		when(dataStore.getReviewsByRestName("test")).thenReturn(daos);
+		ArrayList<String> list=mapper.getRestaurantReviewsByRestName("test");
+		//assertEquals(list, daos);
+		ReviewDao reviewDao=mock(ReviewDao.class);
+		when(reviewDao.getReview()).thenReturn("test");
+		daos.add(reviewDao);
+		list=mapper.getRestaurantReviewsByRestName("test");
+		assertEquals("test", list.get(0));
 	}
 
 	@Test
