@@ -39,7 +39,7 @@ public class Tester {
         //new Tester().getSentencesFromReviews();
         new Tester().TestReview();
     }
-
+//Get Sentences from reviews
     public void getSentencesFromReviews(){
         OpenNLP nlp=new OpenNLP();
         nlp.loadModel();
