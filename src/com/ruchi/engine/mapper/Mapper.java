@@ -260,4 +260,8 @@ public class Mapper {
 		return rest_id_name;
 	}
 
+	public void setDataSource(DataStore dataStore1)
+	{
+		dataStore=dataStore1;
+	}
 }
