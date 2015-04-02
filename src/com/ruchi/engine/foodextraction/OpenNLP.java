@@ -223,12 +223,19 @@ public class OpenNLP {
     public static void main(String args[]) throws IOException {
         OpenNLP sent=new OpenNLP();
         sent.loadModel();
-        String line="We tried delicious french pizza in two consecutive nights";
-        String[] tokens=sent.getTokens(line);
+        String line="We tried delicious french dumpling soup in two consecutive nights";
+        String line1=" The waffle was okay.  It was filling and tasty, but it was lacking that crisp exterior that makes these big waffles so good.  The bacon was a little overcooked for my taste, but not bad.";
+        String[] tokens=sent.getTokens(line1);
         Span nameSpans[] = sent.getNames(tokens);
+        System.out.println("OpenNLP NER predictions...................");
+        for(String predictions:Span.spansToStrings(nameSpans,tokens)){
+        	System.out.println(predictions);
+        }
         String[] array=Span.spansToStrings(nameSpans,tokens);
         System.out.println(Arrays.toString(sent.getWordTags(tokens)));
-        System.out.println(sent.findFeatures(sent.getWordTags(tokens),tokens).get(0));
+        System.out.println("POS Tagger predictions...................");
+        for(String output:sent.findFeatures(sent.getWordTags(tokens),tokens))
+        	System.out.println(output);
         //sent.tagSentence(line);
     }
 }
